@@ -68,6 +68,15 @@ int Tile::getFloor()
 	return f;
 }
 
+void Tile::setNextTile(Tile *newTilePtr)
+{
+	nextTile = newTilePtr;
+}
+
+Tile * Tile::getNextTile()
+{
+	return nextTile;
+}
 void Tile::printTile()
 {
 	cout<<"Printing Tile\n";

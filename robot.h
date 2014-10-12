@@ -1,3 +1,5 @@
+/* A class header for the robots that deliver items in program 5
+Author: Alexi Kessler */
 #ifndef ROBOT_H
 #define ROBOT_H
 #include "tile.h"
@@ -18,7 +20,7 @@ class Robot
 		int getF();
 		void setF(int);
 		Tile *getTile(int);
-		Tile addTile(Tile);
+		void addDest(tilePtr);
 	private:
 		int ID;
 		int r, c, f;

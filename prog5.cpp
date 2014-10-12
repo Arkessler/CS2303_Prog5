@@ -115,7 +115,7 @@ int main () //Author: Alexi
 	
 	instructions();
 	cin>>choice;
-	Tile tile0 = *(new Tile(2, 5, 12, 4, 3));
+	tilePtr tile0 = new Tile(2, 5, 12, 4, 3);
 	
 	switch (choice)
 	{
@@ -137,7 +137,18 @@ int main () //Author: Alexi
 			{
 				(*testTile).printTile();
 			}
-			
+			cout<<"Adding tile0 to destination list\n";
+			R.addDest(tile0);
+			testTile = (R.getTile(1));
+			cout<<"Robot's destination list after setter:\n";
+			if (testTile == NULL)
+			{
+				cout<<"Tile is null!\n";
+			}
+			else
+			{
+				(*testTile).printTile();
+			}
 			break;
 			}
 		default:

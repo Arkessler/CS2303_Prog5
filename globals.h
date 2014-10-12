@@ -24,6 +24,7 @@ definitions used throughout the RoboMall program. */
 #define MAX   16
 #define INVALID 9
 #define MAX_ROBOTS  9
+#define MAX_SHOPPERS 10
 #define MAX_STORES 20
 #define MAX_PATH  200 
 #define STIME 0

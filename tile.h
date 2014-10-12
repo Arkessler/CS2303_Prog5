@@ -18,6 +18,8 @@ class Tile
 		int getRow();
 		int getCol();
 		int getFloor();
+		void setNextTile(Tile *newTilePtr);
+		Tile *getNextTile();
 		void printTile();
 	private:
 		int type;

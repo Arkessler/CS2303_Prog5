@@ -5,6 +5,7 @@
 Tile Mall[MAX+1][MAX+1][2];
 int type [MAX+1][MAX+1][2];
 int step [MAX+1][MAX+1][2];
+Robot RobotsNotInSim[MAX_ROBOTS];
 int simTime = 0;
 
 void instructions();

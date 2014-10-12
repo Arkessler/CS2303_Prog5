@@ -1,3 +1,5 @@
+/* Class implementation for the robots that deliver items in program 5
+Author: Alexi Kessler */
 #ifndef ROBOT_CPP
 #define ROBOT_CPP
 
@@ -75,9 +77,23 @@ Tile *Robot::getTile(int spot)
 		return Dests;
 	}
 }
-Tile Robot::addTile(Tile newTile)
+void Robot::addDest(tilePtr newTile)
 {
-	//Dests.add(newTile);
-	*Dests = newTile;
+	if (Dests==NULL)
+	{
+		Dests = newTile;
+	}
+	else
+	{
+		tilePtr curr = NULL;
+		tilePtr prev = NULL;
+		curr = Dests;
+		while (curr!=NULL)
+		{
+			prev = curr;
+			curr = curr->getNextTile();
+		}
+		prev->setNextTile(newTile);
+	}
 }
 #endif
