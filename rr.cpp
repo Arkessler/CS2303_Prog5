@@ -16,9 +16,8 @@ void processArrive(rr *toRun);
 
 // Initializes a RR scheduling simulator with the given
 // list of processes to run
-rr::rr(queue *schedQueueN, int sliceN) {
+rr::rr(process *newProc, int sliceN):queue(new queueNode(newProc)) {
   curTime = 0;
-  schedQueue = schedQueueN;
   runningQueue = new queue();
   finishedProcesses = new queue();
   slice = sliceN;

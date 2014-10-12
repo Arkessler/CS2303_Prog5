@@ -11,9 +11,13 @@ using namespace std;
 
 // Initializes an FCFS scheduling simulator with the given
 // list of processes to run.
-fcfs::fcfs(queue *newSchedQueue){
+fcfs::fcfs():queue(){
   set_curTime(0);
-  set_schedQueue(newSchedQueue);
+  set_finishedProcesses(new queue());
+}
+
+fcfs::fcfs(process *proc):queue(new queueNode(proc)){
+  set_curTime(0);
   set_finishedProcesses(new queue());
 }
 
@@ -30,7 +34,7 @@ void fcfs::run_fcfs() {
 
     if(DEBUG1) cout<< "check if still running" <<endl;
     // See if the next process is null. If so, set running to 0 and break
-    if (!get_schedQueue()->get_front()) {
+    if (!get_front()) {
       running = 0;
       if(DEBUG1) cout<<"no longer running" <<endl;
       break;
@@ -39,7 +43,7 @@ void fcfs::run_fcfs() {
   
     // Pop the next process off of the scheduling queue 
     process *nextProc;
-    set_schedQueue(get_schedQueue()->pop(&nextProc));
+    pop(&nextProc);
   
     if(DEBUG1) cout<< "nextProc id: " << nextProc->get_pid()<<endl;
 
@@ -79,7 +83,6 @@ void fcfs::run_fcfs() {
 // remaining resources.
 fcfs::~fcfs() {
   // Destory any remaining schedule queue elements
-  delete schedQueue;
   delete finishedProcesses;
 }
 
@@ -100,14 +103,6 @@ int fcfs::get_curTime(){ // converted by Max.
 
 void fcfs::set_curTime(int time){
   curTime = time;
-}
-
-queue *fcfs::get_schedQueue(){
-  return schedQueue;
-}
-
-void fcfs::set_schedQueue(queue *newQueue){
-  schedQueue = newQueue;
 }
 
 queue *fcfs::get_finishedProcesses(){

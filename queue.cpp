@@ -10,6 +10,9 @@ using std::flush;
 #include "queue.h"
 #include "util.h"
 #include "process.h"
+#include "fcfs.h"
+#include "rr.h"
+
 #define DEBUG_DEL 1
 // Pops the next element off of the queue
 // This returns a pointer to the next head element,
@@ -231,7 +234,7 @@ int queue::getQueueMax() {
 
 // Clones the given queue, and the process elements within.
 // These are malloced, be sure to free them later
-queue* queue::cloneQueue() {
+queue* queue::cloneQueue(queue *sign) {
   if (get_front()) {
     if(DEBUG1) cout << "run clone" <<endl;
     queue* newQ = new queue(new queueNode(get_front()->get_proc()->cloneProc()));
@@ -241,6 +244,29 @@ queue* queue::cloneQueue() {
     return NULL;
   }
 }
+
+fcfs* queue::cloneQueue(fcfs *sign){
+  if (get_front()) {
+    if(DEBUG1) cout << "run clone" <<endl;
+    fcfs* newQ = new fcfs(get_front()->get_proc()->cloneProc());
+    newQ->get_front()->set_next(get_front()->get_next()->cloneQueue());
+    return newQ;
+  } else {
+    return NULL;
+  }
+}
+
+rr* queue::cloneQueue(rr *sign, int slice){
+  if (get_front()) {
+    if(DEBUG1) cout << "run clone" <<endl;
+    rr* newQ = new rr(get_front()->get_proc()->cloneProc(), slice);
+    newQ->get_front()->set_next(get_front()->get_next()->cloneQueue());
+    return newQ;
+  } else {
+    return NULL;
+  }
+}
+
 
  queueNode* queueNode::cloneQueue(){
    if(this){

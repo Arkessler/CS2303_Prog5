@@ -2,6 +2,9 @@
 #define QUEUE_H_
 #include "process.h"
 
+class fcfs;
+class rr;
+
 // A generic member of the queue, which has a reference to
 // the process in the queue and the next element of the queue
 
@@ -29,7 +32,11 @@ class queue{
  public:
   queue();
   queue( queueNode *);
-  queue *cloneQueue();
+  
+  queue *cloneQueue(queue *);
+  fcfs *cloneQueue(fcfs *);
+  rr *cloneQueue(rr *, int);
+
   queue *pop( process **);
   void peak(process **);
   queue* enqueue(process *);

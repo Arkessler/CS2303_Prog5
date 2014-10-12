@@ -2,9 +2,10 @@
 #define RR_H_
 
 #include "queue.h"
-class rr{
+class rr:public queue
+{
  public:
-  rr(queue *, int);
+  rr( process *, int);
   void runRR();
   int get_curTime();
   int get_slice();
