@@ -28,6 +28,7 @@ definitions used throughout the RoboMall program. */
 #define MAX_PATH  200 
 #define STIME 0
 #define ETIME 1
+using namespace std;
 
 //Tile Mall [MAX+1][MAX+1][2];
 enum Choices    {Invalid, One, Two, Three, Next, TwoWay, Elevator, Store};
@@ -35,5 +36,21 @@ enum Coordinate {Row, Col, Floor};
 enum Direction  {North, NorthEast, East, SouthEast,
 		 South, SouthWest, West, NorthWest};
 enum Floors     {First, Second};
+
+/*
+typedef struct store{
+  int x, y, z, itemCount;
+  struct store *nextStore;
+} Store;
+
+typedef Store *StorePtr;
+
+int store_compare(StorePtr currentStore, StorePtr newStore);
+
+void removeStore(StorePtr *sPtr,StorePtr toRemove);
+
+void printStore(StorePtr store);
+
+void printStoreList(StorePtr *store); */
 
 #endif

@@ -1,7 +1,9 @@
 // Set of  small useful functions
 #ifndef SMALL_C
 #define SMALL_C
+#include <iostream>
 #include "externals.h"
+
 
 // debug function 
 void printloc(int cell[])
@@ -21,5 +23,11 @@ bool IsEqual(int now[], int des[])
     return true;
   else
     return false;
+}
+
+void instructions()
+{
+	cout<<"Choice 0 tests: Robot getter/setters Robot tileAdd\n";
+	cout<<"Please enter test choice\n";
 }
 #endif
