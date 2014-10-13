@@ -18,6 +18,9 @@ class Tile
 		int getRow();
 		int getCol();
 		int getFloor();
+		void addToInventory(LocalItemPtr);
+		LocalItemPtr getInventory();
+		void setInventory(LocalItemPtr);
 		void setNextTile(Tile *newTilePtr);
 		Tile *getNextTile();
 		void printTile();
