@@ -154,9 +154,13 @@ int main () //Author: Alexi
 			}
 			//weird spacing problems
 		case 1:
+			{
 			scanRobots(); 
 			(RobotsNotInSim[0]).printRobot();
+			bool EMP = RobNotInEmpty();
+			cout<<"Check for whether or not RobotsNotInSim is empty: "<<EMP<<endl;
 			break;
+			}
 		default:
 			cout<<"Improper or no test input";
 			break;

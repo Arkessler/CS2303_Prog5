@@ -9,6 +9,7 @@ Robot RobotsNotInSim[MAX_ROBOTS];
 int simTime = 0;
 
 void instructions();
+bool RobNotInEmpty();
 int init_mall ();
 void printloc (int []);
 bool IsEqual (int [], int []);
