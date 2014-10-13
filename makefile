@@ -1,6 +1,6 @@
 #Makefile for Program 5
 
-OBJS = prog5.o init_mall.o decide.o small.o tile.o robot.o
+OBJS = prog5.o init_mall.o decide.o small.o tile.o robot.o localItem.o
 
 CC = g++
 CFLAGS = -Wall -c
@@ -27,5 +27,7 @@ robot.o :robot.cpp robot.h tile.h
 tile.o: tile.h tile.cpp
 	$(CC) $(CFLAGS) tile.cpp	
 	
+localitem.o: localItem.h localItem.cpp
+	$(CC) $(CFLAGS) loaclItem.cpp
 clean:
 	rm *.o Prog5

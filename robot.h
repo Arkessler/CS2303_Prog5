@@ -24,6 +24,7 @@ class Robot
 		Tile *getTile(int);
 		void addDest(tilePtr);
 		//tilePtr getDest();
+		void printRobot();
 		void printDests();
 	private:
 		int ID;

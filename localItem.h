@@ -1,30 +1,30 @@
-//This part was a joint effort.
-#ifndef ITEM_H
-#define ITEM_H
-#include "global.h"
+/* class definition for local item, which is to be used to represent the local item stock of a store in program 5
+Author:Alexi Kessler */
+#ifndef LOCALITEM_H
+#define LOCALITEM_H
+
+#include <string>
+#include "globals.h"
+
 
 class LocalItem{
-  friend void addStore(StorePtr *sPtr, StorePtr newStore);
 	public:
 		LocalItem();
-		LocalItem(string newName);
+		LocalItem(std::string newName);
 		int id_compare(LocalItem *newNode);
 
-		string getName();
-		void setName(string);
-		LocalItem *getLeft();
-		LocalItem *getRight();
-		void setLeft(LocalItem *);
-		void setRight(LocalItem *);
-		StorePtr *getStores();
-		void setStores(StorePtr *);
+		std::string getName();
+		void setName(std::string);
+		int getCount();
+		void setCount(int);
+		LocalItem *getNext();
+		void setNext(LocalItem *);
 		void printLocalItem();
 		
 	private:
-		string name;
-		StorePtr *stores;
-		LocalItem *left;
-		LocalItem *right;
+		std::string name;
+		int localCount;
+		LocalItem *nextItem;
 };
 
 typedef LocalItem *LocalItemPtr; 

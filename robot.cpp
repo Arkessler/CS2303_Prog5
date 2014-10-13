@@ -105,6 +105,13 @@ void Robot::addDest(tilePtr newTile)
 		prev->setNextTile(newTile);
 	}
 }
+void Robot::printRobot()
+{
+	cout<<"Printing data for Robot"<<ID<<endl;
+	cout<<"Position: Row: "<<r<<" Col: "<<c<<" Floor: "<<f<<endl;
+	cout<<"Number of Destinations: "<<numStore<<endl;
+	printDests();
+}
 void Robot::printDests(){
   if(Dests==NULL){
     cout<< "NULL" << endl;
@@ -120,7 +127,7 @@ void Robot::printDests(){
 	//curr->printTile();
 	curr = curr->getNextTile();
       }
-    cout<< "End of List" <<endl<<endl<<endl;
+    cout<< "\nEnd of Destination List" <<endl<<endl<<endl;
 
   }
 }

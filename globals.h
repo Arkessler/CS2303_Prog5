@@ -6,7 +6,7 @@ definitions used throughout the RoboMall program. */
 #ifndef GLOBALS_H
 #define GLOBALS_H
 #include "tile.h"
-
+#include <iostream>
 /*
 #if !defined(NULL)
   #define NULL 0

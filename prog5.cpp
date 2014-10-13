@@ -8,18 +8,16 @@
 #include "tile.h"
 #include "robot.h"
 
+
 #define DEBUG 1
 
 //#include "binTree.h"
 //#include "item.h"
 //#include "binTree.cpp"
 //#include "store_functions.cpp"
-//#include "item.cpp"
+
 //#include "small.cpp"
 
-bool debugRead = false;
-//void ReadData(Tree *cleanTree);
-void scanRobots();
 // move function controls robot's steps  
 void move (int cur[], int des[], int size)
 {
@@ -111,7 +109,8 @@ int main () //Author: Alexi
     // R array holds robot location
     // S array holds next store location
 
-    //int robots, stores[MAX_STORES], R[3], S[3];
+    int robots, nextS[3];
+	//stores[MAX_STORES];
 	
 	init_mall();
 	
@@ -156,13 +155,13 @@ int main () //Author: Alexi
 			//weird spacing problems
 		case 1:
 			scanRobots(); 
+			(RobotsNotInSim[0]).printRobot();
 			break;
 		default:
 			cout<<"Improper or no test input";
 			break;
 	}
 }
-
 
 void scanRobots(){
   int numBots = 0, i = 0, j = 0, numItems;

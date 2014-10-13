@@ -19,4 +19,6 @@ void next(int [], int [], int);
 void twoway(int [], int [], int);
 void elevator(int [], int[], int);
 
+bool debugRead = false;
+void scanRobots();
 #endif

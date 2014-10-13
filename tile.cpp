@@ -79,7 +79,7 @@ Tile * Tile::getNextTile()
 }
 void Tile::printTile()
 {
-	cout<<"Printing Tile\n";
+	cout<<"\nPrinting Tile\n";
 	cout<<"---------------\n";
 	cout<<"Tile type: "<<type<<endl;
 	cout<<"Tile step: "<<step<<endl;

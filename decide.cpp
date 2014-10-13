@@ -11,7 +11,7 @@ Functions are: d1,d2,d3,next,twoway and elevator.
 #define EL_DELAY 3
 void printloc (int []);
 
-int debugDec=1;
+int debugDec=0;
 
 /* d1 is called when there is ONLY one choice
    for robot to make. That choice is held in step array  */
@@ -24,17 +24,17 @@ void d1(int c[], int size)
 	}
   switch ((Mall[c[ROW]][c[COL]][c[FLOOR]]).getStep())
   {
-    case NorthWest: c[COL]--; printf(" NorthWest ");
-    case North:     c[ROW]--; printf(" --> North ");
+    case NorthWest: c[COL]--; 
+    case North:     c[ROW]--; 
                     break;
-    case SouthWest: c[ROW]++; printf(" SouthWest ");
-    case West:      c[COL]--; printf(" --> West ");
+    case SouthWest: c[ROW]++;
+    case West:      c[COL]--; 
                     break;
-    case SouthEast: c[COL]++; printf(" SouthEast ");
-    case South:     c[ROW]++; printf(" --> South ");
+    case SouthEast: c[COL]++; 
+    case South:     c[ROW]++; 
                     break;
-    case NorthEast: c[ROW]--; printf(" NorthEast ");
-    case East:      c[COL]++; printf(" --> East ");
+    case NorthEast: c[ROW]--; 
+    case East:      c[COL]++;
                     break;
     case INVALID:
     default:

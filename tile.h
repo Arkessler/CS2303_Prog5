@@ -2,7 +2,7 @@
 Author: Alexi Kessler */
 #ifndef TILE_H
 #define TILE_H
-//#include "globals.h"
+#include "localItem.h"
 
 class Tile
 {
@@ -26,6 +26,8 @@ class Tile
 		int step;
 		int r, c, f;
 		Tile *nextTile;
+		LocalItemPtr inventory;
+		
 };
 
 typedef Tile *tilePtr;

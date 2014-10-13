@@ -1,27 +1,21 @@
-//By Max
-#ifndef ITEM_CPP
-#define ITEM_CPP
+/* class implementation for local item, which is to be used to represent the local item stock of a store in program 5
+Author:Alexi Kessler */
+#ifndef LOCALITEM_CPP
+#define LOCALITEM_CPP
 
-#include "global.h"
-#include "store_functions.cpp"
-#include "item.h"
+#include "globals.h"
+#include "localItem.h"
 
 //Constructors.
 
 LocalItem::LocalItem(){
   name = "NULL";
-  stores = NULL;
-  left = NULL;
-  right = NULL;
+
 }
 
 
 LocalItem::LocalItem(string newName){
   name = newName;
-  stores = new StorePtr();
-  *stores = NULL;
-  left = NULL;
-  right = NULL;
 }
 
 //Compares the member item to a new item.
@@ -52,37 +46,25 @@ void LocalItem::setName(string newName){
   name = newName;
 }
 
-LocalItemPtr LocalItem::getLeft(){
-  return left;
+int LocalItem::getCount(){
+	return localCount;
 }
 
-LocalItemPtr LocalItem::getRight(){
-  return right;
+void LocalItem::setCount(int c){
+	localCount=c;
 }
 
-void LocalItem::setLeft(LocalItemPtr newPtr){
-  left = newPtr;
+LocalItemPtr LocalItem::getNext(){
+  return nextItem;
 }
 
-void LocalItem::setRight(LocalItemPtr newPtr){
-  right = newPtr;
-}
-
-StorePtr *LocalItem::getStores(){
-	if (stores != NULL){
-		return stores;
-	} else {
-		return NULL;
-	}
-}
-
-void LocalItem::setStores(StorePtr *store){
-  stores = store;
+void LocalItem::setNext(LocalItemPtr newPtr){
+  nextItem = newPtr;
 }
 
 void LocalItem::printLocalItem(){
 	cout<<"Name of LocalItem is:" << name << endl;
-	printStoreList(stores);
+	cout<<"Local item count is: " << localCount << endl;
 }
 
 #endif
