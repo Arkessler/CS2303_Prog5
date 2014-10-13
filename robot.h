@@ -19,8 +19,12 @@ class Robot
 		void setC(int);
 		int getF();
 		void setF(int);
+		int getNumStore();
+		void setNumStore(int);
 		Tile *getTile(int);
 		void addDest(tilePtr);
+		//tilePtr getDest();
+		void printDests();
 	private:
 		int ID;
 		int r, c, f;

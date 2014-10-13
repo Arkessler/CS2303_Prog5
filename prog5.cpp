@@ -8,6 +8,8 @@
 #include "tile.h"
 #include "robot.h"
 
+#define DEBUG 1
+
 //#include "binTree.h"
 //#include "item.h"
 //#include "binTree.cpp"
@@ -17,7 +19,7 @@
 
 bool debugRead = false;
 //void ReadData(Tree *cleanTree);
-
+void scanRobots();
 // move function controls robot's steps  
 void move (int cur[], int des[], int size)
 {
@@ -151,9 +153,55 @@ int main () //Author: Alexi
 			}
 			break;
 			}
+			//////weird spacing problems
+	case 1:
+	  scanRobots(); 
+	  break;
+
 		default:
 			cout<<"Improper or no test input";
 			break;
 	}
 }
+
+
+void scanRobots(){
+  int numBots = 0, i = 0, j = 0, numItems;
+
+  if(DEBUG) cout << "Type number of bots" <<endl;
+  cin >> numBots;
+  int storeCounts[numBots];
+
+  for (i = 0; i < numBots; i++){
+    int tempStoreCnt;
+    if(DEBUG) cout<<"Type number of stores for robot "<< i <<endl;
+    cin >> tempStoreCnt;
+    RobotsNotInSim[i].setNumStore(tempStoreCnt);
+    if(DEBUG) cout << "Scanned Robot " << i <<endl;
+  } 
+
+  for(i = 0; i < numBots; i++){
+    for (j = 0; j < RobotsNotInSim[i].getNumStore(); j++){
+      int rowIn, colIn, floorIn;
+      if(DEBUG) cout <<"input location of store " << j <<" r, c, f:"<<endl;
+      cin >> rowIn;
+      cin >> colIn;
+      cin >> floorIn;
+      //cout << row << col << floor;
+      RobotsNotInSim[i].addDest(new Tile(Mall[rowIn][colIn][floorIn].getType(), Mall[rowIn][colIn][floorIn].getStep(),rowIn, colIn, floorIn));
+      //RobotsNotInSim[i].getTile(i)->setPosition(rowIn,colIn,floorIn);
+      cout<< RobotsNotInSim[i].getTile(1)->getRow() << "~" << RobotsNotInSim[i].getTile(1)->getCol()<<endl;
+      if(DEBUG) cout << "scanned store " << j << " for robot " << i << endl;
+    }
+  }
+
+  if(DEBUG) {
+    cout<<endl;
+    for(i = 0; i < numBots; i++){
+      RobotsNotInSim[i].printDests();
+      cout<<endl;
+    }
+  }
+}
+  
 #endif

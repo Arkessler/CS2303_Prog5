@@ -64,6 +64,13 @@ void Robot::setF(int floor)
 {
 	f = floor;
 }
+int Robot::getNumStore(){
+  return numStore;
+}
+void Robot::setNumStore(int store){
+  numStore = store;
+}
+
 //Tile getters and setter
 Tile *Robot::getTile(int spot)
 {
@@ -82,6 +89,8 @@ void Robot::addDest(tilePtr newTile)
 	if (Dests==NULL)
 	{
 		Dests = newTile;
+		//Don't forget to remove
+		cout<< "dests is null" <<endl;
 	}
 	else
 	{
@@ -95,5 +104,24 @@ void Robot::addDest(tilePtr newTile)
 		}
 		prev->setNextTile(newTile);
 	}
+}
+void Robot::printDests(){
+  if(Dests==NULL){
+    cout<< "NULL" << endl;
+  }
+  else{
+    tilePtr curr = NULL;
+    tilePtr prev = NULL;
+    curr = Dests;
+    while (curr!=NULL)
+      {
+	curr->printTile();
+	prev = curr;
+	//curr->printTile();
+	curr = curr->getNextTile();
+      }
+    cout<< "End of List" <<endl<<endl<<endl;
+
+  }
 }
 #endif
