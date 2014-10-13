@@ -3,30 +3,30 @@
 #define ITEM_H
 #include "global.h"
 
-class Item{
+class GlobalItem{
   friend void addStore(StorePtr *sPtr, StorePtr newStore);
 	public:
-		Item();
-		Item(string newName);
-		int id_compare(Item *newNode);
+		GlobalItem();
+		GlobalItem(string newName);
+		int id_compare(GlobalItem *newNode);
 
 		string getName();
 		void setName(string);
-		Item *getLeft();
-		Item *getRight();
-		void setLeft(Item *);
-		void setRight(Item *);
+		GlobalItem *getLeft();
+		GlobalItem *getRight();
+		void setLeft(GlobalItem *);
+		void setRight(GlobalItem *);
 		StorePtr *getStores();
 		void setStores(StorePtr *);
-		void printItem();
+		void printGlobalItem();
 		
 	private:
 		string name;
 		StorePtr *stores;
-		Item *left;
-		Item *right;
+		GlobalItem *left;
+		GlobalItem *right;
 };
 
-typedef Item *ItemPtr; 
+typedef GlobalItem *GlobalItemPtr; 
 
 #endif

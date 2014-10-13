@@ -8,7 +8,7 @@
 
 //Constructors.
 
-Item::Item(){
+GlobalItem::GlobalItem(){
   name = "NULL";
   stores = NULL;
   left = NULL;
@@ -16,7 +16,7 @@ Item::Item(){
 }
 
 
-Item::Item(string newName){
+GlobalItem::GlobalItem(string newName){
   name = newName;
   stores = new StorePtr();
   *stores = NULL;
@@ -27,9 +27,9 @@ Item::Item(string newName){
 //Compares the member item to a new item.
 //returns -1 new item is earlier than the current item, 0 if they are the same
 // and 1 if new item is later than current item.
-int Item::id_compare(ItemPtr newItem){
+int GlobalItem::id_compare(GlobalItemPtr newGlobalItem){
   string current = getName();
-  string new_id = newItem->getName();
+  string new_id = newGlobalItem->getName();
 
   if ( current.compare(new_id) < 0){  //if new is lower than current
     return 1;
@@ -44,31 +44,31 @@ int Item::id_compare(ItemPtr newItem){
 }
 
 //Setters and getters
-string Item::getName(){
+string GlobalItem::getName(){
   return name;
 }
 
-void Item::setName(string newName){
+void GlobalItem::setName(string newName){
   name = newName;
 }
 
-ItemPtr Item::getLeft(){
+GlobalItemPtr GlobalItem::getLeft(){
   return left;
 }
 
-ItemPtr Item::getRight(){
+GlobalItemPtr GlobalItem::getRight(){
   return right;
 }
 
-void Item::setLeft(ItemPtr newPtr){
+void GlobalItem::setLeft(GlobalItemPtr newPtr){
   left = newPtr;
 }
 
-void Item::setRight(ItemPtr newPtr){
+void GlobalItem::setRight(GlobalItemPtr newPtr){
   right = newPtr;
 }
 
-StorePtr *Item::getStores(){
+StorePtr *GlobalItem::getStores(){
 	if (stores != NULL){
 		return stores;
 	} else {
@@ -76,12 +76,12 @@ StorePtr *Item::getStores(){
 	}
 }
 
-void Item::setStores(StorePtr *store){
+void GlobalItem::setStores(StorePtr *store){
   stores = store;
 }
 
-void Item::printItem(){
-	cout<<"Name of Item is:" << name << endl;
+void GlobalItem::printGlobalItem(){
+	cout<<"Name of GlobalItem is:" << name << endl;
 	printStoreList(stores);
 }
 

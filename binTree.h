@@ -1,20 +1,20 @@
 #ifndef BINTREE_H
 #define BINTREE_H
 #include "global.h"
-#include "item.h"
+#include "globalItem.h"
 
 class Tree{
 	private:
-		ItemPtr root;
+		GlobalItemPtr root;
 	public:
 		Tree();
 		bool isEmpty();
-		bool addItem(ItemPtr newItem, StorePtr newStore);
-		void PrintItem(ItemPtr item);
+		bool addItem(GlobalItemPtr newItem, StorePtr newStore);
+		void PrintItem(GlobalItemPtr item);
 		void PrintTree();
-		ItemPtr getRoot();
+		GlobalItemPtr getRoot();
 	private:
-		void PrintAll(ItemPtr item);
+		void PrintAll(GlobalItemPtr item);
 		int test;
 };
 

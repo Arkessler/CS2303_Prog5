@@ -153,11 +153,10 @@ int main () //Author: Alexi
 			}
 			break;
 			}
-			//////weird spacing problems
-	case 1:
-	  scanRobots(); 
-	  break;
-
+			//weird spacing problems
+		case 1:
+			scanRobots(); 
+			break;
 		default:
 			cout<<"Improper or no test input";
 			break;

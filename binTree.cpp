@@ -8,7 +8,7 @@
 #include <iostream>
 #include <string.h>
 #include "store_functions.cpp"
-void addStore(ItemPtr itPtr, StorePtr newStore);
+void addStore(GlobalItemPtr itPtr, StorePtr newStore);
 
 bool debugAdd = false;
 //default constructor
@@ -25,11 +25,11 @@ bool Tree::isEmpty() //Author: Alexi
 }
 
 //Adds new item to tree
-bool Tree::addItem(ItemPtr newItem, StorePtr newStore){ //Author: Alexi
+bool Tree::addItem(GlobalItemPtr newItem, StorePtr newStore){ //Author: Alexi
   if (debugAdd)
 	cout<<"Beginning to add item" << newItem->getName() << endl;
-  ItemPtr curr = NULL;
-  ItemPtr prev;
+  GlobalItemPtr curr = NULL;
+  GlobalItemPtr prev;
   int idComp;
   bool equal = false;
   
@@ -94,7 +94,7 @@ bool Tree::addItem(ItemPtr newItem, StorePtr newStore){ //Author: Alexi
 }
 
 //Print a single item
-void Tree::PrintItem(ItemPtr item) //Author: Alexi
+void Tree::PrintItem(GlobalItemPtr item) //Author: Alexi
 {
   string leftName, rightName;
   leftName = (item->getLeft())->getName();
@@ -110,7 +110,7 @@ void Tree::PrintTree(){ //Author: Alexi
 }
 
 //Print everything below a point in the tree
-void Tree::PrintAll(ItemPtr item) //Author: Alexi
+void Tree::PrintAll(GlobalItemPtr item) //Author: Alexi
 {
 	if (item != NULL)
 	{
@@ -132,7 +132,7 @@ void Tree::PrintAll(ItemPtr item) //Author: Alexi
 	}
 }
 
-ItemPtr Tree::getRoot(){
+GlobalItemPtr Tree::getRoot(){
 	return root;
 }
 
