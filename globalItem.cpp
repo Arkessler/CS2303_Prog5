@@ -68,7 +68,7 @@ void GlobalItem::setRight(GlobalItemPtr newPtr){
   right = newPtr;
 }
 
-StorePtr *GlobalItem::getStores(){
+TilePtr *GlobalItem::getStores(){
 	if (stores != NULL){
 		return stores;
 	} else {
@@ -76,13 +76,27 @@ StorePtr *GlobalItem::getStores(){
 	}
 }
 
-void GlobalItem::setStores(StorePtr *store){
+void GlobalItem::setStores(TilePtr *store){
   stores = store;
 }
 
 void GlobalItem::printGlobalItem(){
 	cout<<"Name of GlobalItem is:" << name << endl;
 	printStoreList(stores);
+}
+
+//This is really expensive,
+GlobalItem *findItem(LocalItem *toFind){
+  if(id_compare(toFind->getName()) == 0){
+    return this;
+  }
+  else if(id_compare(toFind->getName()) == -1){
+    return getLeft()->findItem(toFind);
+  }
+  else if(id_compare(toFind->getName()) == 1){
+    return getRight()->findItem(toFind);
+  }
+  else return NULL;
 }
 
 #endif

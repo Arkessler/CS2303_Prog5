@@ -229,5 +229,33 @@ void scanRobots(){
     }
   }
 }
+
+void readShoppers(){
+  int numShoppers, arrival, numItems, itemCnt;
+  std::string itemName;
+
+  cout<< "Input number of shoppers: "<<endl;
+  cin >> numShoppers;
+  for (int i = 0; i < numShoppers; i++){
+    cout<< "Input arrival time: "<< endl;
+    cin >> arrival;
+    cout<<"Input number of items to buy" <<endl;
+    cin >> numItems;
+
+    Shopper tempShopper = new Shopper(arrival, itemCnt);
+    for (int j = 0; j < itemCnt; j++){
+
+      cout << "Input item name:" <<endl;
+      cin >>  itemName;
+      cout << "input item count:" <<endl;
+      cin >> itemCnt;
+
+      //I AM NOT SURE WHERE TO GO FROM HERE
+    }
+
+  }
+
+}
+
   
 #endif

@@ -22,6 +22,9 @@ class Shopper
 		//Item list functions
 		Tile *getDest(int);
 		void addDest(tilePtr);
+
+		//Takes simple list of items that were scanned in, adds store to dest.
+		void shopperApp(LocalItemPtr);
 	private:
 		int ID;
 		int r, c, f;

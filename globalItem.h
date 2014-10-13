@@ -2,6 +2,8 @@
 #ifndef ITEM_H
 #define ITEM_H
 #include "global.h"
+class Tile;
+
 
 class GlobalItem{
   friend void addStore(StorePtr *sPtr, StorePtr newStore);
@@ -16,13 +18,15 @@ class GlobalItem{
 		GlobalItem *getRight();
 		void setLeft(GlobalItem *);
 		void setRight(GlobalItem *);
-		StorePtr *getStores();
+		TilePtr *getStores();
 		void setStores(StorePtr *);
 		void printGlobalItem();
+
+		GlobalItem *findItem(LocalItem *);
 		
 	private:
 		string name;
-		StorePtr *stores;
+		tilePtr *stores;
 		GlobalItem *left;
 		GlobalItem *right;
 };
