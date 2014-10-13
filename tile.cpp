@@ -14,6 +14,7 @@ Tile::Tile()
 {
 	type = step = r = c = f = 0;
 	nextTile=NULL;
+	inventory = NULL;
 }
 
 Tile::Tile(int t, int s, int row, int col, int floor)
@@ -24,6 +25,7 @@ Tile::Tile(int t, int s, int row, int col, int floor)
 	c = col;
 	f = floor;
 	nextTile=NULL;
+	inventory = NULL;
 }
 
 void Tile::setType(int t)
@@ -93,6 +95,39 @@ void Tile::printTile()
 	{
 		cout <<"There is a tile after this one\n";
 	} */
+}
+
+//written by Max
+LocalItemPtr Tile::getInventory(){
+  return inventory;
+}
+
+void Tile::setInventory(LocalItemPtr newInventory){
+  inventory = newInventory;
+}
+
+void Tile::addToInventory(LocalItemPtr toAdd){
+  //If inventory is null, set inventory to toAdd.
+  if(!inventory){
+    inventory = toAdd;
+  }
+  else{
+    LocalItemPtr curr = NULL;
+    LocalItemPtr prev = NULL;
+    curr = inventory;
+    //Currently adding to end of list, unsorted.  Can sort using id_compare(newItem)=> returns 0 if same, 1 if new is lower in 
+    while (curr != NULL && curr->id_compare(toAdd) != 0){
+      prev = curr;
+      curr = curr->getNext();
+    }
+    if(curr == NULL){
+      toAdd->setNext(inventory);
+      setInventory(toAdd);
+    }
+    else{
+      curr->setCount(curr->getCount() + toAdd->getCount());
+    }
+  }
 }
 
 #endif

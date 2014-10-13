@@ -7,6 +7,7 @@
 #include "mallHead.h"
 #include "tile.h"
 #include "robot.h"
+#include "localItem.h"
 
 
 #define DEBUG 1
@@ -164,7 +165,8 @@ int main () //Author: Alexi
 }
 
 void scanRobots(){
-  int numBots = 0, i = 0, j = 0, numItems;
+  int numBots = 0, i = 0, j = 0, numItems, newItemCount;
+  tilePtr toAdd;
 
   if(DEBUG) cout << "Type number of bots" <<endl;
   cin >> numBots;
@@ -178,15 +180,37 @@ void scanRobots(){
     if(DEBUG) cout << "Scanned Robot " << i <<endl;
   } 
 
+  //To run for each robot
   for(i = 0; i < numBots; i++){
+
+    //To run for each store
     for (j = 0; j < RobotsNotInSim[i].getNumStore(); j++){
-      int rowIn, colIn, floorIn;
+      int rowIn, colIn, floorIn, numItems;
+      std::string itemName;
+
       if(DEBUG) cout <<"input location of store " << j <<" r, c, f:"<<endl;
       cin >> rowIn;
       cin >> colIn;
       cin >> floorIn;
-      //cout << row << col << floor;
-      RobotsNotInSim[i].addDest(new Tile(Mall[rowIn][colIn][floorIn].getType(), Mall[rowIn][colIn][floorIn].getStep(),rowIn, colIn, floorIn));
+
+      if(DEBUG) cout << "input number of items" << endl;
+      cin >> numItems;
+
+      toAdd = new Tile(Mall[rowIn][colIn][floorIn].getType(), Mall[rowIn][colIn][floorIn].getStep(), rowIn, colIn, floorIn);
+      
+      //To run for each item in a store
+      for (int k = 0; k < numItems; k++){
+
+	if(DEBUG) cout<< "Input name and quantity of item number "<< k <<endl;
+	cin >> itemName;
+	cin >> newItemCount;
+	LocalItemPtr newItem = new LocalItem(itemName);
+	newItem->setCount(newItemCount);
+	toAdd->addToInventory(newItem);
+	if(DEBUG) cout<< "Item added!" << endl;
+      }
+
+      RobotsNotInSim[i].addDest(toAdd);
       //RobotsNotInSim[i].getTile(i)->setPosition(rowIn,colIn,floorIn);
       cout<< RobotsNotInSim[i].getTile(1)->getRow() << "~" << RobotsNotInSim[i].getTile(1)->getCol()<<endl;
       if(DEBUG) cout << "scanned store " << j << " for robot " << i << endl;
