@@ -97,16 +97,15 @@ void Tile::printTile()
 	} */
 }
 
-//written by Max
-LocalItemPtr Tile::getInventory(){
+LocalItemPtr Tile::getInventory(){ //Max
   return inventory;
 }
 
-void Tile::setInventory(LocalItemPtr newInventory){
+void Tile::setInventory(LocalItemPtr newInventory){ //Max
   inventory = newInventory;
 }
 
-void Tile::addToInventory(LocalItemPtr toAdd){
+void Tile::addToInventory(LocalItemPtr toAdd){ //Max
   //If inventory is null, set inventory to toAdd.
   if(!inventory){
     inventory = toAdd;
@@ -128,5 +127,22 @@ void Tile::addToInventory(LocalItemPtr toAdd){
       curr->setCount(curr->getCount() + toAdd->getCount());
     }
   }
+}
+
+void Tile::removeInventoryItem() //Alexi
+{
+	if(!inventory)
+	{
+		cout<<"The inventory is empty, can't remove anything!"<<endl;
+	}
+	else 
+	{
+		LocalItemPtr curr = NULL;
+		LocalItemPtr prev = NULL;
+		curr = inventory;
+		prev = curr;
+		curr = curr->getNext();
+		delete(prev);
+	}
 }
 #endif

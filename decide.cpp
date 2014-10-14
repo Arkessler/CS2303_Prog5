@@ -5,7 +5,8 @@
 Functions are: d1,d2,d3,next,twoway and elevator.
 
 */
-
+#ifndef DECIDE_CPP
+#define DECIDE_CPP
 #include "externals.h"
 #include "tile.h"
 #define EL_DELAY 3
@@ -361,3 +362,4 @@ void elevator(int c[], int d[], int size)
   } //end switch
   return;
 }
+#endif

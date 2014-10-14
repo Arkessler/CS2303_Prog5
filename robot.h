@@ -10,6 +10,8 @@ class Robot
 		Robot();
 		Robot(int id);
 		Robot(int id, int stores);
+		Robot(int id, int stores, int row, int col, int floor);
+		Robot(int id, int stores, int row, int col, int floor, tilePtr dest);
 		
 		int getID();
 		void setID(int);
@@ -22,13 +24,12 @@ class Robot
 		int getNumStore();
 		void setNumStore(int);
 		Tile *getTile(int);
+		tilePtr getDests();
 		void addDest(tilePtr);
 		void removeDest();
+		int deliverItem();
+		void deliverItems(int);
 		
-		void incrementRobot();
-		
-		//tilePtr getDest();
-	
 		void printRobot();
 		void printDests();
 	private:
@@ -37,5 +38,7 @@ class Robot
 		int numStore;
 		tilePtr Dests;
 };
+
+typedef Robot *robotPtr;
 
 #endif
