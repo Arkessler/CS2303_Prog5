@@ -9,7 +9,7 @@ LFLAGS = -Wall
 Prog5: $(OBJS)
 	$(CC) $(LFLAGS) -lm $(OBJS) -o Prog5
 	
-prog5.o : globals.h prog5.cpp
+prog5.o : globals.h prog5.cpp 
 	$(CC) $(CFLAGS) prog5.cpp
 
 init_mall.o : externals.h globals.h init_mall.cpp

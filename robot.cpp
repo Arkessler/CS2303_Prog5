@@ -6,6 +6,9 @@ Author: Alexi Kessler */
 #include <cstddef>
 #include "robot.h"
 #include "tile.h"
+#include "localItem.h"
+#include "externals.h"
+
 #include <iostream>
 using namespace std;
 //Constructors
@@ -29,6 +32,26 @@ Robot::Robot(int id, int stores)
 	numStore = stores;
 	r = c = f =  0;
 	Dests=NULL;
+}
+
+Robot::Robot(int id, int stores, int row, int col, int floor)
+{
+	ID = id;
+	numStore = stores;
+	r = row;
+	c = col;
+	f = floor;
+	Dests=NULL;
+}
+
+Robot::Robot(int id, int stores, int row, int col, int floor, tilePtr dest)
+{
+	ID = id;
+	numStore = stores;
+	r = row;
+	c = col;
+	f = floor;
+	Dests=dest;
 }
 
 //Basic int getters and setters
@@ -84,13 +107,25 @@ Tile *Robot::getTile(int spot)
 		return Dests;
 	}
 }
+Tile *Robot::getDests()
+{
+	//return (*Dests).traverse(spot);
+	if ((Dests)==NULL)
+	{
+		return NULL;
+	}
+	else 
+	{
+		return Dests;
+	}
+}
 void Robot::addDest(tilePtr newTile)
 {
 	if (Dests==NULL)
 	{
 		Dests = newTile;
 		//Don't forget to remove
-		cout<< "dests is null" <<endl;
+		cout<< "dests is null, adding as first dest" <<endl;
 	}
 	else
 	{
@@ -117,22 +152,47 @@ void Robot::removeDest()
 		tilePtr temp = NULL;
 		temp = Dests;
 		curr = Dests->getNextTile();
+		Dests = curr;
 		delete(temp);
 	}
 }
-void Robot::incrementRobot() //meant to move robot one step closer to destination
+int Robot::deliverItem() //Alexi 
 {
+	//add to global
+	int r, c, f;
+	r = Dests->getRow();
+	c = Dests->getCol();
+	f = Dests->getFloor();
+	LocalItemPtr itemToAdd = Dests->getInventory();
+	Mall[r][c][f].addToInventory(itemToAdd);
 	
 }
+void Robot::deliverItems(int startTime) //Alexi
+{
+	int totalTime;
+	int singleTime;
+	tilePtr dest = Dests;
+	LocalItemPtr invPtr = dest->getInventory();
+	LocalItemPtr curr;
+	LocalItemPtr prev;
+	curr = invPtr;
+	while (curr!= NULL)
+	{
+		curr = curr->getNext();
+		singleTime = deliverItem();
+		totalTime+=singleTime;
+	}
+	//CREATE EVENT
+}
 //Print Functions
-void Robot::printRobot()
+void Robot::printRobot() //Alexi
 {
 	cout<<"Printing data for Robot"<<ID<<endl;
 	cout<<"Position: Row: "<<r<<" Col: "<<c<<" Floor: "<<f<<endl;
 	cout<<"Number of Destinations: "<<numStore<<endl;
 	printDests();
 }
-void Robot::printDests(){
+void Robot::printDests(){ //Alexi
   if(Dests==NULL){
     cout<< "NULL" << endl;
   }
