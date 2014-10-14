@@ -9,7 +9,6 @@
 #include "robot.h"
 #include "localItem.h"
 
-
 #define DEBUG 1
 
 //#include "binTree.h"
@@ -20,18 +19,18 @@
 //#include "small.cpp"
 
 // move function controls robot's steps  
+/*
 void move (int cur[], int des[], int size)
 {
 
-/* Choices {Invalid, One, Two, Three, Next, 
-   TwoWay, Elevator,Store}              
+// Choices {Invalid, One, Two, Three, Next, TwoWay, Elevator,Store}              
 
    The main idea is to categorize the type of
    choice the robot has and use switch to process
    that choice.  type array keeps choice type for
    all mall locations.
 
-*/
+*/ /*
 	printf ("   type is %d", (Mall[cur[ROW]][cur[COL]][cur[FLOOR]]).getType());
   switch ((Mall[cur[ROW]][cur[COL]][cur[FLOOR]]).getType())
   
@@ -59,17 +58,17 @@ void move (int cur[], int des[], int size)
   } //end switch
 
   // Simulation simTime incremented here after one step!
-  simTime++;
+  simTime++; */
   /*  This is a debug print in case you want to see individual
       robot steps.  
 
     printf("Time: %d Robot at ", simTime);
     printloc(cur);                        
-  */
+  */   /*
   return;
 }
 
-/* travel function takes robot  from 'from' location to 'to' location */
+// travel function takes robot  from 'from' location to 'to' location 
 void travel (int from[], int to[], int size)
 {
   int cntr = 0;        // cntr used to check for infinite loop
@@ -101,7 +100,7 @@ void printtravel(int tsimTime [][2], int robots)
     printf ("%3d  %11d  %12d\n", i+1, tsimTime[i][STIME], tsimTime[i][ETIME]);
   return;
 }
-
+*/
 //use mainly as a driver function
 int main () //Author: Alexi
 {

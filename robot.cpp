@@ -105,6 +105,26 @@ void Robot::addDest(tilePtr newTile)
 		prev->setNextTile(newTile);
 	}
 }
+void Robot::removeDest()
+{
+	if (Dests==NULL) //Shouldn't ever happen
+	{
+		cout<<"Dests is empty, impossible to remove destination!\n";
+	} 
+	else 
+	{
+		tilePtr curr = NULL;
+		tilePtr temp = NULL;
+		temp = Dests;
+		curr = Dests->getNextTile();
+		delete(temp);
+	}
+}
+void Robot::incrementRobot() //meant to move robot one step closer to destination
+{
+	
+}
+//Print Functions
 void Robot::printRobot()
 {
 	cout<<"Printing data for Robot"<<ID<<endl;

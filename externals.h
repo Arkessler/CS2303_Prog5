@@ -8,7 +8,6 @@ external to all other components and the global defs.      */
 //#include "globalItem.h"
 #include "robot.h"
 #include "shopper.h"
-//#include "destination.h"
 
 extern Tile Mall[MAX+1][MAX+1][2];
 extern int simTime;

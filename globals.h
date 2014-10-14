@@ -5,6 +5,7 @@ definitions used throughout the RoboMall program. */
 
 #ifndef GLOBALS_H
 #define GLOBALS_H
+
 #include "tile.h"
 #include <iostream>
 /*
@@ -31,14 +32,12 @@ definitions used throughout the RoboMall program. */
 #define ETIME 1
 using namespace std;
 
-//Tile Mall [MAX+1][MAX+1][2];
 enum Choices    {Invalid, One, Two, Three, Next, TwoWay, Elevator, Store};
 enum Coordinate {Row, Col, Floor};
 enum Direction  {North, NorthEast, East, SouthEast,
 		 South, SouthWest, West, NorthWest};
 enum Floors     {First, Second};
 
-//int RobInSim, RobNotInSim, ShInSim, ShNotInSim;
 /*
 typedef struct store{
   int x, y, z, itemCount;

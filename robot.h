@@ -23,7 +23,12 @@ class Robot
 		void setNumStore(int);
 		Tile *getTile(int);
 		void addDest(tilePtr);
+		void removeDest();
+		
+		void incrementRobot();
+		
 		//tilePtr getDest();
+	
 		void printRobot();
 		void printDests();
 	private:
