@@ -32,9 +32,10 @@ bool RobNotInEmpty()
 	int counter;
 	for (counter = 0; counter<MAX_ROBOTS; counter++)
 	{
-		if (RobotsNotInSim[counter]!=NULL)
+		if (&(RobotsNotInSim[counter])!=NULL)
 			empty = false;
 	}
+	return empty;
 }
 void instructions()
 {

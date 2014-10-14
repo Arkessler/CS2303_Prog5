@@ -156,10 +156,10 @@ int main () //Author: Alexi
 			//weird spacing problems
 		case 1:
 			{
+			cout<<"Check Robots in RobotsNotInSim: "<<RobNotInSim<<endl;
 			scanRobots(); 
 			(RobotsNotInSim[0]).printRobot();
-			bool EMP = RobNotInEmpty();
-			cout<<"Check for whether or not RobotsNotInSim is empty: "<<EMP<<endl;
+			cout<<"Check Robots in RobotsNotInSim: "<<RobNotInSim<<endl;
 			break;
 			}
 		default:
@@ -182,6 +182,7 @@ void scanRobots(){
     cin >> tempStoreCnt;
     RobotsNotInSim[i].setNumStore(tempStoreCnt);
     if(DEBUG) cout << "Scanned Robot " << i <<endl;
+	RobNotInSim++;
   } 
 
   //To run for each robot
@@ -230,6 +231,7 @@ void scanRobots(){
   }
 }
 
+/*
 void readShoppers(){
   int numShoppers, arrival, numItems, itemCnt;
   std::string itemName;
@@ -256,6 +258,6 @@ void readShoppers(){
   }
 
 }
-
+*/
   
 #endif
