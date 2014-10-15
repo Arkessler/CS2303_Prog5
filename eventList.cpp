@@ -99,7 +99,7 @@ void EventNode::checkState(){
     }
   }
 
-  else{ // if shopper
+  else{ // if shopper != NULL
     switch(eType){
     case 0:
       //Travel here
