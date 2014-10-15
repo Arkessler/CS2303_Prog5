@@ -62,6 +62,7 @@ class EventNode
   void setFirstPtr(EventNode *first){firstPtr = first;}
   void setLastPtr(EventNode *last){lastPtr = last;}
 
+  EventList *getShopperEvents();
   bool isEmpty() const; 
   void print(); 
  private: 
