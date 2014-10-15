@@ -20,19 +20,19 @@ class EventNode
    
    int getTime();
    Robot *getRobotID();
-   Shopper *shopperID();
+   Shopper *getShopperID();
    int get_eType();
 
-   EventList *getNext(){return nextPtr}
-   void setNext(EventList *newNext){ nextPtr = newNext;}
-   void printEvent();
+   EventNode *getNext(){return nextPtr;}
+   void setNext(EventNode *newNext){ nextPtr = newNext;}
+   void print();
 
  private: 
    int time;
    Robot *robotID;
    Shopper *shopperID;
    int eType;
-   EventList *nextPtr; // next node in list 
+   EventNode *nextPtr; // next node in list 
 }; // end class ListNode 
 
 
@@ -58,7 +58,7 @@ class EventNode
   EventNode *lastPtr; // pointer to last node 
 
   // utility function to allocate new node 
-  //EventNode *getNewNode( const  & ); 
+   
 }; // end class List 
 
 #endif

@@ -1,11 +1,13 @@
 /* Class implementation for the shoppers that purchase items in program 5
 Author: Alexi Kessler */
-#ifndef ROBOT_CPP
-#define ROBOT_CPP
+#ifndef SHOPPER_CPP
+#define SHOPPER_CPP
 
 #include <cstddef>
 #include "robot.h"
 #include "tile.h"
+#include "shopper.h"
+#include "globals.h"
 #include <iostream>
 using namespace std;
 //Constructors
@@ -98,8 +100,14 @@ void Shopper::addDest(tilePtr newTile)
 }
 
 //Written by Max
+
 void Shopper::shopperApp(LocalItemPtr itemList){
-  int numItems;
+
+  return;  
+
+  /*
+
+int numItems;
   if(itemList == NULL){
     cout << "invalid input to shopperApp"<<endl;
   }
@@ -127,6 +135,8 @@ void Shopper::shopperApp(LocalItemPtr itemList){
     }//end for each
 
   } //end while
+
+  */
 }
 
 #endif

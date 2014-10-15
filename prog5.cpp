@@ -128,6 +128,7 @@ int main () //Author: Alexi
 			break;
 			}
 	case 4:
+	  
 	  break;
 		default:
 			cout<<"Improper or no test input";
