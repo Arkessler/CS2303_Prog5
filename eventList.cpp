@@ -1,8 +1,14 @@
 #include "eventList.h"
 #include "robot.h"
 #include "shopper.h"
-
+#include "externals.h"
+#include "globals.h"
 #include <iostream>
+
+extern EventList *MallEvents;
+
+//EventList *MallEvents = new EventList();
+
 using std::cout;
 
 #define DBG 0
@@ -65,7 +71,7 @@ void EventNode::checkState(){
     case 1:
       //run addItems
       //add event case 2
-      addNewEvent(getRobotID()->deliverItems(getTime()), getRobotID(), 2);
+      mallEvents->addNewEvent(getRobotID()->deliverItems(getTime()), getRobotID(), 2);
 
       break;
     case 2:
@@ -103,7 +109,7 @@ void EventNode::checkState(){
       break;
     case 2:
       //Check eventlist
-      if()
+      if(0){}
         break;
     case 3:
       break;

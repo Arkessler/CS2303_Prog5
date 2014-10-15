@@ -21,7 +21,6 @@
 //#include "small.cpp"
 EventList *mallEvents = new EventList();
 
-
 int main () //Author: Alexi
 {
 	int i,j, choice;
@@ -281,6 +280,25 @@ void readShoppers(){
 */
 
 
+//Returns the end time
+int runRobSim(){
+  EventList *robEvent = mallEvents;
+  if(robEvent == NULL){
+    cout << "Event list is empty!" <<endl;
+    return -1;
+  }
+  else{
+    EventNode *curr = robEvent->getFirstPtr();
+    EventNode *prev = NULL;
+    while(curr != NULL){
+      curr->checkState();
+      curr = curr->getNext();
+    }
+    
+    return prev->getTime();
+  }
+
+}
 
   
 #endif

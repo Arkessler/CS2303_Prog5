@@ -1,6 +1,6 @@
-/* externals.h
+// externals.h
 
-The list of the three globals that are in main but
+/*The list of the three globals that are in main but
 external to all other components and the global defs.      */
 
 #include "globals.h"
