@@ -8,6 +8,7 @@ Author of functions: Alexi Kessler unless stated otherwise */
 #include <iostream>
 
 #define DEBUGTILE 0
+
 using namespace std;
 
 //Constructor

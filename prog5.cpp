@@ -254,9 +254,13 @@ int main () //Author: Alexi
 
 				if(DEBUG) cout<<"Passed adding"<<endl;
 				testList->print();
+				break;
 			}
-
-	  break;
+		case 6: //Test checkState
+			{
+				scanRobots();
+			break;
+			}
 		default:
 			cout<<"Improper or no test input";
 			break;
