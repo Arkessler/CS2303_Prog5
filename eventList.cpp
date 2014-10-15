@@ -5,7 +5,7 @@
 #include "globals.h"
 #include <iostream>
 
-extern EventList *MallEvents;
+//extern EventList *MallEvents;
 
 //EventList *MallEvents = new EventList();
 
@@ -60,6 +60,7 @@ int EventNode::get_eType(){
 }
 
 void EventNode::checkState(){
+	tilePtr entrance = &(Mall[MID][MAX][0]);
   if(getRobotID() != NULL){
     switch(eType){
     case 0:
@@ -69,24 +70,24 @@ void EventNode::checkState(){
       ////addNewEvent( ========  , getRobotID(), 1); //Not sure what time goes in here, depends on travel      
       break;
     case 1:
-      //run addItems
-      //add event case 2
-      mallEvents->addNewEvent(getRobotID()->deliverItems(getTime()), getRobotID(), 2);
-
-      break;
+		//run addItems
+		//add event case 2
+		mallEvents->addNewEvent(getRobotID()->deliverItems(getTime()), getRobotID(), 2);
+		getRobotID()->removeDest();
+		break;
     case 2:
       //Check eventlist
-      if(getRobotID()->checkDestsEmpty()){ //Evaluates to true if dests is empty
-	//Move towards entrance
-
-	// add new event 3
-	////addNewEvent(=======, getRobotID(), 3);
-      }
-      else{
-	//move towards dests (might remove front of dests first?
-
-	//add event 1
-	////addNewEvent(========, getRobotID(), 1);
+		if(getRobotID()->checkDestsEmpty()){ //Evaluates to true if dests is empty
+		//Move towards entrance
+		// add new event 3
+		////addNewEvent(=======, getRobotID(), 3);
+		}
+		else{
+		//move towards dests (might remove front of dests first?) 
+		int travelTime = travel(getRobotID(), SIZE);
+		int newTime = travelTime + (getTime());
+		//add event 1
+		addNewEvent(newTime, getRobotID(), 1);
       }
 
 	break;

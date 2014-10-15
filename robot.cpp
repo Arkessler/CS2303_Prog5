@@ -162,6 +162,12 @@ void Robot::removeDest() //Alexi
 		delete(temp);
 	}
 }
+
+bool Robot::checkDestsEmpty()
+{
+	return (Dests==NULL);
+}
+
 int Robot::deliverItem() //Alexi 
 {
 	//add to global
