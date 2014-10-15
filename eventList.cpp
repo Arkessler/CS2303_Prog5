@@ -5,8 +5,9 @@
 #include "robot.h"
 #include "shopper.h"
 #include "externals.h"
-//#include "mallHead.h"
 #include <iostream>
+
+#define DEBUGSTATE 1
 
 //extern EventList *MallEvents;
 int travel (robotPtr robot, int size);
@@ -75,14 +76,23 @@ void EventNode::checkState(){
 		int travelTime = travel(getRobotID(), SIZE);
 		int newTime = (getTime()+ travelTime);
 		//add arrival case
-		mallEvents->addNewEvent( newTime, getRobotID(), 1); //Not sure what time goes in here, depends on travel      
+		mallEvents->addNewEvent( newTime, getRobotID(), 1); //Not sure what time goes in here, depends on travel 
 		break;
 		}
     case 1:
 		{
 		//deliver all items
 		//add event case 2
-		mallEvents->addNewEvent(getRobotID()->deliverItems(getTime()), getRobotID(), 2);
+		if (DEBUGSTATE)
+			{
+			cout<<"Robot's delivery inventory: "<<endl;
+			getRobotID()->getDests()->printInventory();
+			}
+		int newTime = getRobotID()->deliverItems(getTime());
+		if (DEBUGSTATE)
+			cout<<"adding new event of type 2"<<endl;
+		mallEvents->addNewEvent(newTime, getRobotID(), 2);
+		cout<<"deliverItems went fine, time taken: "<<newTime<<endl;
 		getRobotID()->removeDest();
 		
 		break;
@@ -117,8 +127,9 @@ void EventNode::checkState(){
 		break;
 		}
     }
+	mallEvents->setFirstPtr((mallEvents->getFirstPtr())->getNext());
   }
-
+	
   else{ // if shopper != NULL
     switch(eType){
     case 0:
@@ -233,6 +244,7 @@ void EventList::print(){
   EventNode *cur = getFirstPtr();
   while(cur != getLastPtr()){
     cur->print();
+	(cur->getRobotID())->printRobot();
     cur = cur->getNext();
   }
   //getLastPtr()->print();

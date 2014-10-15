@@ -9,7 +9,7 @@ Author of functions: Alexi Kessler unless stated otherwise*/
 #include "localItem.h"
 #include "externals.h"
 
-#define DELIVER 0
+#define DELIVER 1
 #define DEBUGDELIVER 0 
 
 #include <iostream>
@@ -21,14 +21,21 @@ using namespace std;
 Robot::Robot()
 {
 	cout<<"Running Robot Constructor\n";
-	ID = r = c = f = numStore = 0;
+	ID = 0;
+	r = 8;
+	c = 16;
+	f = 0;
+	numStore = 0;
 	Dests=NULL;
 }
 
 Robot::Robot(int id)
 {
 	ID = id;
-	r = c = f = numStore = 0;
+	r = 8;
+	c = 16;
+	f = 0;
+	numStore = 0;
 	Dests=NULL;
 }
 
@@ -36,7 +43,9 @@ Robot::Robot(int id, int stores)
 {
 	ID = id;
 	numStore = stores;
-	r = c = f =  0;
+	r = 8;
+	c = 16;
+	f =  0;
 	Dests=NULL;
 }
 
@@ -130,8 +139,6 @@ void Robot::addDest(tilePtr newTile) //Alexi
 	if (Dests==NULL)
 	{
 		Dests = newTile;
-		//Don't forget to remove
-		cout<< "dests is null, adding as first dest" <<endl;
 	}
 	else
 	{
@@ -205,6 +212,8 @@ int Robot::deliverItems(int startTime) //Alexi
 	
 	for (counter = 0; counter<numItems; counter++)
 	{
+		if (DELIVER)
+			cout<<"numItems: "<<numItems<<endl;
 		singleTime = deliverItem();
 		if (DELIVER) 
 			cout<<"Amount of time taken to deliver individual item: "<<singleTime<<endl;
@@ -213,7 +222,8 @@ int Robot::deliverItems(int startTime) //Alexi
 		if (DELIVER) 
 			cout<<"Total time after delivery of item: "<<totalTime<<endl;
 	}
-	//CREATE EVENT
+	if (DELIVER)
+		cout<<"Deliver Items exiting normally"<<endl;
 	return (totalTime+startTime);
 }
 
@@ -236,8 +246,9 @@ void Robot::printDests(){ //Alexi
     while (curr!=NULL)
       {
 	curr->printTile();
+	cout<<"Inventory of Dest:"<<endl;
+	curr->printInventory();
 	prev = curr;
-	//curr->printTile();
 	curr = curr->getNextTile();
       }
     cout<< "\nEnd of Destination List" <<endl<<endl<<endl;
