@@ -3,6 +3,7 @@
 #include "shopper.h"
 #include "externals.h"
 #include "globals.h"
+#include "mallHead.h"
 #include <iostream>
 
 //extern EventList *MallEvents;
@@ -12,6 +13,8 @@
 using std::cout;
 
 #define DBG 0
+
+void EventList::addNewEvent(int time, Robot *newR, int type);
 
 EventNode::EventNode()
   :time(0), robotID(NULL), shopperID(NULL), eType(0)
