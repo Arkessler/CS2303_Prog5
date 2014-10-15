@@ -9,6 +9,7 @@
 #include <iostream>
 
 //extern EventList *MallEvents;
+int travel (robotPtr robot, int size);
 
 //EventList *MallEvents = new EventList();
 
