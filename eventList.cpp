@@ -17,6 +17,7 @@ using std::cout;
 
 #define DBG 0
 
+tilePtr entrance = &(Mall[MID][MAX][0]);
 
 EventNode::EventNode()
   :time(0), robotID(NULL), shopperID(NULL), eType(0)
@@ -69,39 +70,52 @@ void EventNode::checkState(){
   if(getRobotID() != NULL){
     switch(eType){
     case 0:
-      //Travel here
-
-      //add arrival case
-      ////addNewEvent( ========  , getRobotID(), 1); //Not sure what time goes in here, depends on travel      
-      break;
+		{
+		//Travel here
+		int travelTime = travel(getRobotID(), SIZE);
+		int newTime = (getTime()+ travelTime);
+		//add arrival case
+		mallEvents->addNewEvent( newTime, getRobotID(), 1); //Not sure what time goes in here, depends on travel      
+		break;
+		}
     case 1:
-		//run addItems
+		{
+		//deliver all items
 		//add event case 2
 		mallEvents->addNewEvent(getRobotID()->deliverItems(getTime()), getRobotID(), 2);
 		getRobotID()->removeDest();
+		
 		break;
-    case 2:
-      //Check eventlist
-		if(getRobotID()->checkDestsEmpty()){ //Evaluates to true if dests is empty
-		//Move towards entrance
-		// add new event 3
-		////addNewEvent(=======, getRobotID(), 3);
 		}
-		else{
+    case 2:
+		{
+		//Check eventlist
+		if(getRobotID()->checkDestsEmpty())
+		{ //Evaluates to true if dests is empty
+			//Move towards entrance
+			getRobotID()->addDest(entrance);
+			int exitTime = (getTime() + travel(getRobotID(), SIZE));
+			// add new event 3
+			mallEvents->addNewEvent(exitTime, getRobotID(), 3);
+		} else {
 		//move towards dests (might remove front of dests first?) 
 		int travelTime = travel(getRobotID(), SIZE);
 		int newTime = travelTime + (getTime());
 		//add event 1
 		mallEvents->addNewEvent(newTime, getRobotID(), 1);
-      }
-
-	break;
+		}
+		break;
+		}
     case 3:
-      cout << "Robot " << getRobotID()->getID() << " has left the simulateion" << endl;
-      break;
+		{
+		cout << "Robot " << getRobotID()->getID() << " has left the simulateion" << endl;
+		break;
+		}
     default:
-      cout<<"INVALID CASE" <<endl;
-      break;
+		{
+		cout<<"INVALID CASE" <<endl;
+		break;
+		}
     }
   }
 

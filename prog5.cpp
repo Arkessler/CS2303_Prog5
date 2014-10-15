@@ -319,11 +319,8 @@ void scanRobots(){
     //if(DEBUG) cout << RobotsNotInSim[i].getID()<<endl;
     //Robot *curRobot = new Robot();
     //*curRobot = RobotsNotInSim[i];
-
     mallEvents->addNewEvent(25*i, &RobotsNotInSim[i], 0);
-
   }
-
   if(DEBUG) {
     mallEvents->print();
   }
@@ -377,7 +374,6 @@ int runRobSim(){
       curr->checkState();
       curr = curr->getNext();
     }
-    
     return prev->getTime();
   }
 
