@@ -18,12 +18,15 @@ class Tile
 		int getRow();
 		int getCol();
 		int getFloor();
+		
 		void addToInventory(LocalItemPtr);
 		void removeInventoryItem();
 		LocalItemPtr getInventory();
 		void setInventory(LocalItemPtr);
+		
 		void setNextTile(Tile *newTilePtr);
 		Tile *getNextTile();
+		void printInventory();
 		void printTile();
 	private:
 		int type;
