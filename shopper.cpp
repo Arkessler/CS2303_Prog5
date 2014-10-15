@@ -101,15 +101,16 @@ void Shopper::addDest(tilePtr newTile)
 
 //Written by Max
 
-void Shopper::shopperApp(LocalItemPtr itemList){
+Tile *Shopper::shopperApp(LocalItemPtr itemList){
 
-  return;  
+  return NULL;  
 
   /*
 
 int numItems;
   if(itemList == NULL){
     cout << "invalid input to shopperApp"<<endl;
+    return NULL;
   }
   else{
     LocalItemPtr curr = itemList;
@@ -120,19 +121,26 @@ int numItems;
     }
 
     //For each item to look, traverse the global item tree and find a store
-    for(int i = 0; i < numItems; i++){
+    //for(int i = 0; i < numItems; i++){
+
+    Tile *locations = new Tile();
+
       if(itemTree->findItem(itemList)){
 	storePtr curStore = itemTree->findItem(itemList)->getStores();
 	
 	if(curStore != NULL && curStore->numItems >= itemList->getCount()){
-	  addDest(Mall[curStore->x][curStore->y][curStore->z]);
-
+	  locations->setPosition(curStore->x, curStore->y, curStore->z);
+	  locations->addToInventory(itemList);
 	}//end storeItems > item count
 
       }//end in tree
+      //Advance item in that list.
+      itemList = itemList->getNext();
+      return locations;
 
-      //SHOULD WE DELETE THE LIST AT THE END?
-    }//end for each
+
+
+    //}//end for each
 
   } //end while
 

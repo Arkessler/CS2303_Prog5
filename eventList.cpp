@@ -102,14 +102,18 @@ void EventNode::checkState(){
   else{ // if shopper != NULL
     switch(eType){
     case 0:
+      //run shopperApp
+      while(getShopperID()->getDests()->getInventory() != NULL){
+	getShopperID()->shopperApp(getShopperID()->getDests()->getInventory()); //FIGURE OUT SHOPPER APP
+      }
       //Travel here
       break;
     case 1:
-      //run addItems
+      //run queue work
       break;
     case 2:
       //Check eventlist
-      if(0){}
+      if(0){} //if condition then leave
         break;
     case 3:
       break;
@@ -216,4 +220,23 @@ void EventList::print(){
 }
 bool EventList::isEmpty() const{
   return firstPtr == 0;
+}
+
+//doesn't set last ptr (I don't think we use last ptr)
+EventList *EventList::getShopperEvents(){
+  EventList *alteredList = new EventList();
+
+  EventNode *cur = getFirstPtr();
+  EventNode *prev = NULL;
+
+  while (cur != NULL && cur->getShopperID() == NULL){
+    prev = cur;
+    cur = cur->getNext();
+  }
+  if(cur == NULL) return NULL;
+  else{
+    alteredList->setFirstPtr(cur);
+    return alteredList;
+  }
+
 }

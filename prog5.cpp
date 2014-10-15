@@ -304,5 +304,24 @@ int runRobSim(){
 
 }
 
+int runShopSim(){
+  EventList *shopEvent = mallEvents->getShopperEvents();
+  if(shopEvent == NULL)
+    {
+      cout <<"Event list is empty!" <<endl;
+      return -1;
+    }
+  else{
+    EventNode *curr = shopEvent->getFirstPtr();
+    EventNode *prev = NULL;
+    while(curr != NULL){
+      curr->checkState();
+      cur = cur->getNext();
+    }
+    return prev->getTime();
+  }
+
+}
+
   
 #endif
