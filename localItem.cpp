@@ -18,6 +18,11 @@ LocalItem::LocalItem(string newName){
   name = newName;
 }
 
+LocalItem::LocalItem(string newName, int count){
+  name = newName;
+  localCount = count;
+}
+
 //Compares the member item to a new item.
 //returns -1 new item is earlier than the current item, 0 if they are the same
 // and 1 if new item is later than current item.

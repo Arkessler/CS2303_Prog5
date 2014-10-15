@@ -11,6 +11,8 @@ class LocalItem{
 	public:
 		LocalItem();
 		LocalItem(std::string newName);
+		LocalItem(std::string newName, int count);
+		
 		int id_compare(LocalItem *newNode);
 
 		std::string getName();
