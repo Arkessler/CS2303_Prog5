@@ -67,7 +67,7 @@ void Shopper::setF(int floor)
 	f = floor;
 }
 //Tile getters and setter
-Tile *Shopper::getDest(int spot)
+Tile *Shopper::getDest()
 {
 	//return (*Dests).traverse(spot);
 	if ((Dests)==NULL)
@@ -101,12 +101,12 @@ void Shopper::addDest(tilePtr newTile)
 
 //Written by Max
 
-Tile *Shopper::shopperApp(LocalItemPtr itemList){
+void Shopper::shopperApp(LocalItemPtr itemList){
 
-  return NULL;  
+  //return NULL;  
 
+  
   /*
-
 int numItems;
   if(itemList == NULL){
     cout << "invalid input to shopperApp"<<endl;

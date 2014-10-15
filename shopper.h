@@ -20,7 +20,7 @@ class Shopper
 		int getF();
 		void setF(int);
 		//Item list functions
-		Tile *getDest(int);
+		Tile *getDest(void);
 		void addDest(tilePtr);
 
 		//Takes simple list of items that were scanned in, adds store to dest.

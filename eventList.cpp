@@ -14,7 +14,7 @@ using std::cout;
 
 #define DBG 0
 
-void EventList::addNewEvent(int time, Robot *newR, int type);
+//void EventList::addNewEvent(int time, Robot *newR, int type);
 
 EventNode::EventNode()
   :time(0), robotID(NULL), shopperID(NULL), eType(0)
@@ -90,7 +90,7 @@ void EventNode::checkState(){
 		int travelTime = travel(getRobotID(), SIZE);
 		int newTime = travelTime + (getTime());
 		//add event 1
-		addNewEvent(newTime, getRobotID(), 1);
+		mallEvents->addNewEvent(newTime, getRobotID(), 1);
       }
 
 	break;
