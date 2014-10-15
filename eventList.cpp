@@ -88,8 +88,15 @@ void EventList::addNode(EventNode *newNode){
   EventNode *prev = NULL;
   
   if(DBG) cout<<"passed initial assignment"<<endl;
+
+  if(cur == NULL && prev == NULL)
+    {
+      //newNode->setNext(getFirstPtr());
+      setFirstPtr(newNode);
+      return;
+    }
   
-  while(cur != NULL && cur->getTime() < newNode->getTime()){
+  while((cur != NULL) && (cur->getTime() < newNode->getTime())){
     prev = cur;
     cur = cur->getNext();
     if(DBG) cout<<"in traversal"<<endl;
@@ -98,8 +105,9 @@ void EventList::addNode(EventNode *newNode){
   if(DBG) cout<<"out of traversal"<<endl;
 
   if(cur == NULL){
-    newNode->setNext(getFirstPtr());
-    setFirstPtr(newNode);
+    prev->setNext(newNode);
+    //newNode->setNext(getFirstPtr());
+    //setFirstPtr(newNode);
   }
   else if (cur->getTime() >= newNode->getTime() && prev != NULL){
     prev->setNext(newNode);

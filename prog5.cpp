@@ -138,6 +138,10 @@ int main () //Author: Alexi
 
 	    testList->addNewEvent(0, testRobot, 0);
 	    testList->addNewEvent(0, testShopper, 1);
+	    testList->addNewEvent(5, testRobot, 0);
+	    testList->addNewEvent(4, testShopper, 3);
+	    testList->addNewEvent(7, testRobot, 2);
+
 	    if(DEBUG) cout<<"Passed adding"<<endl;
 	    testList->print();
 	  }
