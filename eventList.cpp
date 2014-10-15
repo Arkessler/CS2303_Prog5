@@ -1,24 +1,38 @@
-#include "linkedList.h"
-#include "Robot.h"
-#include "Shopper.h"
+#include "eventList.h"
+#include "robot.h"
+#include "shopper.h"
+
+#include <iostream>
+using std::cout;
 
 EventNode::EventNode()
-  :time(0), robID(NULL), shopperID(NULL), eType(0)
+  :time(0), robotID(NULL), shopperID(NULL), eType(0)
 {}
 
 EventNode::EventNode(int newTime, Robot *robIn, int type)
-  :time(newTime), robID(robIn),shopperID(NULL), eType(type)
+  :time(newTime), robotID(robIn),shopperID(NULL), eType(type)
 {}
 
 EventNode::EventNode(int newTime, Shopper *shopIn, int type)
-  :time(newTime), robID(NULL), shopperID(shopIn), eType(type)
+  :time(newTime), robotID(NULL), shopperID(shopIn), eType(type)
 {}
 
 void EventNode::print(){
   //cout<< "Printing Node:" <<endl;
   cout<<"Time of Event: " << getTime()<<endl;
-  (getRobotID()!=NULL)?(cout<<"Name of robot: " << getRobID()->getID() <<endl;):((getShopperID() != NULL) ? (cout<<"Name of shopper: " <<getShopID()->getID()<<endl;):cout<<"Invalid"<<endl;);  
-  cout<<"Node Type:" << getEType()<<endl<<endl;
+  std::string toPrint =
+    (getRobotID()!=NULL)
+    ?("ID of robot: ")         // <<  getRobotID()->getID() <<endl;)
+    :
+    ((getShopperID() != NULL) 
+     ? ("Name of shopper: ")       //<<getShopID()->getID()<<endl;)
+     :"Invalid");
+
+  int printID = (getRobotID() != NULL) ? getRobotID()->getID() : ((getShopperID() != NULL) ? getShopperID()->getID() : -1);
+
+  cout<<toPrint<<printID<<endl;
+
+  cout<<"Node Type:" << get_eType()<<endl<<endl;
 }
 
 int EventNode::getTime(){
@@ -33,7 +47,7 @@ Shopper *EventNode::getShopperID(){
   return shopperID;
 }
 
-int get_eType(){
+int EventNode::get_eType(){
   return eType;
 }
 
@@ -57,9 +71,8 @@ int get_eType(){
 
       while ( currentPtr != 0 ) // delete remaining nodes 
 	{ 
-	  tempPtr = currentPtr; 
-	  //cout << tempPtr->data << '\n'; 
-	  currentPtr = currentPtr->nextPtr; 
+	  tempPtr = currentPtr;  
+	  currentPtr = currentPtr->getNext(); 
 	  delete tempPtr; 
 	} // end while 
     } // end if 
@@ -103,4 +116,7 @@ void EventList::print(){
   }
   getLastPtr()->print();
 
+}
+bool EventList::isEmpty() const{
+  return firstPtr == 0;
 }
