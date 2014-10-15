@@ -149,13 +149,17 @@ void Tile::removeInventoryItem() //Alexi
 
 void Tile::printInventory() //Alexi
 {
-	LocalItemPtr curr = NULL;
-	curr = inventory;
-	while (curr != NULL)
-	{
-		curr->printLocalItem();
-		curr = curr->getNext();
+	if (inventory==NULL){
+		cout<<"Inventory is empty!"<<endl;
+	} else {
+		LocalItemPtr curr = NULL;
+		curr = inventory;
+		while (curr != NULL)
+		{
+			curr->printLocalItem();
+			curr = curr->getNext();
+		}
+		cout<<"End of inventory list\n"<<endl;
 	}
-	cout<<"End of inventory list\n"<<endl;
 }
 #endif
