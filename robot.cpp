@@ -11,6 +11,9 @@ Author: Alexi Kessler */
 
 #include <iostream>
 using namespace std;
+
+int DEBUGDELIVER =1;
+
 //Constructors
 Robot::Robot()
 {
@@ -164,8 +167,13 @@ int Robot::deliverItem() //Alexi
 	c = Dests->getCol();
 	f = Dests->getFloor();
 	LocalItemPtr itemToAdd = Dests->getInventory();
+	//itemToAdd->printLocalItem();
 	time = itemToAdd->getCount();
+	if (DEBUGDELIVER)
+		cout<<"Adding item to store inventory"<<endl;
 	Mall[r][c][f].addToInventory(itemToAdd);  //Add to local inventory
+	if (DEBUGDELIVER)
+		cout<<"Added item to store inventory"<<endl;
 	return time;
 }
 int Robot::deliverItems(int startTime) //Alexi
