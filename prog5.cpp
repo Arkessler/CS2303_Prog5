@@ -86,6 +86,10 @@ int main () //Author: Alexi
 			travel(testRob, SIZE);
 			travel(testRob, SIZE);
 			}
+	case 3:
+	  break;
+	case 4:
+	  break;
 		default:
 			cout<<"Improper or no test input";
 			break;

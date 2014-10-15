@@ -14,6 +14,13 @@ EventNode::EventNode(int newTime, Shopper *shopIn, int type)
   :time(newTime), robID(NULL), shopperID(shopIn), eType(type)
 {}
 
+void EventNode::print(){
+  //cout<< "Printing Node:" <<endl;
+  cout<<"Time of Event: " << getTime()<<endl;
+  (getRobotID()!=NULL)?(cout<<"Name of robot: " << getRobID()->getID() <<endl;):((getShopperID() != NULL) ? (cout<<"Name of shopper: " <<getShopID()->getID()<<endl;):cout<<"Invalid"<<endl;);  
+  cout<<"Node Type:" << getEType()<<endl<<endl;
+}
+
 int EventNode::getTime(){
   return time;
 }
@@ -86,4 +93,14 @@ void EventList::addNewEvent(int time, Robot *newR, int type){
 void EventList::addNewEvent(int time, Shopper *newShop, int type){
   EventNode *newEvent = new EventNode(time, newShop, type);
   addNode(newEvent);
+}
+
+void EventList::print(){
+  EventNode *cur = getFirstPtr();
+  while(cur != getLastPtr()){
+    cur->print();
+    cur = cur->getNext();
+  }
+  getLastPtr()->print();
+
 }

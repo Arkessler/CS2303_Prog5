@@ -25,6 +25,7 @@ class EventNode
 
    EventList *getNext(){return nextPtr}
    void setNext(EventList *newNext){ nextPtr = newNext;}
+   void printEvent();
 
  private: 
    int time;
@@ -45,14 +46,13 @@ class EventNode
   void addNewEvent(int, Shopper *, int);
 
   void addNode(EventNode *newNode);
-
   EventNode *getFirstPtr(){return firstPtr;}
   EventNode *getLastPtr(){return lastPtr;}
   void setFirstPtr(EventNode *first){firstPtr = first;}
   void setLastPtr(EventNode *last){lastPtr = last;}
 
   bool isEmpty() const; 
-  void print() const; 
+  void print(); 
  private: 
   EventNode *firstPtr; // pointer to first node 
   EventNode *lastPtr; // pointer to last node 
