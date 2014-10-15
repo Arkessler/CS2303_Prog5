@@ -81,13 +81,30 @@ int main () //Author: Alexi
 			{
 			tilePtr testDest1 = new Tile(7, 7, 4, 4, 1);
 			tilePtr testDest2 = new Tile(7, 4, 6, 4, 0);
+			LocalItemPtr testItem1 = new LocalItem("A5", 5);
+			LocalItemPtr testItem2 = new LocalItem("L7", 1);
+			LocalItemPtr testItem3 = new LocalItem("D8", 10);
+			LocalItemPtr testItem4 = new LocalItem("Z2", 7);
+			testDest1->addToInventory(testItem1);
+			testDest1->addToInventory(testItem2);
+			testDest1->addToInventory(testItem3);
+			testDest2->addToInventory(testItem4);
+			
 			robotPtr testRob = new Robot(32, 1, 8, 16, 0, testDest1);
 			testRob->addDest(testDest2);
+			
 			travel(testRob, SIZE);
 			travel(testRob, SIZE);
 			}
-	case 3:
-	  break;
+		case 3: //Test deliverItems
+			{
+			tilePtr testDest1 = new Tile(7, 7, 4, 4, 1);
+			tilePtr testDest2 = new Tile(7, 4, 6, 4, 0);
+			robotPtr testRob = new Robot(32, 1, 8, 16, 0, testDest1);
+			testRob->addDest(testDest2);
+			
+			break;
+			}
 	case 4:
 	  break;
 		default:
