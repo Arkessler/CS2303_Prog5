@@ -9,6 +9,7 @@
 #include "robot.h"
 #include "localItem.h"
 #include "eventList.h"
+#include "externals.h"
 
 #define DEBUG 1
 
@@ -18,11 +19,15 @@
 //#include "store_functions.cpp"
 
 //#include "small.cpp"
+EventList *mallEvents = new EventList();
+
 
 int main () //Author: Alexi
 {
 	int i,j, choice;
     int robotID;
+    //EventList *mallEvents = new EventList();
+
     // R array holds robot location
     // S array holds next store location
 
@@ -159,16 +164,19 @@ int main () //Author: Alexi
 	    Shopper *testShopper = new Shopper(7);
 	    
 	    //if(DEBUG) cout<< "passed assignment"<<endl;
-
+	    /*
 	    testList->addNewEvent(0, testRobot, 0);
 	    testList->addNewEvent(0, testShopper, 1);
 	    testList->addNewEvent(5, testRobot, 0);
 	    testList->addNewEvent(4, testShopper, 3);
 	    testList->addNewEvent(7, testRobot, 2);
+	    */
+	    scanRobots();
 
 	    if(DEBUG) cout<<"Passed adding"<<endl;
 	    testList->print();
 	  }
+
 	  break;
 		default:
 			cout<<"Improper or no test input";
@@ -177,18 +185,19 @@ int main () //Author: Alexi
 }
 
 void scanRobots(){
-  int numBots = 0, i = 0, j = 0, numItems, newItemCount;
+  int numBots = 0, i = 0, j = 0, newItemCount;
   tilePtr toAdd;
 
   if(DEBUG) cout << "Type number of bots" <<endl;
   cin >> numBots;
-  int storeCounts[numBots];
+  
 
   for (i = 0; i < numBots; i++){
     int tempStoreCnt;
     if(DEBUG) cout<<"Type number of stores for robot "<< i <<endl;
     cin >> tempStoreCnt;
     RobotsNotInSim[i].setNumStore(tempStoreCnt);
+    RobotsNotInSim[i].setID(i);
     if(DEBUG) cout << "Scanned Robot " << i <<endl;
 	RobNotInSim++;
   } 
@@ -228,14 +237,16 @@ void scanRobots(){
       cout<< RobotsNotInSim[i].getTile(1)->getRow() << "~" << RobotsNotInSim[i].getTile(1)->getCol()<<endl;
       if(DEBUG) cout << "scanned store " << j << " for robot " << i << endl;
     }
+    //if(DEBUG) cout << RobotsNotInSim[i].getID()<<endl;
+    //Robot *curRobot = new Robot();
+    //*curRobot = RobotsNotInSim[i];
+
+    mallEvents->addNewEvent(25*i, &RobotsNotInSim[i], 0);
+
   }
 
   if(DEBUG) {
-    cout<<endl;
-    for(i = 0; i < numBots; i++){
-      RobotsNotInSim[i].printDests();
-      cout<<endl;
-    }
+    mallEvents->print();
   }
 }
 

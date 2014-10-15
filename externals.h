@@ -8,9 +8,12 @@ external to all other components and the global defs.      */
 //#include "globalItem.h"
 #include "robot.h"
 #include "shopper.h"
+#include "eventList.h"
 
 extern Tile Mall[MAX+1][MAX+1][2];
 extern int simTime;
+extern EventList *mallEvents;
+
 extern Robot RobotsNotInSim[MAX_ROBOTS];
 extern Shopper ShoppersNotInSim[MAX_SHOPPERS];
 

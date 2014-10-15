@@ -173,7 +173,7 @@ int Robot::deliverItem() //Alexi
 	if (DEBUGDELIVER){
 		cout<<"\nAdding item: "<<endl;
 		itemToAdd->printLocalItem();
-		cout<<"to store inventory\n"<<endl;
+		  cout<<"to store inventory\n"<<endl;
 		Mall[r][c][f].printInventory();
 	}
 	Mall[r][c][f].addToInventory(itemToAdd);  //Add to local inventory

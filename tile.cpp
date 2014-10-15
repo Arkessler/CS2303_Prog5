@@ -192,10 +192,15 @@ void Tile::printInventory() //Alexi
 	} else {
 		LocalItemPtr curr = NULL;
 		curr = inventory;
-		while (curr != NULL)
-		{
-			curr->printLocalItem();
-			curr = curr->getNext();
+		if(curr->getNext() == NULL){
+		  curr->printLocalItem();
+		}
+		else{
+		  while (curr != NULL)
+		    {
+		      curr->printLocalItem();
+		      curr = curr->getNext();
+		    }
 		}
 		cout<<"End of inventory list\n"<<endl;
 	}
