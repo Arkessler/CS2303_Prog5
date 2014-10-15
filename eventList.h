@@ -36,6 +36,8 @@ class EventNode
    }
    void print();
 
+   void checkState();
+
  private: 
    int time;
    Robot *robotID;

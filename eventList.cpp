@@ -53,6 +53,69 @@ int EventNode::get_eType(){
   return eType;
 }
 
+void EventNode::checkState(){
+  if(getRobotID() != NULL){
+    switch(eType){
+    case 0:
+      //Travel here
+
+      //add arrival case
+      ////addNewEvent( ========  , getRobotID(), 1); //Not sure what time goes in here, depends on travel      
+      break;
+    case 1:
+      //run addItems
+      //add event case 2
+      addNewEvent(getRobotID()->deliverItems(getTime()), getRobotID(), 2);
+
+      break;
+    case 2:
+      //Check eventlist
+      if(getRobotID()->checkDestsEmpty()){ //Evaluates to true if dests is empty
+	//Move towards entrance
+
+	// add new event 3
+	////addNewEvent(=======, getRobotID(), 3);
+      }
+      else{
+	//move towards dests (might remove front of dests first?
+
+	//add event 1
+	////addNewEvent(========, getRobotID(), 1);
+      }
+
+	break;
+    case 3:
+      cout << "Robot " << getRobotID()->getID() << " has left the simulateion" << endl;
+      break;
+    default:
+      cout<<"INVALID CASE" <<endl;
+      break;
+    }
+  }
+
+  else{ // if shopper
+    switch(eType){
+    case 0:
+      //Travel here
+      break;
+    case 1:
+      //run addItems
+      break;
+    case 2:
+      //Check eventlist
+      if()
+        break;
+    case 3:
+      break;
+    case 4:
+      break;
+    default:
+      break;
+    }
+}
+
+}
+
 ///////////////////////////////////////////////////////////////////////////////////
 // default constructor  
  EventList::EventList() 

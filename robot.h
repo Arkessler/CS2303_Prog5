@@ -26,6 +26,7 @@ class Robot
 		Tile *getTile(int);
 		
 		tilePtr getDests();
+		bool checkDestsEmpty(){return Dests == NULL;}
 		void addDest(tilePtr);
 		void removeDest();
 		
