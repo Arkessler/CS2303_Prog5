@@ -256,9 +256,21 @@ int main () //Author: Alexi
 				testList->print();
 				break;
 			}
-		case 6: //Test checkState
+		case 6://test scanRobots
 			{
 				scanRobots();
+				mallEvents->print();
+				break;
+			}
+		case 7: //Test checkState
+			{
+				scanRobots();
+				//need to checkState
+				(mallEvents->getFirstPtr())->checkState();
+				mallEvents->print();
+				(mallEvents->getFirstPtr())->checkState();
+				mallEvents->print();
+				//runRobSim();
 			break;
 			}
 		default:
@@ -317,7 +329,7 @@ void scanRobots(){
 
       RobotsNotInSim[i].addDest(toAdd);
       //RobotsNotInSim[i].getTile(i)->setPosition(rowIn,colIn,floorIn);
-      cout<< RobotsNotInSim[i].getTile(1)->getRow() << "~" << RobotsNotInSim[i].getTile(1)->getCol()<<endl;
+      //cout<< RobotsNotInSim[i].getTile(1)->getRow() << "~" << RobotsNotInSim[i].getTile(1)->getCol()<<endl;
       if(DEBUG) cout << "scanned store " << j << " for robot " << i << endl;
     }
     //if(DEBUG) cout << RobotsNotInSim[i].getID()<<endl;
@@ -326,7 +338,7 @@ void scanRobots(){
     mallEvents->addNewEvent(25*i, &RobotsNotInSim[i], 0);
   }
   if(DEBUG) {
-    mallEvents->print();
+   // mallEvents->print();
   }
 }
 
@@ -375,8 +387,12 @@ int runRobSim(){
     EventNode *curr = robEvent->getFirstPtr();
     EventNode *prev = NULL;
     while(curr != NULL){
-      curr->checkState();
-      curr = curr->getNext();
+		curr->checkState();
+		curr = curr->getNext();
+		if (DEBUG){
+			cout<<"Operated on event. New event list is as follows"<<endl;
+			mallEvents->print();
+		}
     }
     return prev->getTime();
   }

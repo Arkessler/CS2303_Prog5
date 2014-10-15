@@ -13,7 +13,6 @@ LocalItem::LocalItem(){
 
 }
 
-
 LocalItem::LocalItem(string newName){
   name = newName;
 }
@@ -29,7 +28,7 @@ LocalItem::LocalItem(string newName, int count){
 int LocalItem::id_compare(LocalItemPtr newLocalItem){
 
   if (newLocalItem == NULL){
-    cout<<"item to add is NULL !!!!!!!!!!!!!!!"<<endl;
+    //cout<<"item to add is NULL !!!!!!!!!!!!!!!"<<endl;
     return -1;
   }
   else{

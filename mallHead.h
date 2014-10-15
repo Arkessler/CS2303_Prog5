@@ -28,6 +28,7 @@ void elevator(int [], int[], int);
 
 bool debugRead = false;
 void scanRobots();
+int runRobSim();
 
 int RobInSim = 0;
 int RobNotInSim = 0;
