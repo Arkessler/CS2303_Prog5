@@ -42,6 +42,7 @@ void instructions()
 	cout<<"Choice 0 tests: Robot getter/setters Robot tileAdd\n";
 	cout<<"Choice 1 tests: Scanning in Robots"<<endl;
 	cout<<"Choice 2 tests: Travel function taking robotPtr"<<endl;
+	cout<<"Choice 4 tests: EventList inserting"<<endl;
 	cout<<"Please enter test choice\n";
 }
 #endif

@@ -8,6 +8,7 @@
 #include "tile.h"
 #include "robot.h"
 #include "localItem.h"
+#include "eventList.h"
 
 #define DEBUG 1
 
@@ -106,7 +107,18 @@ int main () //Author: Alexi
 			break;
 			}
 	case 4:
-	  
+	  {
+	    EventList *testList = new EventList();
+	    Robot *testRobot = new Robot(5);
+	    Shopper *testShopper = new Shopper(7);
+	    
+	    //if(DEBUG) cout<< "passed assignment"<<endl;
+
+	    testList->addNewEvent(0, testRobot, 0);
+	    testList->addNewEvent(0, testShopper, 1);
+	    if(DEBUG) cout<<"Passed adding"<<endl;
+	    testList->print();
+	  }
 	  break;
 		default:
 			cout<<"Improper or no test input";

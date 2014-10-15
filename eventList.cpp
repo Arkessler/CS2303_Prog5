@@ -5,6 +5,8 @@
 #include <iostream>
 using std::cout;
 
+#define DBG 0
+
 EventNode::EventNode()
   :time(0), robotID(NULL), shopperID(NULL), eType(0)
 {}
@@ -80,31 +82,49 @@ int EventNode::get_eType(){
   cout << "All nodes destroyed\n\n"; 
 } // end List destructor 
 
+
 void EventList::addNode(EventNode *newNode){
   EventNode *cur = getFirstPtr();
   EventNode *prev = NULL;
-  EventNode *last = getLastPtr();
-
+  
+  if(DBG) cout<<"passed initial assignment"<<endl;
+  
   while(cur != NULL && cur->getTime() < newNode->getTime()){
     prev = cur;
     cur = cur->getNext();
+    if(DBG) cout<<"in traversal"<<endl;
   }
+
+  if(DBG) cout<<"out of traversal"<<endl;
+
   if(cur == NULL){
-    prev->setNext(newNode);
+    newNode->setNext(getFirstPtr());
+    setFirstPtr(newNode);
   }
-  else{
+  else if (cur->getTime() >= newNode->getTime() && prev != NULL){
     prev->setNext(newNode);
+    if(DBG) cout<< "first assignment correct"<<endl;
     newNode->setNext(cur);
   }
+  else if(prev == NULL){
+    newNode->setNext(cur);
+    setFirstPtr(newNode);
+  }
+  else{
+    cout<<"unconsidered condition"<<endl;
+  }
+  if(DBG) cout<< "End of addNode"<<endl;
 }
 
 void EventList::addNewEvent(int time, Robot *newR, int type){
   EventNode *newEvent = new EventNode(time, newR, type);
+  if(DBG) newEvent->print();
   addNode(newEvent);
 }
 
 void EventList::addNewEvent(int time, Shopper *newShop, int type){
   EventNode *newEvent = new EventNode(time, newShop, type);
+  if(DBG) newEvent->print();
   addNode(newEvent);
 }
 
@@ -114,7 +134,7 @@ void EventList::print(){
     cur->print();
     cur = cur->getNext();
   }
-  getLastPtr()->print();
+  //getLastPtr()->print();
 
 }
 bool EventList::isEmpty() const{

@@ -1,8 +1,10 @@
 // Fig. 20.3: Listnode.h 
 // Template ListNode class definition. 
 #ifndef LISTNODE_H 
-#define LISTNODE_H 
-
+#define LISTNODE_H
+#include <iostream>
+using std::cout;
+using std::endl;
 // forward declaration of class List required to announce that class 
 // List exists so it can be used in the friend declaration at line 13 
 class EventList; 
@@ -24,7 +26,14 @@ class EventNode
    int get_eType();
 
    EventNode *getNext(){return nextPtr;}
-   void setNext(EventNode *newNext){ nextPtr = newNext;}
+   void setNext(EventNode *newNext){ 
+     if (newNext != NULL)
+       nextPtr = newNext;
+     else {
+       cout<<"passing NULL"<<endl;
+       nextPtr = NULL;
+     }
+   }
    void print();
 
  private: 
