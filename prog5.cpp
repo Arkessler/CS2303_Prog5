@@ -395,7 +395,7 @@ int runShopSim(){
     EventNode *prev = NULL;
     while(curr != NULL){
       curr->checkState();
-      cur = cur->getNext();
+      curr = curr->getNext();
     }
     return prev->getTime();
   }
