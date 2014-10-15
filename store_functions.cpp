@@ -1,8 +1,8 @@
 #ifndef STOREFUNCTION_CPP
 #define STOREFUNCTION_CPP
 #include "global.h"
-#include "item.h"
-#include "item.cpp"
+#include "globalItem.h"
+//#include "item.cpp"
 #define DEBUGSTORE 0
 bool debugAddStore = false;
 
@@ -28,7 +28,7 @@ int store_compare(StorePtr currentStore, StorePtr newStore){ //Author: Max
 //decreasing item count order.
 //void addStore(StorePtr *sPtr, StorePtr newStore) //Author: Max
 
-void addStore(ItemPtr itPtr, StorePtr newStore)
+void addStore(GlobalItemPtr itPtr, StorePtr newStore)
 {
   int store_comp, storeExists = 0;
   StorePtr previousPtr = new Store();
