@@ -82,10 +82,23 @@ int main () //Author: Alexi
 			{
 			tilePtr testDest1 = new Tile(7, 7, 4, 4, 1);
 			tilePtr testDest2 = new Tile(7, 4, 6, 4, 0);
+			robotPtr testRob = new Robot(32, 1, 8, 16, 0, testDest1);
+			testRob->addDest(testDest2);
+			
+			travel(testRob, SIZE);
+			travel(testRob, SIZE);
+			break;
+			}
+		case 3: //Test deliverItems
+			{
+			tilePtr testDest1 = new Tile(7, 7, 4, 4, 1);
+			tilePtr testDest2 = new Tile(7, 4, 6, 4, 0);
+			
 			LocalItemPtr testItem1 = new LocalItem("A5", 5);
 			LocalItemPtr testItem2 = new LocalItem("L7", 1);
 			LocalItemPtr testItem3 = new LocalItem("D8", 10);
 			LocalItemPtr testItem4 = new LocalItem("Z2", 7);
+			
 			testDest1->addToInventory(testItem1);
 			testDest1->addToInventory(testItem2);
 			testDest1->addToInventory(testItem3);
@@ -94,16 +107,25 @@ int main () //Author: Alexi
 			robotPtr testRob = new Robot(32, 1, 8, 16, 0, testDest1);
 			testRob->addDest(testDest2);
 			
+			//Test that item inventory initialized correctly
+			(testRob->getDests())->printInventory();
+			//Travel to first destination
 			travel(testRob, SIZE);
-			travel(testRob, SIZE);
-			}
-		case 3: //Test deliverItems
-			{
-			tilePtr testDest1 = new Tile(7, 7, 4, 4, 1);
-			tilePtr testDest2 = new Tile(7, 4, 6, 4, 0);
-			robotPtr testRob = new Robot(32, 1, 8, 16, 0, testDest1);
-			testRob->addDest(testDest2);
+			//See how long it takes to deliver first item
+			int deliveryTime;
+			deliveryTime = testRob->deliverItem();
+			cout<<"Time that the robot will finish delivering its first item: "<<deliveryTime<<endl;
+			(testRob->getDests())->removeInventoryItem();
+			//Remove first item from inventory list
+			cout<<"\nRemoved delivered item from dest Inventory"<<endl;
+			cout<<"Checking for successful removal. Current Item list: "<<endl;
+			(testRob->getDests())->printInventory();
 			
+			deliveryTime = testRob->deliverItem();
+			cout<<"Time that the robot will finish delivering its second item: "<<deliveryTime<<endl;
+			testRob->removeDest();
+			cout<<endl;
+			travel(testRob, SIZE);
 			break;
 			}
 	case 4:

@@ -95,7 +95,7 @@ void Robot::setNumStore(int store){
 }
 
 //Tile getters and setter
-Tile *Robot::getTile(int spot)
+Tile *Robot::getTile(int spot) //Alexi
 {
 	//return (*Dests).traverse(spot);
 	if ((Dests)==NULL)
@@ -107,7 +107,7 @@ Tile *Robot::getTile(int spot)
 		return Dests;
 	}
 }
-Tile *Robot::getDests()
+Tile *Robot::getDests() //Alexi
 {
 	//return (*Dests).traverse(spot);
 	if ((Dests)==NULL)
@@ -119,7 +119,7 @@ Tile *Robot::getDests()
 		return Dests;
 	}
 }
-void Robot::addDest(tilePtr newTile)
+void Robot::addDest(tilePtr newTile) //Alexi
 {
 	if (Dests==NULL)
 	{
@@ -140,7 +140,7 @@ void Robot::addDest(tilePtr newTile)
 		prev->setNextTile(newTile);
 	}
 }
-void Robot::removeDest()
+void Robot::removeDest() //Alexi
 {
 	if (Dests==NULL) //Shouldn't ever happen
 	{
@@ -159,13 +159,14 @@ void Robot::removeDest()
 int Robot::deliverItem() //Alexi 
 {
 	//add to global
-	int r, c, f;
+	int r, c, f, time;
 	r = Dests->getRow();
 	c = Dests->getCol();
 	f = Dests->getFloor();
 	LocalItemPtr itemToAdd = Dests->getInventory();
-	Mall[r][c][f].addToInventory(itemToAdd);
-	
+	time = itemToAdd->getCount();
+	Mall[r][c][f].addToInventory(itemToAdd);  //Add to local inventory
+	return time;
 }
 int Robot::deliverItems(int startTime) //Alexi
 {
