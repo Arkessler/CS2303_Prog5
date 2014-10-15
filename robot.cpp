@@ -168,12 +168,19 @@ int Robot::deliverItem() //Alexi
 	c = Dests->getCol();
 	f = Dests->getFloor();
 	LocalItemPtr itemToAdd = Dests->getInventory();
-	itemToAdd->printLocalItem();
+
 	time = itemToAdd->getCount();
-	if (DEBUGDELIVER) cout<<"Adding item to store inventory"<<endl;
+	if (DEBUGDELIVER){
+		cout<<"\nAdding item: "<<endl;
+		itemToAdd->printLocalItem();
+		cout<<"to store inventory\n"<<endl;
+		Mall[r][c][f].printInventory();
+	}
 	Mall[r][c][f].addToInventory(itemToAdd);  //Add to local inventory
 	if (DEBUGDELIVER)
-	  cout<<"Added item to store inventory"<<endl;
+		cout<<"\nAdded item to store inventory, printing Mall Store inventory after addition"<<endl;
+		Mall[r][c][f].printInventory();
+
 	return time;
 }
 int Robot::deliverItems(int startTime) //Alexi
