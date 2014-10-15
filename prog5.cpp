@@ -236,7 +236,7 @@ int main () //Author: Alexi
 				
 				break;
 			}
-		case 5: //Test of EventList and EventNode
+		case 5: //Test of EventList and EventNode Max
 			{
 				EventList *testList = new EventList();
 				Robot *testRobot = new Robot(5);

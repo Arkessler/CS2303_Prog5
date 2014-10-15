@@ -28,6 +28,7 @@ class Robot
 		tilePtr getDests();
 		void addDest(tilePtr);
 		void removeDest();
+		bool checkDestsEmpty();
 		
 		int deliverItem();
 		int deliverItems(int);
