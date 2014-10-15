@@ -9,7 +9,7 @@ Author: Alexi Kessler */
 #include "externals.h"
 #include "robot.h"
 //#include "decide.cpp"
-//#include "tile.h"
+#include "tile.h"
 
 void printloc (int []);
 bool IsEqual (int [], int []);

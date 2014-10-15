@@ -73,6 +73,21 @@ int Tile::getFloor()
 	return f;
 }
 
+void Tile::setRow(int row)
+{
+	r = row;
+}
+
+void Tile::setCol(int col)
+{
+	c = col;
+}
+
+void Tile::setFloor(int floor)
+{
+	f = floor;
+}
+		
 void Tile::setNextTile(Tile *newTilePtr)
 {
 	nextTile = newTilePtr;
@@ -113,7 +128,7 @@ int Tile::sizeInventory()
 	LocalItemPtr curr = NULL;
 	LocalItemPtr prev = NULL;
 	curr = inventory;
-	int count;
+	int count = 0;
 	if (curr == NULL)
 	{
 		return 0;

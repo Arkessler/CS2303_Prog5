@@ -34,6 +34,11 @@ int main () //Author: Alexi
 	//stores[MAX_STORES];
 	
 	init_mall();
+	cout<<"The test Step is : "<<Mall[8][16][1].getStep()<<endl;
+	cout<<"The test row is : "<<Mall[8][16][1].getRow()<<endl;
+	tilePtr testTile = new Tile();
+	*testTile = Mall[8][16][0];
+	testTile->printTile();
 	
 	instructions();
 	cin>>choice;
@@ -41,6 +46,8 @@ int main () //Author: Alexi
 	
 	switch (choice)
 	{
+		case -1: //Test mall initialization
+			break;
 		case 0: //Test robot class
 			{
 				Robot R = *(new Robot(45));
@@ -272,6 +279,11 @@ int main () //Author: Alexi
 				mallEvents->print();
 				//runRobSim();
 			break;
+			}
+		case 8: //Test robSim
+			{
+				scanRobots();
+				runRobSim();
 			}
 		default:
 			cout<<"Improper or no test input";

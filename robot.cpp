@@ -9,7 +9,7 @@ Author of functions: Alexi Kessler unless stated otherwise*/
 #include "localItem.h"
 #include "externals.h"
 
-#define DELIVER 1
+#define DELIVER 0
 #define DEBUGDELIVER 0 
 
 #include <iostream>
@@ -206,14 +206,17 @@ int Robot::deliverItems(int startTime) //Alexi
 	int counter = 0;
 	int numItems;
 	numItems = Dests->sizeInventory();
-	
+	if (DELIVER)
+		{
+		//printDests();
+		cout<<"numItems: "<<numItems<<endl;
+		}
 	tilePtr dest = getDests();
 	LocalItemPtr invPtr = dest->getInventory();
 	
 	for (counter = 0; counter<numItems; counter++)
 	{
-		if (DELIVER)
-			cout<<"numItems: "<<numItems<<endl;
+		
 		singleTime = deliverItem();
 		if (DELIVER) 
 			cout<<"Amount of time taken to deliver individual item: "<<singleTime<<endl;
