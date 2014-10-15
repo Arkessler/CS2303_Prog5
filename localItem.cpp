@@ -1,5 +1,5 @@
 /* class implementation for local item, which is to be used to represent the local item stock of a store in program 5
-Author:Alexi Kessler */
+Author of functions:Alexi Kessler */
 #ifndef LOCALITEM_CPP
 #define LOCALITEM_CPP
 

@@ -43,139 +43,218 @@ int main () //Author: Alexi
 	{
 		case 0: //Test robot class
 			{
-			Robot R = *(new Robot(45));
-			cout<<"New robot's ID: "<<R.getID()<<endl;
-			cout<<"New robot's floor position: "<<R.getF()<<endl;
-			R.setF(6);
-			cout<<"Robot's floor position after setter: "<<R.getF()<<endl;
-			cout<<"Robot's destination list before setter:\n";
-			tilePtr testTile = new Tile();
-			testTile = (R.getTile(1));
-			if (testTile == NULL)
-			{
-				cout<<"Tile is null!\n";
-			}
-			else
-			{
-				(*testTile).printTile();
-			}
-			cout<<"Adding tile0 to destination list\n";
-			R.addDest(tile0);
-			testTile = (R.getTile(1));
-			cout<<"Robot's destination list after setter:\n";
-			if (testTile == NULL)
-			{
-				cout<<"Tile is null!\n";
-			}
-			else
-			{
-				(*testTile).printTile();
-			}
-			break;
+				Robot R = *(new Robot(45));
+				cout<<"New robot's ID: "<<R.getID()<<endl;
+				cout<<"New robot's floor position: "<<R.getF()<<endl;
+				R.setF(6);
+				cout<<"Robot's floor position after setter: "<<R.getF()<<endl;
+				cout<<"Robot's destination list before setter:\n";
+				tilePtr testTile = new Tile();
+				testTile = (R.getTile(1));
+				if (testTile == NULL)
+				{
+					cout<<"Tile is null!\n";
+				}
+				else
+				{
+					(*testTile).printTile();
+				}
+				cout<<"Adding tile0 to destination list\n";
+				R.addDest(tile0);
+				testTile = (R.getTile(1));
+				cout<<"Robot's destination list after setter:\n";
+				if (testTile == NULL)
+				{
+					cout<<"Tile is null!\n";
+				}
+				else
+				{
+					(*testTile).printTile();
+				}
+				break;
 			}
 			//weird spacing problems
 		case 1:
 			{
-			cout<<"Check Robots in RobotsNotInSim: "<<RobNotInSim<<endl;
-			scanRobots(); 
-			(RobotsNotInSim[0]).printRobot();
-			cout<<"Check Robots in RobotsNotInSim: "<<RobNotInSim<<endl;
-			break;
+				cout<<"Check Robots in RobotsNotInSim: "<<RobNotInSim<<endl;
+				scanRobots(); 
+				(RobotsNotInSim[0]).printRobot();
+				cout<<"Check Robots in RobotsNotInSim: "<<RobNotInSim<<endl;
+				break;
 			}
 		case 2: //Test robot movement
 			{
-			tilePtr testDest1 = new Tile(7, 7, 4, 4, 1);
-			tilePtr testDest2 = new Tile(7, 4, 6, 4, 0);
-			robotPtr testRob = new Robot(32, 1, 8, 16, 0, testDest1);
-			testRob->addDest(testDest2);
-			
-			travel(testRob, SIZE);
-			travel(testRob, SIZE);
-			break;
+				tilePtr testDest1 = new Tile(7, 7, 4, 4, 1);
+				tilePtr testDest2 = new Tile(7, 4, 6, 4, 0);
+				robotPtr testRob = new Robot(32, 1, 8, 16, 0, testDest1);
+				testRob->addDest(testDest2);
+				
+				int t1 = travel(testRob, SIZE);
+				int t2 = travel(testRob, SIZE);
+				break;
 			}
-		case 3: //Test deliverItems
+		case 3: //Test deliverItem Alexi
 			{
-			tilePtr testDest1 = new Tile(7, 7, 4, 4, 1);
-			tilePtr testDest2 = new Tile(7, 4, 6, 4, 0);
+				tilePtr testDest1 = new Tile(7, 7, 4, 4, 1);
+				tilePtr testDest2 = new Tile(7, 4, 6, 4, 0);
+				
+				LocalItemPtr testItem1 = new LocalItem("A5", 5);
+				LocalItemPtr testItem2 = new LocalItem("L7", 1);
+				LocalItemPtr testItem3 = new LocalItem("D8", 10);
+				LocalItemPtr testItem4 = new LocalItem("Z2", 7);
+				
+				
+				/*
+				if(DEBUG) {
+				  cout<< "for test 1"<<endl;
+				  robotPtr newTest = new Robot(32, 1, 8, 16, 0, testDest1);
+				  newTest->getDests()->printInventory();
+				}
+				
+				if(DEBUG) {
+				  cout<<"for test 2"<<endl;
+							  robotPtr newTest = new Robot(32, 1, 8, 16, 0, testDest1);
+							  newTest->getDests()->printInventory();
+							}
+				
+				 
+				
+				if(DEBUG) {
+				  cout<<"for test 3"<< endl;
+							  robotPtr newTest = new Robot(32, 1, 8, 16, 0, testDest1);
+							  newTest->getDests()->printInventory();
+							}*/
+				testDest1->addToInventory(testItem1);
+				testDest1->addToInventory(testItem2);
+				testDest1->addToInventory(testItem3);
+				testDest2->addToInventory(testItem4);
+				
+				robotPtr testRob = new Robot(32, 1, 8, 16, 0, testDest1);
+				testRob->addDest(testDest2);
+				
+				//(testRob->getDests())->printInventory();
+
+				//Test that item inventory initialized correctly
+				cout<<"Printing out Robot's dest1 inventory delivery:"<<endl;
+				(testRob->getDests())->printInventory();
+				cout<<"size of delivery list: "<<((testRob->getDests())->sizeInventory())<<endl;
+				
+				//Travel to first destination
+				int t1 = travel(testRob, SIZE);
 			
-			LocalItemPtr testItem1 = new LocalItem("A5", 5);
-			LocalItemPtr testItem2 = new LocalItem("L7", 1);
-			LocalItemPtr testItem3 = new LocalItem("D8", 10);
-			LocalItemPtr testItem4 = new LocalItem("Z2", 7);
-			
-			testDest1->addToInventory(testItem1);
-			if(DEBUG) {
-			  cout<< "for test 1"<<endl;
-			  robotPtr newTest = new Robot(32, 1, 8, 16, 0, testDest1);
-			  newTest->getDests()->printInventory();
+				//See how long it takes to deliver first item
+				int deliveryTime;
+				deliveryTime = testRob->deliverItem();
+				(testRob->getDests())->removeInventoryItem();
+				cout<<"Mall Store Inventory after delivery: "<<endl;
+				Mall[4][4][1].printInventory();
+				cout<<"Time that the robot will finish delivering its first item: "<<deliveryTime<<endl;
+				
+				//Remove first item from inventory list			
+				cout<<"\nRemoved delivered items from dest Inventory"<<endl;
+				cout<<"Checking for successful removal. Current Item list: "<<endl;
+				(testRob->getDests())->printInventory();
+				cout<<"Inventory at store:"<<endl;
+				Mall[(testDest1->getRow())][(testDest1->getCol())][(testDest1->getFloor())].printInventory();
+				
+				//See how long it takes to deliver second item
+				deliveryTime = testRob->deliverItem();
+				(testRob->getDests())->removeInventoryItem();
+				cout<<"Mall Store Inventory after delivery: "<<endl;
+				Mall[4][4][1].printInventory();
+				cout<<"Time that the robot will finish delivering its second item: "<<deliveryTime<<endl;
+				
+				//Remove second item from inventory list			
+				cout<<"\nRemoved delivered items from dest Inventory"<<endl;
+				cout<<"Checking for successful removal. Current Item list: "<<endl;
+				(testRob->getDests())->printInventory();
+				cout<<"Inventory at store:"<<endl;
+				Mall[(testDest1->getRow())][(testDest1->getCol())][(testDest1->getFloor())].printInventory();
+				
+				//See how long it takes to deliver third item
+				deliveryTime = testRob->deliverItem();
+				(testRob->getDests())->removeInventoryItem();
+				cout<<"Mall Store Inventory after delivery: "<<endl;
+				Mall[4][4][1].printInventory();
+				cout<<"Time that the robot will finish delivering its third item: "<<deliveryTime<<endl;
+				
+				//Remove third item from inventory list			
+				cout<<"\nRemoved delivered items from dest Inventory"<<endl;
+				cout<<"Checking for successful removal. Current Item list: "<<endl;
+				(testRob->getDests())->printInventory();
+				cout<<"Inventory at store:"<<endl;
+				Mall[(testDest1->getRow())][(testDest1->getCol())][(testDest1->getFloor())].printInventory();
+				//After checking that it's ok to remove destination, do so
+				testRob->removeDest();
+				
+				//Move to second location
+				cout<<"Moving to second destination:"<<endl;
+				int t2 = travel(testRob, SIZE);
+				
+				//Try delivering item at new destination
+				deliveryTime = testRob->deliverItem();
+				(testRob->getDests())->removeInventoryItem();
+				cout<<"Mall Store Inventory after delivery: "<<endl;
+				Mall[(testDest2->getRow())][(testDest2->getCol())][(testDest2->getFloor())].printInventory();
+				cout<<"Time that the robot will finish delivering its first item: "<<deliveryTime<<endl;
+				
+				//Remove first item from inventory list			
+				cout<<"\nRemoved delivered items from dest Inventory"<<endl;
+				cout<<"Checking for successful removal. Current Item list: "<<endl;
+				(testRob->getDests())->printInventory();
+				cout<<"Inventory at store:"<<endl;
+				Mall[(testDest2->getRow())][(testDest2->getCol())][(testDest2->getFloor())].printInventory();
+				break;
 			}
-			testDest1->addToInventory(testItem2);
-			if(DEBUG) {
-			  cout<<"for test 2"<<endl;
-                          robotPtr newTest = new Robot(32, 1, 8, 16, 0, testDest1);
-                          newTest->getDests()->printInventory();
-                        }
-			
-			testDest1->addToInventory(testItem3); 
-			
-			if(DEBUG) {
-			  cout<<"for test 3"<< endl;
-                          robotPtr newTest = new Robot(32, 1, 8, 16, 0, testDest1);
-                          newTest->getDests()->printInventory();
-                        }
-
-			testDest2->addToInventory(testItem4);
-			
-			robotPtr testRob = new Robot(32, 1, 8, 16, 0, testDest1);
-			testRob->addDest(testDest2);
-			
-                        //(testRob->getDests())->printInventory();
-
-			//Test that item inventory initialized correctly
-			(testRob->getDests())->printInventory();
-			//Travel to first destination
-			travel(testRob, SIZE);
-			
-			//See how long it takes to deliver first item
-			int deliveryTime;
-			deliveryTime = testRob->deliverItem();
-			cout<<"Time that the robot will finish delivering its first item: "<<deliveryTime<<endl;
-			
-			(testRob->getDests())->removeInventoryItem();
-			//Remove first item from inventory list
-			
-			cout<<"\nRemoved delivered item from dest Inventory"<<endl;
-			cout<<"Checking for successful removal. Current Item list: "<<endl;
-			(testRob->getDests())->printInventory();
-			
-			//HERE
-			deliveryTime = testRob->deliverItem();
-			cout<<"Time that the robot will finish delivering its second item: "<<deliveryTime<<endl;
-			testRob->removeDest();
-			cout<<endl;
-			travel(testRob, SIZE);
-			break;
+		case 4: //Test of deliverItems() Alexi
+			{
+				int deliveryTime;
+				tilePtr testDest1 = new Tile(7, 4, 6, 4, 1);
+				tilePtr testDest2 = new Tile(7, 4, 6, 4, 0);
+				
+				LocalItemPtr testItem1 = new LocalItem("A5", 5);
+				LocalItemPtr testItem2 = new LocalItem("L7", 1);
+				LocalItemPtr testItem3 = new LocalItem("D8", 10);
+				LocalItemPtr testItem4 = new LocalItem("Z2", 7);
+				
+				testDest1->addToInventory(testItem1);
+				testDest1->addToInventory(testItem2);
+				testDest1->addToInventory(testItem3);
+				testDest2->addToInventory(testItem4);
+				
+				robotPtr testRob = new Robot(40, 1, 8, 16, 0, testDest1);
+				testRob->addDest(testDest2);
+				
+				int t1 = travel(testRob, SIZE);
+				deliveryTime = testRob->deliverItems(t1);
+				
+				cout<<"Time taken to deliver all first destination items: "<<deliveryTime<<endl;
+				cout<<"Checking for successful removal. Current Item list: "<<endl;
+				(testRob->getDests())->printInventory();
+				cout<<"Inventory at store:"<<endl;
+				Mall[(testDest1->getRow())][(testDest1->getCol())][(testDest1->getFloor())].printInventory();
+				
+				break;
 			}
+		case 5: //Test of EventList and EventNode
+			{
+				EventList *testList = new EventList();
+				Robot *testRobot = new Robot(5);
+				Shopper *testShopper = new Shopper(7);
+				
+				//if(DEBUG) cout<< "passed assignment"<<endl;
+				/*
+				testList->addNewEvent(0, testRobot, 0);
+				testList->addNewEvent(0, testShopper, 1);
+				testList->addNewEvent(5, testRobot, 0);
+				testList->addNewEvent(4, testShopper, 3);
+				testList->addNewEvent(7, testRobot, 2);
+				*/
+				scanRobots();
 
-	case 4:
-	  {
-	    EventList *testList = new EventList();
-	    Robot *testRobot = new Robot(5);
-	    Shopper *testShopper = new Shopper(7);
-	    
-	    //if(DEBUG) cout<< "passed assignment"<<endl;
-	    /*
-	    testList->addNewEvent(0, testRobot, 0);
-	    testList->addNewEvent(0, testShopper, 1);
-	    testList->addNewEvent(5, testRobot, 0);
-	    testList->addNewEvent(4, testShopper, 3);
-	    testList->addNewEvent(7, testRobot, 2);
-	    */
-	    scanRobots();
-
-	    if(DEBUG) cout<<"Passed adding"<<endl;
-	    testList->print();
-	  }
+				if(DEBUG) cout<<"Passed adding"<<endl;
+				testList->print();
+			}
 
 	  break;
 		default:

@@ -1,3 +1,7 @@
+/* Functions for movement of robots in mall. Originally adapted from code by Professor Robert Kinicki, but now
+modified to fit the new models.
+Author: Alexi Kessler */
+
 #ifndef MOVEMENT_CPP
 #define MOVEMENT_CPP
 
@@ -69,7 +73,7 @@ int move (int cur[], int des[], int size)
 }
 
 /* travel function takes robot  from 'from' location to 'to' location */
-void travel (robotPtr robot, int size)
+int travel (robotPtr robot, int size)
 {
 	int from[SIZE];
 	int to[SIZE];
@@ -81,7 +85,7 @@ void travel (robotPtr robot, int size)
 	to[FLOOR] = (robot->getDests())->getFloor();
 	if (DEBUGTRAVEL)
 	{
-		cout<<"From Position: Row: "<<from[ROW]<<" Col: "<<from[COL]<<" Floor: "<<from[FLOOR]<<endl;
+		cout<<"\nFrom Position: Row: "<<from[ROW]<<" Col: "<<from[COL]<<" Floor: "<<from[FLOOR]<<endl;
 		cout<<"To Position: Row: "<<to[ROW]<<" Col: "<<to[COL]<<" Floor: "<<to[FLOOR]<<endl;
 	}
 	int cntr = 0;        // cntr used to check for infinite loop
@@ -97,7 +101,7 @@ void travel (robotPtr robot, int size)
      cntr++;
 	}
 	if (DEBUGTRAVEL)
-		cout<<"Time to move to destination: "<<cntr<<endl;
+	cout<<"Time to move to destination: "<<cntr<<endl<<endl;
 	robot->setR(to[ROW]);
 	robot->setC(to[COL]);
 	robot->setF(to[FLOOR]);
@@ -107,7 +111,7 @@ void travel (robotPtr robot, int size)
      printf ("\n Infinite Loop"); 
      exit(EXIT_FAILURE);
 	}
-	return;
+	return cntr;
  }
  
 void printtravel(int tsimTime [][2], int robots)

@@ -1,5 +1,5 @@
 /* Class implementation for the robots that deliver items in program 5
-Author: Alexi Kessler */
+Author of functions: Alexi Kessler unless stated otherwise*/
 #ifndef ROBOT_CPP
 #define ROBOT_CPP
 
@@ -8,12 +8,14 @@ Author: Alexi Kessler */
 #include "tile.h"
 #include "localItem.h"
 #include "externals.h"
-#define DELIVER 1
+
+#define DELIVER 0
+#define DEBUGDELIVER 0 
 
 #include <iostream>
 using namespace std;
 
-int DEBUGDELIVER =1;
+
 
 //Constructors
 Robot::Robot()
@@ -168,38 +170,42 @@ int Robot::deliverItem() //Alexi
 	c = Dests->getCol();
 	f = Dests->getFloor();
 	LocalItemPtr itemToAdd = Dests->getInventory();
-
 	time = itemToAdd->getCount();
 	if (DEBUGDELIVER){
 		cout<<"\nAdding item: "<<endl;
 		itemToAdd->printLocalItem();
-		  cout<<"to store inventory\n"<<endl;
+		cout<<"to store inventory\n"<<endl;
 		Mall[r][c][f].printInventory();
 	}
 	Mall[r][c][f].addToInventory(itemToAdd);  //Add to local inventory
 	if (DEBUGDELIVER)
-		cout<<"\nAdded item to store inventory, printing Mall Store inventory after addition"<<endl;
-		Mall[r][c][f].printInventory();
-
+	{
+		cout<<"\nAdded item to store inventory"<<endl;
+		//printing Mall Store inventory after addition"<<endl;
+		//Mall[r][c][f].printInventory();
+	}
 	return time;
 }
-
-
 int Robot::deliverItems(int startTime) //Alexi
 {
-	int totalTime;
-	int singleTime;
+	int totalTime = 0;
+	int singleTime = 0;
+	int counter = 0;
+	int numItems;
+	numItems = Dests->sizeInventory();
+	
 	tilePtr dest = getDests();
 	LocalItemPtr invPtr = dest->getInventory();
-	LocalItemPtr curr;
-	LocalItemPtr prev;
-	curr = invPtr;
-	while (curr!= NULL)
+	
+	for (counter = 0; counter<numItems; counter++)
 	{
-	  if(DELIVER) cout<< "in while for deliver items" <<endl;
-		curr = curr->getNext();
 		singleTime = deliverItem();
+		if (DELIVER) 
+			cout<<"Amount of time taken to deliver individual item: "<<singleTime<<endl;
+		Dests->removeInventoryItem();
 		totalTime+=singleTime;
+		if (DELIVER) 
+			cout<<"Total time after delivery of item: "<<totalTime<<endl;
 	}
 	//CREATE EVENT
 	return (totalTime+startTime);
