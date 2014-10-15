@@ -250,11 +250,14 @@ void scanRobots(){
   }
 }
 
-/*
+
 void readShoppers(){
   int numShoppers, arrival, numItems, itemCnt;
   std::string itemName;
 
+  //-1 -1 -1 location, type, etc means hasn't been shopper-apped yet.
+  Tile *shopperTile = new Tile(-1, -1, -1, -1, -1);
+  
   cout<< "Input number of shoppers: "<<endl;
   cin >> numShoppers;
   for (int i = 0; i < numShoppers; i++){
@@ -262,22 +265,23 @@ void readShoppers(){
     cin >> arrival;
     cout<<"Input number of items to buy" <<endl;
     cin >> numItems;
-
-    Shopper tempShopper = new Shopper(arrival, itemCnt);
+    
+    Shopper *tempShopper = new Shopper(arrival, itemCnt);
     for (int j = 0; j < itemCnt; j++){
-
+      
       cout << "Input item name:" <<endl;
       cin >>  itemName;
       cout << "input item count:" <<endl;
       cin >> itemCnt;
-
-      //I AM NOT SURE WHERE TO GO FROM HERE
+      
+      LocalItem *newItem = new LocalItem(itemName, itemCnt);
+      shopperTile->addToInventory(newItem);
     }
-
+    tempShopper->addDest(shopperTile);
+    mallEvents->addNewEvent(arrival, tempShopper, 0);
   }
-
+  
 }
-*/
 
 
 //Returns the end time
