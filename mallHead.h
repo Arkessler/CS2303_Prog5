@@ -14,7 +14,7 @@ bool RobNotInEmpty();
 int init_mall ();
 
 int move (int cur[], int des[], int size);
-void travel (robotPtr robot, int size);
+int travel (robotPtr robot, int size);
 void printtravel(int tsimTime [][2], int robots);
 
 void printloc (int []);

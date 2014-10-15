@@ -27,23 +27,16 @@ bool IsEqual(int now[], int des[])
 
 bool RobNotInEmpty()
 {
-	bool empty;
-	empty = true;
-	int counter;
-	for (counter = 0; counter<MAX_ROBOTS; counter++)
-	{
-		if (&(RobotsNotInSim[counter])!=NULL)
-			empty = false;
-	}
-	return empty;
+
 }
 void instructions()
 {
 	cout<<"Choice 0 tests: Robot getter/setters Robot tileAdd\n";
 	cout<<"Choice 1 tests: Scanning in Robots"<<endl;
 	cout<<"Choice 2 tests: Travel function taking robotPtr"<<endl;
-	  cout<<"Choice 3 tests: deliverItems()"<<endl;
-	cout<<"Choice 4 tests: EventList inserting"<<endl;
+	cout<<"Choice 3 tests: deliverItem()"<<endl;
+	cout<<"Choice 4 tests: deliverItems()"<<endl;
+	cout<<"Choice 5 tests: ?"<<endl;
 	cout<<"Please enter test choice\n";
 }
 #endif

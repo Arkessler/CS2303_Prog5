@@ -1,5 +1,5 @@
 /* Implementation of tile functions
-Author: Alexi Kessler */
+Author of functions: Alexi Kessler unless stated otherwise */
 #ifndef TILE_CPP
 #define TILE_CPP
 
@@ -7,7 +7,7 @@ Author: Alexi Kessler */
 #include "tile.h"
 #include <iostream>
 
-#define DEBUGTILE 1
+#define DEBUGTILE 0
 using namespace std;
 
 //Constructor
@@ -107,17 +107,38 @@ void Tile::setInventory(LocalItemPtr newInventory){ //Max
   inventory = newInventory;
 }
 
+int Tile::sizeInventory()
+{
+	LocalItemPtr curr = NULL;
+	LocalItemPtr prev = NULL;
+	curr = inventory;
+	int count;
+	if (curr == NULL)
+	{
+		return 0;
+	} else {
+		while (curr!=NULL)
+		{
+			prev = curr;
+			curr = curr->getNext();
+			count++;
+		}
+		return count;
+	}
+}
 void Tile::addToInventory(LocalItemPtr toAdd){ //Max
   //If inventory is null, set inventory to toAdd.
- 
-  if(DEBUGTILE)cout<<"in addInventory"<<endl;
+	
+	if(DEBUGTILE)cout<<"Currently running addToInventory"<<endl;
 
-  if(getInventory() == NULL){
-    if(DEBUGTILE) cout<<"NULL INVENTORY"<<endl;
-    inventory = toAdd;
-    //toAdd = toAdd->getNext();
-    return;
-  }
+	if(getInventory() == NULL) //Inventory empty
+	{
+		if(DEBUGTILE) cout<<"Inventory empty, adding item"<<endl;
+		inventory = toAdd;
+		toAdd = toAdd->getNext();
+		//inventory->setNext(NULL);
+	return;
+	}
 
   else{
     if(DEBUGTILE) cout<<"else"<<endl;
@@ -127,10 +148,7 @@ void Tile::addToInventory(LocalItemPtr toAdd){ //Max
     
     //if(DEBUGTILE) cout<<"after init"<<endl;
 
-    if(curr == NULL){
-      inventory = toAdd;
-    }
-    else if(curr->getNext() == NULL){
+	if(curr->getNext() == NULL){
       cout<<"HERE, getNext null"<<endl;
       inventory->setNext(toAdd);
     }
@@ -174,21 +192,20 @@ void Tile::removeInventoryItem() //Alexi
 	else 
 	{
 	  cout<<"removing item"<<endl;
-
 		LocalItemPtr curr = NULL;
 		LocalItemPtr prev = NULL;
 		curr = inventory;
 		prev = curr;
 		curr = curr->getNext();
 		inventory = curr;
-		delete(prev);
+		prev -> setNext(NULL);
 	}
 }
 
 void Tile::printInventory() //Alexi
 {
 	if (inventory==NULL){
-		cout<<"Inventory is empty!"<<endl;
+		cout<<"Can't print Inventory, it is empty"<<endl;
 	} else {
 		LocalItemPtr curr = NULL;
 		curr = inventory;
