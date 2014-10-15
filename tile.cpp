@@ -6,6 +6,8 @@ Author: Alexi Kessler */
 #include "globals.h"
 #include "tile.h"
 #include <iostream>
+
+#define DEBUGTILE 1
 using namespace std;
 
 //Constructor
@@ -107,24 +109,58 @@ void Tile::setInventory(LocalItemPtr newInventory){ //Max
 
 void Tile::addToInventory(LocalItemPtr toAdd){ //Max
   //If inventory is null, set inventory to toAdd.
-  if(!inventory){
+ 
+  if(DEBUGTILE)cout<<"in addInventory"<<endl;
+
+  if(getInventory() == NULL){
+    if(DEBUGTILE) cout<<"NULL INVENTORY"<<endl;
     inventory = toAdd;
+    //toAdd = toAdd->getNext();
+    return;
   }
+
   else{
+    if(DEBUGTILE) cout<<"else"<<endl;
     LocalItemPtr curr = NULL;
     LocalItemPtr prev = NULL;
     curr = inventory;
-    //Currently adding to end of list, unsorted.  Can sort using id_compare(newItem)=> returns 0 if same, 1 if new is lower in 
-    while (curr != NULL && curr->id_compare(toAdd) != 0){
-      prev = curr;
-      curr = curr->getNext();
-    }
+    
+    //if(DEBUGTILE) cout<<"after init"<<endl;
+
     if(curr == NULL){
-      toAdd->setNext(inventory);
-      setInventory(toAdd);
+      inventory = toAdd;
+    }
+    else if(curr->getNext() == NULL){
+      cout<<"HERE, getNext null"<<endl;
+      inventory->setNext(toAdd);
     }
     else{
-      curr->setCount(curr->getCount() + toAdd->getCount());
+      cout<<(toAdd->getName())<<" vs ";
+      cout<<(curr == NULL)<<endl;
+      //Currently adding to end of list, unsorted.  Can sort using id_compare(newItem)=> returns 0 if same, 1 if new is lower in 
+      while (curr != NULL && curr->id_compare(toAdd) != 0 && curr->getNext() != NULL){
+	prev = curr;
+	//if(DEBUGTILE) cout<<"before getNext"<<endl;
+	curr = curr->getNext();
+	//if(DEBUGTILE) cout<<"end of while"<<endl;
+      }
+      
+      if(DEBUGTILE) cout<<"after while addToInventory"<<endl;
+      
+      if(curr == NULL){
+	if(DEBUGTILE) cout << "prev->setNext(toAdd)"<<endl;
+	prev->setNext(toAdd);
+	//toAdd->setNext(inventory);
+      //setInventory(toAdd);
+      }
+      else if(curr->getNext() == NULL){
+	if(DEBUGTILE)cout<< "curr->getNext() == NULL"<<endl;
+	curr->setNext(toAdd);
+      }
+      else{
+	if(DEBUGTILE) cout<< "curr->id_compare != 0"<<endl;
+	curr->setCount(curr->getCount() + toAdd->getCount());
+      }
     }
   }
 }
@@ -137,6 +173,8 @@ void Tile::removeInventoryItem() //Alexi
 	}
 	else 
 	{
+	  cout<<"removing item"<<endl;
+
 		LocalItemPtr curr = NULL;
 		LocalItemPtr prev = NULL;
 		curr = inventory;

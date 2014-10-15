@@ -100,27 +100,51 @@ int main () //Author: Alexi
 			LocalItemPtr testItem4 = new LocalItem("Z2", 7);
 			
 			testDest1->addToInventory(testItem1);
+			if(DEBUG) {
+			  cout<< "for test 1"<<endl;
+			  robotPtr newTest = new Robot(32, 1, 8, 16, 0, testDest1);
+			  newTest->getDests()->printInventory();
+			}
 			testDest1->addToInventory(testItem2);
-			testDest1->addToInventory(testItem3);
+			if(DEBUG) {
+			  cout<<"for test 2"<<endl;
+                          robotPtr newTest = new Robot(32, 1, 8, 16, 0, testDest1);
+                          newTest->getDests()->printInventory();
+                        }
+			
+			testDest1->addToInventory(testItem3); 
+			
+			if(DEBUG) {
+			  cout<<"for test 3"<< endl;
+                          robotPtr newTest = new Robot(32, 1, 8, 16, 0, testDest1);
+                          newTest->getDests()->printInventory();
+                        }
+
 			testDest2->addToInventory(testItem4);
 			
 			robotPtr testRob = new Robot(32, 1, 8, 16, 0, testDest1);
 			testRob->addDest(testDest2);
 			
+                        //(testRob->getDests())->printInventory();
+
 			//Test that item inventory initialized correctly
 			(testRob->getDests())->printInventory();
 			//Travel to first destination
 			travel(testRob, SIZE);
+			
 			//See how long it takes to deliver first item
 			int deliveryTime;
 			deliveryTime = testRob->deliverItem();
 			cout<<"Time that the robot will finish delivering its first item: "<<deliveryTime<<endl;
+			
 			(testRob->getDests())->removeInventoryItem();
 			//Remove first item from inventory list
+			
 			cout<<"\nRemoved delivered item from dest Inventory"<<endl;
 			cout<<"Checking for successful removal. Current Item list: "<<endl;
 			(testRob->getDests())->printInventory();
 			
+			//HERE
 			deliveryTime = testRob->deliverItem();
 			cout<<"Time that the robot will finish delivering its second item: "<<deliveryTime<<endl;
 			testRob->removeDest();

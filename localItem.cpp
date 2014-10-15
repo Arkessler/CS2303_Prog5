@@ -5,7 +5,7 @@ Author:Alexi Kessler */
 
 #include "globals.h"
 #include "localItem.h"
-
+#include <cstring>
 //Constructors.
 
 LocalItem::LocalItem(){
@@ -27,23 +27,38 @@ LocalItem::LocalItem(string newName, int count){
 //returns -1 new item is earlier than the current item, 0 if they are the same
 // and 1 if new item is later than current item.
 int LocalItem::id_compare(LocalItemPtr newLocalItem){
-  string current = getName();
-  string new_id = newLocalItem->getName();
 
-  if ( current.compare(new_id) < 0){  //if new is lower than current
-    return 1;
-  }
-  else if(current.compare(new_id) == 0){ // if new is the same as current
-    return 0;
-  }
-  else {  //if new is higher than current
+  if (newLocalItem == NULL){
+    cout<<"item to add is NULL !!!!!!!!!!!!!!!"<<endl;
     return -1;
   }
+  else{
+    //cout<<"Normal function"<<endl;
+    string current = getName();
+    
+    string compare = newLocalItem->getName();
 
+    //cout<<(newLocalItem == NULL)<<endl;
+
+    std::string new_id = newLocalItem->getName();
+    
+    //cout<<"correctly works idcompare"<<endl<<flush;
+    
+    if ( current.compare(new_id) < 0){  //if new is lower than current
+      return 1;
+    }
+    else if(current.compare(new_id) == 0){ // if new is the same as current
+      return 0;
+    }
+    else {  //if new is higher than current
+      return -1;
+    }
+  }
 }
 
 //Setters and getters
 string LocalItem::getName(){
+  //cout<<name<<endl;
   return name;
 }
 

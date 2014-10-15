@@ -8,6 +8,7 @@ Author: Alexi Kessler */
 #include "tile.h"
 #include "localItem.h"
 #include "externals.h"
+#define DELIVER 1
 
 #include <iostream>
 using namespace std;
@@ -167,26 +168,26 @@ int Robot::deliverItem() //Alexi
 	c = Dests->getCol();
 	f = Dests->getFloor();
 	LocalItemPtr itemToAdd = Dests->getInventory();
-	//itemToAdd->printLocalItem();
+	itemToAdd->printLocalItem();
 	time = itemToAdd->getCount();
-	if (DEBUGDELIVER)
-		cout<<"Adding item to store inventory"<<endl;
+	if (DEBUGDELIVER) cout<<"Adding item to store inventory"<<endl;
 	Mall[r][c][f].addToInventory(itemToAdd);  //Add to local inventory
 	if (DEBUGDELIVER)
-		cout<<"Added item to store inventory"<<endl;
+	  cout<<"Added item to store inventory"<<endl;
 	return time;
 }
 int Robot::deliverItems(int startTime) //Alexi
 {
 	int totalTime;
 	int singleTime;
-	tilePtr dest = Dests;
+	tilePtr dest = getDests();
 	LocalItemPtr invPtr = dest->getInventory();
 	LocalItemPtr curr;
 	LocalItemPtr prev;
 	curr = invPtr;
 	while (curr!= NULL)
 	{
+	  if(DELIVER) cout<< "in while for deliver items" <<endl;
 		curr = curr->getNext();
 		singleTime = deliverItem();
 		totalTime+=singleTime;
@@ -194,6 +195,7 @@ int Robot::deliverItems(int startTime) //Alexi
 	//CREATE EVENT
 	return (totalTime+startTime);
 }
+
 //Print Functions
 void Robot::printRobot() //Alexi
 {
