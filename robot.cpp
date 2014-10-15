@@ -167,7 +167,7 @@ int Robot::deliverItem() //Alexi
 	Mall[r][c][f].addToInventory(itemToAdd);
 	
 }
-void Robot::deliverItems(int startTime) //Alexi
+int Robot::deliverItems(int startTime) //Alexi
 {
 	int totalTime;
 	int singleTime;
@@ -183,6 +183,7 @@ void Robot::deliverItems(int startTime) //Alexi
 		totalTime+=singleTime;
 	}
 	//CREATE EVENT
+	return (totalTime+startTime);
 }
 //Print Functions
 void Robot::printRobot() //Alexi
