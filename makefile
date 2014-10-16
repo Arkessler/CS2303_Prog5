@@ -21,7 +21,7 @@ decide.o : externals.h globals.h decide.cpp
 small.o : externals.h small.cpp
 	$(CC) $(CFLAGS) small.cpp
 
-robot.o :robot.cpp robot.h tile.h 
+robot.o :robot.cpp robot.h tile.h binTree.h 
 	$(CC) $(CFLAGS) robot.cpp
 
 movement.o: movement.cpp 
