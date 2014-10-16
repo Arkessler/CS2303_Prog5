@@ -1,0 +1,700 @@
+       0 1 2 3 4 5 6 7 8 910111213141516
+  0                1 1 2 1 1            
+  1              1     1     1          
+  2            1       1       1        
+  3          4         1         4      
+  4        1   7   7 5 3 5 7   7   1    
+  5      1             1             1  
+  6    1       7       1       7       1
+  7    1       5       1       5       1
+  8    2 1 1 1 3 1 1 1 6 1 1 1 3 1 1 1 1
+  9    1       5       1       5       1
+ 10    1       7       1       7       1
+ 11      1             1             1  
+ 12        1   7   7 5 3 5 7   7   1    
+ 13          4         1         4      
+ 14            1       1       1        
+ 15              1     1     1          
+ 16                1 1 1 1 1            
+                0 Floor Types
+
+       0 1 2 3 4 5 6 7 8 910111213141516
+  0                1 1 1 1 1            
+  1              1     1     1          
+  2            1       1       1        
+  3          4         1         4      
+  4        1   7   7 5 3 5 7   7   1    
+  5      1             1             1  
+  6    1       7       1       7       1
+  7    1       5       1       5       1
+  8    1 1 1 1 3 1 1 1 6 1 1 1 3 1 1 1 2
+  9    1       5       1       5       1
+ 10    1       7       1       7       1
+ 11      1             1             1  
+ 12        1   7   7 5 3 5 7   7   1    
+ 13          4         1         4      
+ 14            1       1       1        
+ 15              1     1     1          
+ 16                1 1 2 1 1            
+                1 Floor Types
+
+       0 1 2 3 4 5 6 7 8 910111213141516
+  0                5 6 6 6 6            
+  1              5     4     7          
+  2            5       4       7        
+  3          5         4         7      
+  4        5   7   2 2 4 6 6   1   7    
+  5      5             4             7  
+  6    4       4       4       4       7
+  7    4       4       4       4       0
+  8    4 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 0
+  9    4       0       4       0       0
+ 10    3       0       4       0       0
+ 11      3             4             1  
+ 12        3   5   2 2 4 6 6   3   1    
+ 13          3         4         1      
+ 14            3       4       1        
+ 15              3     4     1          
+ 16                2 2 2 2 1            
+                0 Floor Steps
+
+       0 1 2 3 4 5 6 7 8 910111213141516
+  0                2 2 2 2 3            
+  1              1     0     3          
+  2            1       0       3        
+  3          1         0         3      
+  4        1   7   2 2 0 6 6   1   3    
+  5      1             0             3  
+  6    1       4       0       4       4
+  7    0       4       0       4       4
+  8    0 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 4
+  9    0       0       0       0       4
+ 10    0       0       0       0       5
+ 11      7             0             5  
+ 12        7   5   2 2 0 6 6   3   5    
+ 13          7         0         5      
+ 14            7       0       5        
+ 15              7     0     5          
+ 16                7 6 6 6 6            
+                1 Floor Steps
+
+The test Step is : 4
+The test row is : 8
+Choice 0 tests: Robot getter/setters Robot tileAdd
+Choice 1 tests: Scanning in Robots
+Choice 2 tests: Travel function taking robotPtr
+Choice 3 tests: deliverItem()
+Choice 4 tests: deliverItems()
+Choice 5 tests: ?
+Choice 6 tests: ?
+Choice 7 tests: ?
+Choice 8 tests: ?
+Choice 9 tests: ?
+Choice 10 tests: N/A
+Choice 11 tests: N/A
+Please enter test choice
+
+Robot 0 enters mall at time: 0
+
+Robot 0 delivers the following items to store ( 12 ,10 ) at time 24
+Name of LocalItem is:K9
+Local item count is: 340
+End of inventory list
+
+Robot 0 arrives at store ( 12, 10 ) on Floor 1 at time 24
+
+Robot 1 enters mall at time: 25
+
+Robot 2 enters mall at time: 50
+
+Robot 1 delivers the following items to store ( 12 ,4 ) at time 51
+Name of LocalItem is:W0
+Local item count is: 16
+Name of LocalItem is:W1
+Local item count is: 11
+Name of LocalItem is:W2
+Local item count is: 22
+Name of LocalItem is:W3
+Local item count is: 33
+Name of LocalItem is:W4
+Local item count is: 44
+Name of LocalItem is:X2
+Local item count is: 355
+Name of LocalItem is:W6
+Local item count is: 66
+Name of LocalItem is:W7
+Local item count is: 77
+Name of LocalItem is:W8
+Local item count is: 88
+Name of LocalItem is:W9
+Local item count is: 9
+End of inventory list
+
+Robot 1 arrives at store ( 12, 4 ) on Floor 1 at time 51
+
+Robot 2 delivers the following items to store ( 4 ,6 ) at time 74
+Name of LocalItem is:K9
+Local item count is: 345
+Name of LocalItem is:Z8
+Local item count is: 12
+Name of LocalItem is:B3
+Local item count is: 3
+End of inventory list
+
+Robot 2 arrives at store ( 4, 6 ) on Floor 2 at time 74
+
+Robot 3 enters mall at time: 75
+
+Robot 3 delivers the following items to store ( 10 ,4 ) at time 99
+Name of LocalItem is:A5
+Local item count is: 180
+Name of LocalItem is:X1
+Local item count is: 2
+End of inventory list
+
+Robot 3 arrives at store ( 10, 4 ) on Floor 2 at time 99
+
+Robot 4 enters mall at time: 100
+
+Robot 4 delivers the following items to store ( 10 ,4 ) at time 124
+Name of LocalItem is:K9
+Local item count is: 24
+Name of LocalItem is:Z8
+Local item count is: 112
+Name of LocalItem is:A0
+Local item count is: 100
+Name of LocalItem is:X7
+Local item count is: 12
+Name of LocalItem is:X6
+Local item count is: 2
+Name of LocalItem is:X2
+Local item count is: 200
+End of inventory list
+
+Robot 4 arrives at store ( 10, 4 ) on Floor 2 at time 124
+
+Robot 5 enters mall at time: 125
+
+Robot 6 enters mall at time: 150
+
+Robot 5 delivers the following items to store ( 4 ,12 ) at time 157
+Name of LocalItem is:J9
+Local item count is: 19
+Name of LocalItem is:J8
+Local item count is: 18
+Name of LocalItem is:J7
+Local item count is: 27
+End of inventory list
+
+Robot 5 arrives at store ( 4, 12 ) on Floor 2 at time 157
+
+Robot 6 delivers the following items to store ( 12 ,10 ) at time 174
+Name of LocalItem is:K9
+Local item count is: 14
+Name of LocalItem is:Z6
+Local item count is: 6
+Name of LocalItem is:J8
+Local item count is: 400
+Name of LocalItem is:L7
+Local item count is: 4
+Name of LocalItem is:M6
+Local item count is: 52
+Name of LocalItem is:T2
+Local item count is: 23
+Name of LocalItem is:Z8
+Local item count is: 47
+End of inventory list
+
+Robot 6 arrives at store ( 12, 10 ) on Floor 1 at time 174
+
+Robot 7 enters mall at time: 175
+
+Robot 5 leaves store ( 4, 12 ) on Floor 2 at time: 221
+
+Robot 7 delivers the following items to store ( 12 ,6 ) at time 227
+Name of LocalItem is:M9
+Local item count is: 55
+Name of LocalItem is:B8
+Local item count is: 12
+Name of LocalItem is:Z0
+Local item count is: 200
+Name of LocalItem is:M7
+Local item count is: 112
+Name of LocalItem is:X6
+Local item count is: 2
+Name of LocalItem is:X2
+Local item count is: 78
+Name of LocalItem is:Z8
+Local item count is: 7
+End of inventory list
+
+Robot 7 arrives at store ( 12, 6 ) on Floor 2 at time 227
+
+Robot 5 delivers the following items to store ( 10 ,4 ) at time 241
+Name of LocalItem is:W1
+Local item count is: 5
+Name of LocalItem is:A4
+Local item count is: 2
+Name of LocalItem is:L7
+Local item count is: 6
+Name of LocalItem is:M0
+Local item count is: 101
+Name of LocalItem is:U2
+Local item count is: 999
+Name of LocalItem is:U1
+Local item count is: 1
+Name of LocalItem is:Y2
+Local item count is: 222
+Name of LocalItem is:L6
+Local item count is: 6
+End of inventory list
+
+Robot 5 arrives at store ( 10, 4 ) on Floor 2 at time 241
+
+Robot 3 leaves store ( 10, 4 ) on Floor 2 at time: 281
+
+Robot 3 delivers the following items to store ( 12 ,12 ) at time 313
+Name of LocalItem is:H2
+Local item count is: 12
+Name of LocalItem is:P3
+Local item count is: 33
+Name of LocalItem is:A2
+Local item count is: 6
+End of inventory list
+
+Robot 3 arrives at store ( 12, 12 ) on Floor 2 at time 313
+
+Robot 3 leaves store ( 12, 12 ) on Floor 2 at time: 364
+
+Robot 0 leaves store ( 12, 10 ) on Floor 1 at time: 364
+
+Robot 3 has left the simulation at time: 386
+
+Robot 0 delivers the following items to store ( 12 ,4 ) at time 406
+Name of LocalItem is:Z8
+Local item count is: 25
+Name of LocalItem is:A0
+Local item count is: 200
+End of inventory list
+
+Robot 0 arrives at store ( 12, 4 ) on Floor 1 at time 406
+
+Robot 2 leaves store ( 4, 6 ) on Floor 2 at time: 434
+
+Robot 2 delivers the following items to store ( 12 ,4 ) at time 492
+Name of LocalItem is:W1
+Local item count is: 75
+Name of LocalItem is:C0
+Local item count is: 24
+Name of LocalItem is:Z8
+Local item count is: 5
+Name of LocalItem is:A0
+Local item count is: 1
+Name of LocalItem is:K9
+Local item count is: 14
+End of inventory list
+
+Robot 2 arrives at store ( 12, 4 ) on Floor 1 at time 492
+
+Robot 4 leaves store ( 10, 4 ) on Floor 2 at time: 574
+
+Robot 4 delivers the following items to store ( 4 ,4 ) at time 586
+Name of LocalItem is:Z9
+Local item count is: 120
+End of inventory list
+
+Robot 4 arrives at store ( 4, 4 ) on Floor 2 at time 586
+
+Robot 2 leaves store ( 12, 4 ) on Floor 1 at time: 611
+
+Robot 0 leaves store ( 12, 4 ) on Floor 1 at time: 631
+
+Robot 2 delivers the following items to store ( 4 ,10 ) at time 651
+Name of LocalItem is:W8
+Local item count is: 92
+End of inventory list
+
+Robot 2 arrives at store ( 4, 10 ) on Floor 2 at time 651
+
+Robot 0 delivers the following items to store ( 4 ,6 ) at time 671
+Name of LocalItem is:B3
+Local item count is: 10
+Name of LocalItem is:C3
+Local item count is: 20
+Name of LocalItem is:D3
+Local item count is: 30
+Name of LocalItem is:E4
+Local item count is: 40
+Name of LocalItem is:F5
+Local item count is: 50
+Name of LocalItem is:G6
+Local item count is: 88
+End of inventory list
+
+Robot 0 arrives at store ( 4, 6 ) on Floor 2 at time 671
+
+Robot 7 leaves store ( 12, 6 ) on Floor 2 at time: 693
+
+Robot 4 leaves store ( 4, 4 ) on Floor 2 at time: 706
+
+Robot 7 has left the simulation at time: 707
+
+Robot 6 leaves store ( 12, 10 ) on Floor 1 at time: 720
+
+Robot 2 leaves store ( 4, 10 ) on Floor 2 at time: 743
+
+Robot 4 delivers the following items to store ( 4 ,12 ) at time 744
+Name of LocalItem is:H2
+Local item count is: 14
+Name of LocalItem is:F5
+Local item count is: 52
+End of inventory list
+
+Robot 4 arrives at store ( 4, 12 ) on Floor 1 at time 744
+
+Robot 6 delivers the following items to store ( 4 ,4 ) at time 752
+Name of LocalItem is:N7
+Local item count is: 84
+Name of LocalItem is:N8
+Local item count is: 46
+Name of LocalItem is:N9
+Local item count is: 38
+End of inventory list
+
+Robot 6 arrives at store ( 4, 4 ) on Floor 1 at time 752
+
+Robot 1 leaves store ( 12, 4 ) on Floor 1 at time: 772
+
+Robot 2 delivers the following items to store ( 4 ,10 ) at time 791
+Name of LocalItem is:E4
+Local item count is: 41
+Name of LocalItem is:F5
+Local item count is: 51
+Name of LocalItem is:K9
+Local item count is: 100
+Name of LocalItem is:A6
+Local item count is: 144
+End of inventory list
+
+Robot 2 arrives at store ( 4, 10 ) on Floor 1 at time 791
+
+Robot 4 leaves store ( 4, 12 ) on Floor 1 at time: 810
+
+Robot 1 delivers the following items to store ( 4 ,6 ) at time 812
+Name of LocalItem is:X7
+Local item count is: 7
+Name of LocalItem is:X6
+Local item count is: 6
+Name of LocalItem is:X5
+Local item count is: 5
+Name of LocalItem is:X4
+Local item count is: 400
+Name of LocalItem is:X3
+Local item count is: 3
+Name of LocalItem is:X2
+Local item count is: 9
+Name of LocalItem is:X1
+Local item count is: 11
+End of inventory list
+
+Robot 1 arrives at store ( 4, 6 ) on Floor 2 at time 812
+
+Robot 4 delivers the following items to store ( 6 ,4 ) at time 832
+Name of LocalItem is:N0
+Local item count is: 4
+Name of LocalItem is:N1
+Local item count is: 6
+Name of LocalItem is:N2
+Local item count is: 8
+End of inventory list
+
+Robot 4 arrives at store ( 6, 4 ) on Floor 1 at time 832
+
+Robot 4 leaves store ( 6, 4 ) on Floor 1 at time: 850
+
+Robot 4 delivers the following items to store ( 6 ,4 ) at time 862
+Name of LocalItem is:R2
+Local item count is: 100
+Name of LocalItem is:D2
+Local item count is: 200
+Name of LocalItem is:S3
+Local item count is: 300
+Name of LocalItem is:E3
+Local item count is: 400
+Name of LocalItem is:T5
+Local item count is: 500
+End of inventory list
+
+Robot 4 arrives at store ( 6, 4 ) on Floor 2 at time 862
+
+Robot 0 leaves store ( 4, 6 ) on Floor 2 at time: 909
+
+Robot 6 leaves store ( 4, 4 ) on Floor 1 at time: 920
+
+Robot 6 delivers the following items to store ( 6 ,4 ) at time 940
+Name of LocalItem is:P3
+Local item count is: 33
+Name of LocalItem is:P9
+Local item count is: 99
+End of inventory list
+
+Robot 6 arrives at store ( 6, 4 ) on Floor 2 at time 940
+
+Robot 0 has left the simulation at time: 941
+
+Robot 6 leaves store ( 6, 4 ) on Floor 2 at time: 1072
+
+Robot 6 delivers the following items to store ( 10 ,12 ) at time 1104
+Name of LocalItem is:Q8
+Local item count is: 4
+End of inventory list
+
+Robot 6 arrives at store ( 10, 12 ) on Floor 2 at time 1104
+
+Robot 6 leaves store ( 10, 12 ) on Floor 2 at time: 1108
+
+Robot 2 leaves store ( 4, 10 ) on Floor 1 at time: 1127
+
+Robot 2 delivers the following items to store ( 4 ,6 ) at time 1131
+Name of LocalItem is:X7
+Local item count is: 7
+End of inventory list
+
+Robot 2 arrives at store ( 4, 6 ) on Floor 1 at time 1131
+
+Robot 2 leaves store ( 4, 6 ) on Floor 1 at time: 1138
+
+Robot 6 delivers the following items to store ( 12 ,6 ) at time 1148
+Name of LocalItem is:L7
+Local item count is: 200
+Name of LocalItem is:Y2
+Local item count is: 34
+Name of LocalItem is:Z8
+Local item count is: 1
+End of inventory list
+
+Robot 6 arrives at store ( 12, 6 ) on Floor 2 at time 1148
+
+Robot 2 delivers the following items to store ( 10 ,4 ) at time 1150
+Name of LocalItem is:W1
+Local item count is: 60
+Name of LocalItem is:C0
+Local item count is: 30
+Name of LocalItem is:Z8
+Local item count is: 6
+Name of LocalItem is:A0
+Local item count is: 900
+Name of LocalItem is:K9
+Local item count is: 3
+Name of LocalItem is:W0
+Local item count is: 100
+Name of LocalItem is:W9
+Local item count is: 18
+Name of LocalItem is:B3
+Local item count is: 200
+Name of LocalItem is:X7
+Local item count is: 70
+Name of LocalItem is:X1
+Local item count is: 12
+End of inventory list
+
+Robot 2 arrives at store ( 10, 4 ) on Floor 2 at time 1150
+
+Robot 1 leaves store ( 4, 6 ) on Floor 2 at time: 1253
+
+Robot 1 delivers the following items to store ( 4 ,4 ) at time 1301
+Name of LocalItem is:K9
+Local item count is: 99
+Name of LocalItem is:A0
+Local item count is: 88
+Name of LocalItem is:Z8
+Local item count is: 300
+Name of LocalItem is:B3
+Local item count is: 101
+End of inventory list
+
+Robot 1 arrives at store ( 4, 4 ) on Floor 1 at time 1301
+
+Robot 6 leaves store ( 12, 6 ) on Floor 2 at time: 1383
+
+Robot 6 delivers the following items to store ( 12 ,12 ) at time 1403
+Name of LocalItem is:A0
+Local item count is: 5
+Name of LocalItem is:S2
+Local item count is: 8
+End of inventory list
+
+Robot 6 arrives at store ( 12, 12 ) on Floor 1 at time 1403
+
+Robot 6 leaves store ( 12, 12 ) on Floor 1 at time: 1416
+
+Robot 6 delivers the following items to store ( 4 ,6 ) at time 1446
+Name of LocalItem is:K8
+Local item count is: 26
+Name of LocalItem is:Z8
+Local item count is: 6
+Name of LocalItem is:H0
+Local item count is: 14
+Name of LocalItem is:Z9
+Local item count is: 432
+Name of LocalItem is:L8
+Local item count is: 282
+End of inventory list
+
+Robot 6 arrives at store ( 4, 6 ) on Floor 2 at time 1446
+
+Robot 5 leaves store ( 10, 4 ) on Floor 2 at time: 1583
+
+Robot 5 delivers the following items to store ( 6 ,12 ) at time 1623
+Name of LocalItem is:Z8
+Local item count is: 18
+Name of LocalItem is:K9
+Local item count is: 9
+End of inventory list
+
+Robot 5 arrives at store ( 6, 12 ) on Floor 1 at time 1623
+
+Robot 5 leaves store ( 6, 12 ) on Floor 1 at time: 1650
+
+Robot 5 delivers the following items to store ( 10 ,4 ) at time 1682
+Name of LocalItem is:C3
+Local item count is: 10
+Name of LocalItem is:G3
+Local item count is: 30
+Name of LocalItem is:F4
+Local item count is: 40
+Name of LocalItem is:H5
+Local item count is: 50
+Name of LocalItem is:L6
+Local item count is: 288
+End of inventory list
+
+Robot 5 arrives at store ( 10, 4 ) on Floor 1 at time 1682
+
+Robot 1 leaves store ( 4, 4 ) on Floor 1 at time: 1889
+
+Robot 1 delivers the following items to store ( 12 ,12 ) at time 1911
+Name of LocalItem is:B3
+Local item count is: 24
+Name of LocalItem is:Z8
+Local item count is: 8
+Name of LocalItem is:M1
+Local item count is: 11
+Name of LocalItem is:N2
+Local item count is: 654
+Name of LocalItem is:P3
+Local item count is: 36
+Name of LocalItem is:R9
+Local item count is: 75
+Name of LocalItem is:S2
+Local item count is: 2
+Name of LocalItem is:W7
+Local item count is: 78
+End of inventory list
+
+Robot 1 arrives at store ( 12, 12 ) on Floor 1 at time 1911
+
+Robot 5 leaves store ( 10, 4 ) on Floor 1 at time: 2100
+
+Robot 5 delivers the following items to store ( 10 ,12 ) at time 2102
+Name of LocalItem is:K8
+Local item count is: 2
+Name of LocalItem is:Z8
+Local item count is: 2
+Name of LocalItem is:A0
+Local item count is: 4
+Name of LocalItem is:J1
+Local item count is: 632
+Name of LocalItem is:J8
+Local item count is: 82
+End of inventory list
+
+Robot 5 arrives at store ( 10, 12 ) on Floor 1 at time 2102
+
+Robot 6 leaves store ( 4, 6 ) on Floor 2 at time: 2206
+
+Robot 6 has left the simulation at time: 2238
+
+Robot 4 leaves store ( 6, 4 ) on Floor 2 at time: 2362
+
+Robot 4 has left the simulation at time: 2404
+
+Robot 2 leaves store ( 10, 4 ) on Floor 2 at time: 2549
+
+Robot 2 delivers the following items to store ( 12 ,12 ) at time 2581
+Name of LocalItem is:B3
+Local item count is: 50
+End of inventory list
+
+Robot 2 arrives at store ( 12, 12 ) on Floor 2 at time 2581
+
+Robot 2 leaves store ( 12, 12 ) on Floor 2 at time: 2631
+
+Robot 2 has left the simulation at time: 2653
+
+Robot 1 leaves store ( 12, 12 ) on Floor 1 at time: 2799
+
+Robot 1 has left the simulation at time: 2805
+
+Robot 5 leaves store ( 10, 12 ) on Floor 1 at time: 2824
+
+Robot 5 delivers the following items to store ( 6 ,12 ) at time 2872
+Name of LocalItem is:W3
+Local item count is: 30
+End of inventory list
+
+Robot 5 arrives at store ( 6, 12 ) on Floor 2 at time 2872
+
+Robot 5 leaves store ( 6, 12 ) on Floor 2 at time: 2902
+
+Robot 5 delivers the following items to store ( 4 ,10 ) at time 2932
+Name of LocalItem is:B3
+Local item count is: 12
+Name of LocalItem is:Z3
+Local item count is: 20
+Name of LocalItem is:D3
+Local item count is: 30
+Name of LocalItem is:E4
+Local item count is: 9
+Name of LocalItem is:K9
+Local item count is: 15
+End of inventory list
+
+Robot 5 arrives at store ( 4, 10 ) on Floor 1 at time 2932
+
+Robot 5 leaves store ( 4, 10 ) on Floor 1 at time: 3018
+
+Robot 5 delivers the following items to store ( 12 ,4 ) at time 3058
+Name of LocalItem is:H4
+Local item count is: 42
+Name of LocalItem is:P3
+Local item count is: 13
+Name of LocalItem is:A0
+Local item count is: 21
+End of inventory list
+
+Robot 5 arrives at store ( 12, 4 ) on Floor 2 at time 3058
+
+Robot 5 leaves store ( 12, 4 ) on Floor 2 at time: 3134
+
+Robot 5 delivers the following items to store ( 12 ,6 ) at time 3174
+Name of LocalItem is:J8
+Local item count is: 8
+End of inventory list
+
+Robot 5 arrives at store ( 12, 6 ) on Floor 1 at time 3174
+
+Robot 5 leaves store ( 12, 6 ) on Floor 1 at time: 3182
+
+Robot 5 delivers the following items to store ( 12 ,10 ) at time 3250
+Name of LocalItem is:J7
+Local item count is: 6
+Name of LocalItem is:K8
+Local item count is: 8
+End of inventory list
+
+Robot 5 arrives at store ( 12, 10 ) on Floor 2 at time 3250
+
+Robot 5 leaves store ( 12, 10 ) on Floor 2 at time: 3264
+
+Robot 5 has left the simulation at time: 3278
