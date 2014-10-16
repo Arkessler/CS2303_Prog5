@@ -1,3 +1,5 @@
+/*
+All functions written by Max Li unless otherwise stated */
 #ifndef EVENTLIST_CPP
 #define EVENTLIST_CPP
 
@@ -28,7 +30,7 @@ EventNode::EventNode(int newTime, Shopper *shopIn, int type)
   :time(newTime), robotID(NULL), shopperID(shopIn), eType(type), nextPtr(NULL)
 {}
 
-void EventNode::print(){
+void EventNode::print(){ 
   //cout<< "Printing Node:" <<endl;
   cout<<"Time of Event: " << getTime()<<endl;
   std::string toPrint =
@@ -46,19 +48,19 @@ void EventNode::print(){
   cout<<"Node Type:" << get_eType()<<endl<<endl;
 }
 
-int EventNode::getTime(){
+int EventNode::getTime(){ 
   return time;
 }
 
-Robot *EventNode::getRobotID(){
+Robot *EventNode::getRobotID(){ 
   return robotID;
 }
 
-Shopper *EventNode::getShopperID(){
+Shopper *EventNode::getShopperID(){ 
   return shopperID;
 }
 
-int EventNode::get_eType(){
+int EventNode::get_eType(){ 
   return eType;
 }
 
@@ -66,7 +68,7 @@ void EventNode::checkState(){
 	//tilePtr entrance = &(Mall[8][16][0]);
   if(getRobotID() != NULL){
     switch(eType){
-    case 0:
+    case 0: //Mall arrival Author:Alexi
 		{
 		//Travel here
 		int travelTime = travel(getRobotID(), SIZE);
@@ -76,7 +78,7 @@ void EventNode::checkState(){
 		cout << "\nRobot " << getRobotID()->getID() << " enters mall at time: " << getTime() <<endl;
 		break;
 		}
-    case 1:
+    case 1: //Store arrival Author:Alexi 
 		{
 		//deliver all items
 		//add event case 2
@@ -89,21 +91,17 @@ void EventNode::checkState(){
 		if (DEBUGSTATE)
 			cout<<"adding new event of type 2"<<endl;
 		mallEvents->addNewEvent(newTime, getRobotID(), 2);
-		cout<<"Robot "<< getRobotID()->getID() << " arrives at store ( "<<getRobotID()->getDests()->getRow()<<", "<<getRobotID()->getDests()->getCol()<<" ) on Floor "<<((getRobotID()->getDests()->getFloor())+1)<<" at time "<<getTime()<<endl;
+		cout<<"\nRobot "<< getRobotID()->getID() << " arrives at store ( "<<getRobotID()->getDests()->getRow()<<", "<<getRobotID()->getDests()->getCol()<<" ) on Floor "<<((getRobotID()->getDests()->getFloor())+1)<<" at time "<<getTime()<<endl;
 		getRobotID()->removeDest();
 		
 		break;
 		}
-    case 2:
+    case 2: //Store departure Author: Alexi
 		{
 		tilePtr entrance = new Tile();
 		*entrance = Mall[8][16][0];
 		//Check eventlist
-		cout<<"\nRobot "<<getRobotID()->getID()<<" leaves store ( "
-		<<getRobotID()->getR()<<", "
-		<<getRobotID()->getC()<<" ) on Floor "
-		<<((getRobotID()->getF())+1)<<" at time"
-		<<getTime();
+		cout<<"\nRobot "<<getRobotID()->getID()<<" leaves store ( "<<getRobotID()->getR()<<", "<<getRobotID()->getC()<<" ) on Floor "<<((getRobotID()->getF())+1)<<" at time: "<<getTime()<<endl;
 		if(getRobotID()->checkDestsEmpty())//Evaluates to true if dests is empty
 		{ 
 			//Move towards entrance
@@ -124,9 +122,9 @@ void EventNode::checkState(){
 		}
 		break;
 		}
-    case 3:
+    case 3: //Mall departure Author: Alexi
 		{
-		cout << "Robot " << getRobotID()->getID() << " has left the simulation at time: " <<getTime()<< endl;
+		cout << "\nRobot " << getRobotID()->getID() << " has left the simulation at time: " <<getTime()<< endl;
 		break;
 		}
     default:
@@ -141,23 +139,57 @@ void EventNode::checkState(){
   else{ // if shopper != NULL
     switch(eType){
     case 0:
-      //run shopperApp
-      while(getShopperID()->getDest()->getInventory() != NULL){
-	getShopperID()->shopperApp(); //FIGURE OUT SHOPPER APP
-      }
-      //Travel here
+		//run shopperApp
+		while(getShopperID()->getDest()->getInventory() != NULL)
+		{
+			getShopperID()->shopperApp(getShopperID()->getDest()->getInventory()); //FIGURE OUT SHOPPER APP	  
+		}
+	  	{
+		//Travel here
+		int travelTime = travel(getRobotID(), SIZE);
+		int newTime = (getTime()+ travelTime);
+		//add arrival case
+		mallEvents->addNewEvent( newTime, getRobotID(), 1); //Not sure what time goes in here, depends on travel 
+		cout << "\nRobot " << getRobotID()->getID() << " enters mall at time: " << getTime() <<endl;
+		break;
+		}
       break;
     case 1:
       //run queue work
       break;
     case 2:
-      //Check eventlist
-      if(0){} //if condition then leave
-        break;
+		{
+	  	tilePtr entrance = new Tile();
+		*entrance = Mall[8][16][0];
+		//Check eventlist
+		cout<<"\nShopper "<<getShopperID()->getID()<<" leaves store ( "<<getShopperID()->getR()<<", "<<getShopperID()->getC()<<" ) on Floor "<<((getShopperID()->getF())+1)<<" at time: "<<getTime()<<endl;
+		if(getRobotID()->checkDestsEmpty())//Evaluates to true if dests is empty
+		{ 
+			//Move towards entrance
+			getRobotID()->addDest(entrance);
+			if (DEBUGSTATE){
+				//cout<<"Robot's destination list now: "<<endl;
+				//getRobotID()->printDests();
+			}
+			int exitTime = (getTime() + travel(getRobotID(), SIZE));
+			// add new event 3
+			mallEvents->addNewEvent(exitTime, getRobotID(), 3);
+		} else {
+		//move towards dests 
+		int travelTime = travel(getRobotID(), SIZE);
+		int newTime = travelTime + (getTime());
+		//add event 1
+		mallEvents->addNewEvent(newTime, getRobotID(), 1);
+		}
+		break;
+		}
     case 3:
       break;
     case 4:
-      break;
+      	{
+			cout << "\nShopper " << getShopperID()->getID() << " has left the simulation at time: " <<getTime()<< endl;
+			break;
+		}
     default:
       break;
     }

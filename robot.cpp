@@ -8,7 +8,6 @@ Author of functions: Alexi Kessler unless stated otherwise*/
 #include "tile.h"
 #include "localItem.h"
 #include "externals.h"
-#include "globalItem.h"
 
 #define DELIVER 0
 #define DEBUGDELIVER 0 
@@ -188,11 +187,6 @@ int Robot::deliverItem() //Alexi
 	if (DEBUGDELIVER){
 		cout<<"\nAdding item: "<<endl;
 		itemToAdd->printLocalItem();
-
-		  StorePtr tempStore = newStore(r, c, f, time, NULL);
-		  GlobalItem *tempItem = new GlobalItem(itemToAdd->getName());
-		  globalTree->addItem(tempItem, tempStore);
-
 		cout<<"to store inventory\n"<<endl;
 		Mall[r][c][f].printInventory();
 	}
@@ -219,7 +213,7 @@ int Robot::deliverItems(int startTime) //Alexi
 		}
 	tilePtr dest = getDests();
 	LocalItemPtr invPtr = dest->getInventory();
-	cout<<"Robot "<<ID<<" delivers the following items to store ( "<<dest->getRow()<<" ,"<<dest->getCol()<<" ) at time "<<startTime<<endl;
+	cout<<"\nRobot "<<ID<<" delivers the following items to store ( "<<dest->getRow()<<" ,"<<dest->getCol()<<" ) at time "<<startTime<<endl;
 	dest->printInventory();
 	for (counter = 0; counter<numItems; counter++)
 	{

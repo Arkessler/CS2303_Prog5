@@ -93,7 +93,7 @@ int travel (robotPtr robot, int size)
 	{
 		printf("Time: %d Robot leaves ", simTime);
 	}
-	printloc(from);
+	//printloc(from);
 
 	// Loop until robot arrives at store or A1
 	while(!IsEqual(from,to) &&
