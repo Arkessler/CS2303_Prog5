@@ -1,10 +1,11 @@
+
 //By Max
 #ifndef ITEM_CPP
 #define ITEM_CPP
 
-#include "global.h"
+#include "globals.h"
 #include "store_functions.cpp"
-#include "item.h"
+#include "globalItem.h"
 
 //Constructors.
 
@@ -68,7 +69,7 @@ void GlobalItem::setRight(GlobalItemPtr newPtr){
   right = newPtr;
 }
 
-TilePtr *GlobalItem::getStores(){
+StorePtr *GlobalItem::getStores(){
 	if (stores != NULL){
 		return stores;
 	} else {
@@ -76,7 +77,7 @@ TilePtr *GlobalItem::getStores(){
 	}
 }
 
-void GlobalItem::setStores(TilePtr *store){
+void GlobalItem::setStores(StorePtr *store){
   stores = store;
 }
 
@@ -86,14 +87,15 @@ void GlobalItem::printGlobalItem(){
 }
 
 //This is really expensive,
-GlobalItem *findItem(LocalItem *toFind){
-  if(id_compare(toFind->getName()) == 0){
+GlobalItem *GlobalItem::findItem(LocalItem *toFind){
+  GlobalItem *newFind = new GlobalItem(toFind->getName());
+  if(id_compare(newFind) == 0){
     return this;
   }
-  else if(id_compare(toFind->getName()) == -1){
+  else if(id_compare(newFind) == -1){
     return getLeft()->findItem(toFind);
   }
-  else if(id_compare(toFind->getName()) == 1){
+  else if(id_compare(newFind) == 1){
     return getRight()->findItem(toFind);
   }
   else return NULL;

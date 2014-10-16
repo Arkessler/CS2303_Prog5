@@ -1,7 +1,7 @@
 //This part was a joint effort.
 #ifndef ITEM_H
 #define ITEM_H
-#include "global.h"
+#include "globals.h"
 class Tile;
 
 
@@ -18,7 +18,7 @@ class GlobalItem{
 		GlobalItem *getRight();
 		void setLeft(GlobalItem *);
 		void setRight(GlobalItem *);
-		TilePtr *getStores();
+		StorePtr *getStores();
 		void setStores(StorePtr *);
 		void printGlobalItem();
 
@@ -26,7 +26,7 @@ class GlobalItem{
 		
 	private:
 		string name;
-		tilePtr *stores;
+		StorePtr *stores;
 		GlobalItem *left;
 		GlobalItem *right;
 };
