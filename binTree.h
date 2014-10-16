@@ -1,3 +1,5 @@
+/* class header for itemTree adapted from Program 4 code
+Max did the adaptation*/
 #ifndef BINTREE_H
 #define BINTREE_H
 #include "globals.h"

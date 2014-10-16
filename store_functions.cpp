@@ -1,3 +1,5 @@
+/* Functions to be used for stores in global Items
+Author: joint effort*/
 #ifndef STOREFUNCTION_CPP
 #define STOREFUNCTION_CPP
 #include "globals.h"
@@ -22,9 +24,6 @@ StorePtr newStore(int xPos, int yPos, int zPos, int count, StorePtr next)
   nStore->nextStore = next;
   return nStore;
 }
-
-
-
 
 int store_compare(StorePtr currentStore, StorePtr newStore){ //Author: Max
   if (currentStore == NULL){

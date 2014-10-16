@@ -1,4 +1,5 @@
-//This part was a joint effort.
+/* Class header for global items
+This part was a joint effort. */
 #ifndef ITEM_H
 #define ITEM_H
 #include "globals.h"

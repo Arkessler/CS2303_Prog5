@@ -1,9 +1,5 @@
-/* This file holds the fcns that decides the 
-   next step the robot will take. These fcns
-   make all the robot direction changes.       
-
+/* Decision logic for movement. Originally coded by Professor Robert Kinicki, adapted by Alexi.
 Functions are: d1,d2,d3,next,twoway and elevator.
-
 */
 #ifndef DECIDE_CPP
 #define DECIDE_CPP

@@ -1,4 +1,4 @@
-// Fig. 20.3: Listnode.h 
+// Fig. 20.3: Listnode.h Pearson Copyright 2008
 // Template ListNode class definition. 
 #ifndef LISTNODE_H 
 #define LISTNODE_H
