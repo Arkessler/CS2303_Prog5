@@ -22,6 +22,7 @@
 
 //#include "small.cpp"
 EventList *mallEvents = new EventList();
+Tree *globalTree = new Tree();
 
 int main () //Author: Alexi
 {
@@ -314,6 +315,14 @@ int main () //Author: Alexi
 	    testTree->addItem(node1, store2);
 	    testTree->addItem(node2, store3);
 	    testTree->addItem(node2, store4);
+
+	    base->getLeft();
+	    base->getRight();
+	    base->getStores();
+	    node1->getStores();
+	    node2->getStores();
+	    base->getLeft()->getStores();
+
 	    cout<< "After 9!"<<endl;
 	    break;
 	  } */

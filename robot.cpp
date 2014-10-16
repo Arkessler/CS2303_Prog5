@@ -8,6 +8,7 @@ Author of functions: Alexi Kessler unless stated otherwise*/
 #include "tile.h"
 #include "localItem.h"
 #include "externals.h"
+#include "globalItem.h"
 
 #define DELIVER 0
 #define DEBUGDELIVER 0 
@@ -187,6 +188,11 @@ int Robot::deliverItem() //Alexi
 	if (DEBUGDELIVER){
 		cout<<"\nAdding item: "<<endl;
 		itemToAdd->printLocalItem();
+
+		  StorePtr tempStore = newStore(r, c, f, time, NULL);
+		  GlobalItem *tempItem = new GlobalItem(itemToAdd->getName());
+		  globalTree->addItem(tempItem, tempStore);
+
 		cout<<"to store inventory\n"<<endl;
 		Mall[r][c][f].printInventory();
 	}
