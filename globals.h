@@ -43,7 +43,22 @@ typedef struct store{
   struct store *nextStore;
 } store;
 
+
 typedef store *StorePtr;
+
+StorePtr newStore(int xPos, int yPos, int zPos, int count, StorePtr next);
+
+  /*
+  StorePtr nStore = new store();
+  nStore->x = xPos;
+  nStore->y = yPos;
+  nStore->z = zPos;
+  nStore->itemCount = count;
+  nStore->nextStore = next;
+  return nStore;
+}
+  */
+
 
 int store_compare(StorePtr currentStore, StorePtr newStore);
 

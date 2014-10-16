@@ -37,6 +37,13 @@ void instructions()
 	cout<<"Choice 3 tests: deliverItem()"<<endl;
 	cout<<"Choice 4 tests: deliverItems()"<<endl;
 	cout<<"Choice 5 tests: ?"<<endl;
+        cout<<"Choice 6 tests: ?"<<endl;
+        cout<<"Choice 7 tests: ?"<<endl;
+        cout<<"Choice 8 tests: ?"<<endl;
+        cout<<"Choice 9 tests: ?"<<endl;
+        cout<<"Choice 10 tests: N/A"<<endl;
+        cout<<"Choice 11 tests: N/A"<<endl;
+
 	cout<<"Please enter test choice\n";
 }
 #endif

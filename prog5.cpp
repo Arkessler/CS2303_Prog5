@@ -10,6 +10,7 @@
 #include "localItem.h"
 #include "eventList.h"
 #include "externals.h"
+#include "binTree.h"
 
 #define DEBUG 0
 #define DEBUGROBSIM 0
@@ -294,8 +295,29 @@ int main () //Author: Alexi
 			/*
 	case 9:
 	  {
+
 	    Tree testTree = new Tree();
-	  } */
+	 
+
+	    Tree *testTree = new Tree();
+	    GlobalItem *base = new GlobalItem("L1");
+	    GlobalItem *node1 = new GlobalItem("F2");
+	    GlobalItem *node2 = new GlobalItem ("X1");
+
+	    StorePtr store1 = newStore(1, 2, 0, 3, NULL);
+	    StorePtr store2 = newStore(2, 4, 1, 10, NULL);
+	    StorePtr store3 = newStore(3, 1, 4, 100, NULL);
+	    StorePtr store4 = newStore(1, 9, 13, 50, NULL);
+
+	    testTree->addItem(base, store1);
+	    testTree->addItem(node1, store1);
+	    testTree->addItem(node1, store2);
+	    testTree->addItem(node2, store3);
+	    testTree->addItem(node2, store4);
+	    cout<< "After 9!"<<endl;
+	    break;
+	  }
+
 		default:
 			cout<<"Improper or no test input";
 			break;
