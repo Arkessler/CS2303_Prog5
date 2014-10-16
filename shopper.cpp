@@ -12,6 +12,7 @@ Author: Alexi Kessler */
 #include "localItem.h"
 #include "binTree.h"
 #include "externals.h"
+
 #include <iostream>
 using namespace std;
 //Constructors

@@ -27,6 +27,7 @@ void d3(int [], int[], int);
 void next(int [], int [], int);
 void twoway(int [], int [], int);
 void elevator(int [], int[], int);
+Tree *globalTree = new Tree();
 
 bool debugRead = false;
 void scanRobots();
