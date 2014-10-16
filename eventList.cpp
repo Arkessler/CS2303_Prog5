@@ -1,4 +1,4 @@
-/*
+/* Class implementation for eventList and eventNode  used Pearson Copyright 2008
 All functions written by Max Li unless otherwise stated */
 #ifndef EVENTLIST_CPP
 #define EVENTLIST_CPP

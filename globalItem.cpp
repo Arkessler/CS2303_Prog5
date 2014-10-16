@@ -1,5 +1,5 @@
-
-//By Max
+/* class implementation for global items
+Author:Max Li*/
 #ifndef ITEM_CPP
 #define ITEM_CPP
 
@@ -90,7 +90,6 @@ void GlobalItem::printGlobalItem(){
 	printStoreList(stores);
 }
 
-//This is really expensive,
 GlobalItem *GlobalItem::findItem(LocalItem *toFind){
   if(toFind != NULL){
     GlobalItem *newFind = new GlobalItem(toFind->getName());

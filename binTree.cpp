@@ -1,3 +1,5 @@
+/* Code adapted from our Program 4 code
+*/
 #ifndef BINTREE_CPP
 #define BINTREE_CPP
 
@@ -133,7 +135,7 @@ void Tree::PrintAll(GlobalItemPtr item) //Author: Alexi
 	}
 }
 
-GlobalItemPtr Tree::getRoot(){
+GlobalItemPtr Tree::getRoot(){ //Max
 	return root;
 }
 
