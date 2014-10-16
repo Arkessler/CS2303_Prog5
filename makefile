@@ -46,7 +46,7 @@ fcfs.o: fcfs.h queue.h process.h util.h fcfs.cpp  process.o util.o queue.o
 	$(CC) $(CFLAGS) fcfs.cpp
 
 queue.o: queue.h process.h queue.cpp process.o
-	$(CC) $(CFLAGS) queue.cpp -lm
+	$(CC) $(CFLAGS) queue.cpp 
 
 process.o: process.h process.cpp
 	$(CC) $(CFLAGS) process.cpp
