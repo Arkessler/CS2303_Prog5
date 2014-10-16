@@ -36,7 +36,7 @@ binTree.o: binTree.cpp binTree.h
 eventList.o: eventList.cpp eventList.h externals.h globals.h
 	$(CC) $(CFLAGS) eventList.cpp	
 
-shopper.o: shopper.cpp shopper.h globals.h
+shopper.o: shopper.cpp shopper.h globals.h externals.h
 	$(CC) $(CFLAGS) shopper.cpp
 
 tile.o: tile.h tile.cpp
@@ -44,7 +44,7 @@ tile.o: tile.h tile.cpp
 
 localitem.o: localItem.h localItem.cpp
 	$(CC) $(CFLAGS) loacalItem.cpp
-	
+
 store_functions.o: store_functions.cpp
 	$(CC) $(CFLAGS) store_functions.cpp
 clean:

@@ -12,7 +12,6 @@ Author: Alexi Kessler */
 #include "localItem.h"
 #include "binTree.h"
 #include "externals.h"
-
 #include <iostream>
 using namespace std;
 //Constructors
@@ -122,9 +121,11 @@ void Shopper::shopperApp(){
   else{
     while(curr != NULL){
       GlobalItem *search = globalTree->getRoot()->findItem(curr);
-      if(search != NULL && (*(search->getStores())->iCount) > (curr->getCount())){
-	LocalItem *itemAdd = new LocalItem(curr->getName(), search->getStores()->iCount);
-	Tile *storeTile =Mall[search->getStores()->x][search->getStores()->y][search->getStores()->z];
+      store *storeInsert = *(search->getStores());
+      if(search != NULL && (storeInsert->iCount) > (curr->getCount())){
+	LocalItem *itemAdd = new LocalItem(curr->getName(), storeInsert->iCount);
+	Tile *storeTile =new Tile();
+	*storeTile = Mall[storeInsert->x][storeInsert->y][storeInsert->z];
 	Tile *tileAdd = new Tile(storeTile->getType(), storeTile->getStep(), storeTile->getRow(), storeTile->getCol(), storeTile->getFloor());
 	tileAdd->addToInventory(itemAdd);
 	addDest(tileAdd);

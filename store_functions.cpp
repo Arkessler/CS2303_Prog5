@@ -31,10 +31,10 @@ int store_compare(StorePtr currentStore, StorePtr newStore){ //Author: Max
 	return 1;
   } else if (currentStore->x == newStore->x && currentStore->y == newStore->y && currentStore->z == newStore->z) {
     return 0;
-  } else if((currentStore->itemCount) <= (newStore->itemCount)){
+  } else if((currentStore->iCount) <= (newStore->iCount)){
     return 1;
   }
-  else if((currentStore->itemCount) > (newStore->itemCount))
+  else if((currentStore->iCount) > (newStore->iCount))
     return -1;
  else return -5;
 }
@@ -81,7 +81,7 @@ void addStore(GlobalItem *itPtr, StorePtr newStore)
 	    if(store_compare(currentPtr, newStore) == 0)
 	      {
 		if(DEBUGSTORE) cout<< "found a repeat" <<endl;
-		(newStore->itemCount) += (currentPtr->itemCount);
+		(newStore->iCount) += (currentPtr->iCount);
 		removeStore(sPtr, currentPtr);
 		itPtr->setStores(sPtr);
 		addStore(itPtr, newStore);
@@ -169,7 +169,7 @@ void printStore(StorePtr store){  //Author: Alexi
 		cout<<"StorePtr is NULL"; 
 	} else {
 		cout<<"Store's Position is x:" << store->x <<" y:" << store->y <<" z:" << store->z <<endl;
-		cout<<"Store's itemCount is:" << store->itemCount<<endl;
+		cout<<"Store's iCount is:" << store->iCount<<endl;
 	}
 }
 
@@ -182,7 +182,7 @@ void printStoreList(StorePtr *store){ //Author: Alexi
 	if ((*store) == NULL){
 		cout << "Store List is empty\n";
 	} else {
-	  //cout<< "Store itemCount:" << (*store)->itemCount<<endl;
+	  //cout<< "Store iCount:" << (*store)->iCount<<endl;
 		curr = *store;
 		while (curr!=NULL){
 			printStore(curr);
