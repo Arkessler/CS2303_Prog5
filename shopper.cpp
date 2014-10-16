@@ -8,6 +8,11 @@ Author: Alexi Kessler */
 #include "tile.h"
 #include "shopper.h"
 #include "globals.h"
+#include "globalItem.h"
+#include "localItem.h"
+#include "binTree.h"
+#include "externals.h"
+
 #include <iostream>
 using namespace std;
 //Constructors
@@ -101,9 +106,34 @@ void Shopper::addDest(tilePtr newTile)
 
 //Written by Max
 
-void Shopper::shopperApp(LocalItemPtr itemList){
+void Shopper::shopperApp(){
 
   //return NULL;  
+
+  LocalItem *listInv = Dests->getInventory();
+  LocalItem *curr = listInv;
+  LocalItem *prev = NULL;
+  //LocalItem *newList = new LocalItem();
+
+  if(listInv == NULL){
+    cout << "Calling shopperApp with no items"<<endl;
+  }
+
+  else{
+    while(curr != NULL){
+      GlobalItem *search = globalTree->getRoot()->findItem(curr);
+      if(search != NULL && (*(search->getStores())->iCount) > (curr->getCount())){
+	LocalItem *itemAdd = new LocalItem(curr->getName(), search->getStores()->iCount);
+	Tile *storeTile =Mall[search->getStores()->x][search->getStores()->y][search->getStores()->z];
+	Tile *tileAdd = new Tile(storeTile->getType(), storeTile->getStep(), storeTile->getRow(), storeTile->getCol(), storeTile->getFloor());
+	tileAdd->addToInventory(itemAdd);
+	addDest(tileAdd);
+      }
+      prev = curr;
+      curr = curr->getNext();
+    }
+  }
+
 
   
   /*

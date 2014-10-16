@@ -18,7 +18,7 @@ StorePtr newStore(int xPos, int yPos, int zPos, int count, StorePtr next)
   nStore->x = xPos;
   nStore->y = yPos;
   nStore->z = zPos;
-  nStore->itemCount = count;
+  nStore->iCount = count;
   nStore->nextStore = next;
   return nStore;
 }

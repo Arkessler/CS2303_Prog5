@@ -39,7 +39,7 @@ enum Direction  {North, NorthEast, East, SouthEast,
 enum Floors     {First, Second};
 
 typedef struct store{
-  int x, y, z, itemCount;
+  int x, y, z, iCount;
   struct store *nextStore;
 } store;
 
