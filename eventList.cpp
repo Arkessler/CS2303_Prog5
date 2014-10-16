@@ -252,6 +252,7 @@ void EventList::print(){
   if(DEBUGSTATE) cout<< "in print eventlist"<<endl;
   
   EventNode *cur = getFirstPtr();
+
   if (cur == NULL) return;
   while(cur != NULL){
     if(DEBUGSTATE) cout<<"in while"<<endl;

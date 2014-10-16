@@ -284,7 +284,12 @@ int main () //Author: Alexi
 			{
 				scanRobots();
 				runRobSim();
+				break;
 			}
+	case 9:
+	  {
+	    Tree testTree = new Tree();
+	  }
 		default:
 			cout<<"Improper or no test input";
 			break;
