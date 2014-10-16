@@ -11,6 +11,7 @@ Author: Alexi Kessler */
 //#include "decide.cpp"
 #include "tile.h"
 
+#define DEBUGTRAVEL 0
 void printloc (int []);
 bool IsEqual (int [], int []);
 void d1(int [], int); 
@@ -20,7 +21,6 @@ void next(int [], int [], int);
 void twoway(int [], int [], int);
 void elevator(int [], int[], int);
 
-int DEBUGTRAVEL = 1;
 int move (int cur[], int des[], int size)
 {
 
@@ -89,7 +89,10 @@ int travel (robotPtr robot, int size)
 		cout<<"To Position: Row: "<<to[ROW]<<" Col: "<<to[COL]<<" Floor: "<<to[FLOOR]<<endl;
 	}
 	int cntr = 0;        // cntr used to check for infinite loop
-	printf("Time: %d Robot leaves ", simTime);
+	if (DEBUGTRAVEL)
+	{
+		printf("Time: %d Robot leaves ", simTime);
+	}
 	printloc(from);
 
 	// Loop until robot arrives at store or A1

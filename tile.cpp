@@ -8,6 +8,7 @@ Author of functions: Alexi Kessler unless stated otherwise */
 #include <iostream>
 
 #define DEBUGTILE 0
+#define DEBUGREMOVE 0
 
 using namespace std;
 
@@ -207,7 +208,8 @@ void Tile::removeInventoryItem() //Alexi
 	}
 	else 
 	{
-	  cout<<"removing item"<<endl;
+		if (DEBUGREMOVE)
+			cout<<"removing item"<<endl;
 		LocalItemPtr curr = NULL;
 		LocalItemPtr prev = NULL;
 		curr = inventory;

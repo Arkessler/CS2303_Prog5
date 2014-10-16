@@ -10,16 +10,16 @@ Functions are: d1,d2,d3,next,twoway and elevator.
 #include "externals.h"
 #include "tile.h"
 #define EL_DELAY 3
+#define DEBUGDECIDE 0
 void printloc (int []);
 
-int debugDec=0;
 
 /* d1 is called when there is ONLY one choice
    for robot to make. That choice is held in step array  */
 
 void d1(int c[], int size)
 {
-	if (debugDec==1){
+	if (DEBUGDECIDE==1){
 		printf("\n At simTime %d: Making decision 1 at %d %d %d", simTime, c[ROW],c[COL],c[FLOOR]);
 		printf(" Step value at %d %d %d is %d\n", c[ROW], c[COL], c[FLOOR], (Mall[c[ROW]][c[COL]][c[FLOOR]]).getStep());
 	}
@@ -53,7 +53,7 @@ void d1(int c[], int size)
 
 void d2(int c[], int d[], int size)
 {
-	if (debugDec==1)
+	if (DEBUGDECIDE==1)
 		printf("Making decision 2 at %d %d %d\n", c[ROW],c[COL],c[FLOOR]);
   int i,j;
 
@@ -135,7 +135,7 @@ void d2(int c[], int d[], int size)
 
 void d3(int c[], int d[], int size)
 {
-	if (debugDec==1)
+	if (DEBUGDECIDE==1)
 		printf("Making decision 3 at %d %d %d\n", c[ROW],c[COL],c[FLOOR]);
   int i,j;
 
@@ -194,7 +194,7 @@ void d3(int c[], int d[], int size)
 
 void next(int c[], int d[], int size)
 {
-	if (debugDec==1)
+	if (DEBUGDECIDE==1)
 		printf("Making decision next at %d %d %d\n", c[ROW],c[COL],c[FLOOR]);
   // special local arrays 
   int NW[2][2] = { {4, 12},{12, 4}};
@@ -213,7 +213,7 @@ void next(int c[], int d[], int size)
   } 
   else
   {
-	if (debugDec==1)
+	if (DEBUGDECIDE==1)
 		printf("Step value at %d %d %d is %d", c[ROW], c[COL], c[FLOOR], (Mall[c[ROW]][c[COL]][c[FLOOR]]).getStep());
     switch ((Mall[c[ROW]][c[COL]][c[FLOOR]]).getStep())
     {
@@ -264,7 +264,7 @@ void next(int c[], int d[], int size)
 
 void twoway(int c[], int d[], int size)
 {
-	if (debugDec==1)
+	if (DEBUGDECIDE==1)
 		printf("Making decision twoway at %d %d %d\n", c[ROW],c[COL],c[FLOOR]);
   bool find = false;
 
@@ -314,17 +314,18 @@ void twoway(int c[], int d[], int size)
 // function to move robot through elevator
 void take_el(int c[], int d[], int size)
 {
-  printf ("Robot taking elevator at %d\n", simTime);
-  simTime = simTime + EL_DELAY;
-  c[FLOOR] = d[FLOOR];
-  return;
+	if (DEBUGDECIDE)
+		printf ("Robot taking elevator at %d\n", simTime);
+	simTime = simTime + EL_DELAY;
+	c[FLOOR] = d[FLOOR];
+	return;
 }
 
 /* elevator handles robot on elevator square,
    but not taking elevator.                */
 void elevator(int c[], int d[], int size)
 {
-	if (debugDec==1)
+	if (DEBUGDECIDE)
 		printf("\nAt simTime %d: On Elevator. Making elevator decision.", simTime);
   if (c[FLOOR] != d[FLOOR])
   {
