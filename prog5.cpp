@@ -11,6 +11,12 @@
 #include "eventList.h"
 #include "externals.h"
 #include "binTree.h"
+#include "process.h"
+#include "fcfs.h"
+#include "rr.h"
+#include "queue.h"
+#include "util.h"
+#include "queue.h"
 
 #define DEBUG 0
 #define DEBUGROBSIM 0
@@ -308,6 +314,57 @@ int main () //Author: Alexi
 			testShopper->printDests();
 			
 			break;
+			}
+		case 11: //Demonstrates the functionality of basic queues Author: Alexi
+			{
+				queue *mainQueue, *fcfsQueue, *rrQueue;
+				int slice = 2, numProc = 4;
+				
+				process *testProc1 = new process(1, 4, 6, 3);
+				process *testProc2 = new process(2, 3, 8, 2);
+				process *testProc3 = new process(3, 9, 14, 3);
+				process *testProc4 = new process(4, 6, 12, 5);
+				cout<<"Enqueuing test processes:"<<endl;
+				mainQueue->enqueue(testProc1);
+				mainQueue->enqueue(testProc2);
+				mainQueue->enqueue(testProc3);
+				mainQueue->enqueue(testProc4);
+				
+				cout<< "starting FCFS cloning" <<endl;
+				fcfsQueue = new queue();
+				fcfsQueue = mainQueue->cloneQueue(mainQueue);
+				cout<<"Starting RR Clone"<<endl;
+				rrQueue = new queue();
+				rrQueue = mainQueue->cloneQueue(mainQueue);
+				cout<< "deleting main queue" <<endl;
+				delete mainQueue;
+				cout<<"Finished clone and free\n\n"<<endl;
+				cout<< "starting FCFS sim" <<endl;
+				// Do the FCFS simulation
+				cout<<"Starting FCFS initialization"<<endl;
+				fcfs *fcfsSim = new fcfs(fcfsQueue);
+				cout<<"Initialized FCFS"<<endl;
+				fcfsSim->run_fcfs(fcfsSim);
+				 
+				cout<<"ending FCFS sim" <<endl;
+				cout<<"FCFS run complete"<<endl;
+				delete fcfsSim;
+				cout<<"deleted FCFS sim"<<endl;
+				cout<<"FCFS destroyed\n\n"<<endl;
+				
+				// Do the RR Simulation if slice is valid
+				if (slice > 0) {
+					cout<< "Starting RR initialization"<<endl;
+					rr *rrSim = new rr(rrQueue, slice);
+					cout<< "Initialized RR"<<endl;
+					rrSim->runRR(rrSim);
+					cout<< "RR run complete"<<endl;
+					delete rrSim;
+					cout<<"RR destroyed\n\n"<<endl;
+				  }
+				cout<<"SIMULATION COMPLETE!"<<endl;
+				  
+				break;
 			}
 		default:
 				cout<<"Improper or no test input";

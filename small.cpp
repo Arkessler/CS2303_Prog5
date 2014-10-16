@@ -42,7 +42,7 @@ void instructions()
 	cout<<"Choice 8 tests: runRobSim()"<<endl;
 	cout<<"Choice 9 tests: tree"<<endl;
 	cout<<"Choice 10 tests: shopperApp"<<endl;
-	cout<<"Choice 11 tests: N/A"<<endl;
+	cout<<"Choice 11 tests: queues"<<endl;
 
 	cout<<"Please enter test choice\n";
 }
