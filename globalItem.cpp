@@ -88,15 +88,18 @@ void GlobalItem::printGlobalItem(){
 
 //This is really expensive,
 GlobalItem *GlobalItem::findItem(LocalItem *toFind){
-  GlobalItem *newFind = new GlobalItem(toFind->getName());
-  if(id_compare(newFind) == 0){
-    return this;
-  }
-  else if(id_compare(newFind) == -1){
-    return getLeft()->findItem(toFind);
-  }
-  else if(id_compare(newFind) == 1){
-    return getRight()->findItem(toFind);
+  if(toFind != NULL){
+    GlobalItem *newFind = new GlobalItem(toFind->getName());
+    if(id_compare(newFind) == 0){
+      return this;
+    }
+    else if(id_compare(newFind) == -1){
+      return getLeft()->findItem(toFind);
+    }
+    else if(id_compare(newFind) == 1){
+      return getRight()->findItem(toFind);
+    }
+    else return NULL;
   }
   else return NULL;
 }
