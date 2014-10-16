@@ -73,7 +73,7 @@ void EventNode::checkState(){
 		int newTime = (getTime()+ travelTime);
 		//add arrival case
 		mallEvents->addNewEvent( newTime, getRobotID(), 1); //Not sure what time goes in here, depends on travel 
-		cout << "Robot " << getRobotID()->getID() << " enters mall at time: " << getTime() <<endl;
+		cout << "\nRobot " << getRobotID()->getID() << " enters mall at time: " << getTime() <<endl;
 		break;
 		}
     case 1:
@@ -82,7 +82,7 @@ void EventNode::checkState(){
 		//add event case 2
 		if (DEBUGSTATE)
 		{
-			cout<<"Robot's delivery inventory: "<<endl;
+			cout<<"\nRobot's delivery inventory: "<<endl;
 			getRobotID()->getDests()->printInventory();
 		}
 		int newTime = getRobotID()->deliverItems(getTime());
@@ -99,7 +99,7 @@ void EventNode::checkState(){
 		tilePtr entrance = new Tile();
 		*entrance = Mall[8][16][0];
 		//Check eventlist
-		cout<<"Robot "<<getRobotID()->getID()<<" leaves store ( "
+		cout<<"\nRobot "<<getRobotID()->getID()<<" leaves store ( "
 		<<getRobotID()->getR()<<", "
 		<<getRobotID()->getC()<<" ) on Floor "
 		<<((getRobotID()->getF())+1)<<" at time"

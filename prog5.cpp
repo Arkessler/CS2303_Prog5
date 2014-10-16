@@ -316,7 +316,7 @@ int main () //Author: Alexi
 	    testTree->addItem(node2, store4);
 	    cout<< "After 9!"<<endl;
 	    break;
-	  }
+	  } */
 
 		default:
 			cout<<"Improper or no test input";
