@@ -23,3 +23,7 @@ The division of work was as close to 50/50 as possible. Alexi wrote most of the 
 code, and Max wrote most of the shopper, shopperApp, tree, queue, and eventList code, with both adding in helper functions and 
 small tweaks in various places. We both collaborated on the overall logic and structure of the program as we went, bouncing logic
 and bugs off of one another. 
+
+Our code is initially based off of two examples provided to us by Professor Bob Kinicki.  They were provided to us in C, which we
+had converted to C++ and object oriented design.  The general structure of our event list code was based off of the example provided
+from the Pearson book edition 6 (?), published in 2008.  Our shopper and robot classes are mostly original.
