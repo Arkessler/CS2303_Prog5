@@ -12,6 +12,20 @@ bool debugAddStore = false;
 // than new store then return -1 to tell the outer function to check the next store.  Any remaining 
 // functionality yet to be implemented.
 
+StorePtr newStore(int xPos, int yPos, int zPos, int count, StorePtr next)
+{
+  StorePtr nStore = new store();
+  nStore->x = xPos;
+  nStore->y = yPos;
+  nStore->z = zPos;
+  nStore->itemCount = count;
+  nStore->nextStore = next;
+  return nStore;
+}
+
+
+
+
 int store_compare(StorePtr currentStore, StorePtr newStore){ //Author: Max
   if (currentStore == NULL){
 	return 1;
