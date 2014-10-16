@@ -57,22 +57,21 @@ class EventNode
   void addNewEvent(int, Shopper *, int);
 
   void addNode(EventNode *newNode);
-  EventNode *getFirstPtr()
-    {
-      if(firstPtr != NULL)return firstPtr;
-      else return NULL;
-    }
+  EventNode *getFirstPtr(){return firstPtr;}
   EventNode *getLastPtr(){return lastPtr;}
+  EventNode *getStartPtr(){return startPtr;}
   void setFirstPtr(EventNode *first){firstPtr = first;}
   void setLastPtr(EventNode *last){lastPtr = last;}
+  void setStartPtr(EventNode *start){startPtr = start;}
 
-  EventList *getShopperEvents();
-  bool isEmpty() const; 
-  void print(); 
- private: 
-  EventNode *firstPtr; // pointer to first node 
-  EventNode *lastPtr; // pointer to last node 
-
+		EventList *getShopperEvents();
+		bool isEmpty() const; 
+		void print(); 
+		void printFull();
+	private: 
+		EventNode *firstPtr; // pointer to first node 
+		EventNode *lastPtr; // pointer to last node 
+		EventNode *startPtr;
   // utility function to allocate new node 
    
 }; // end class List 

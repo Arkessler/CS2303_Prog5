@@ -21,7 +21,7 @@ using namespace std;
 //Constructors
 Robot::Robot()
 {
-	cout<<"Running Robot Constructor\n";
+	//cout<<"Running Robot Constructor\n";
 	ID = 0;
 	r = 8;
 	c = 16;
@@ -219,7 +219,8 @@ int Robot::deliverItems(int startTime) //Alexi
 		}
 	tilePtr dest = getDests();
 	LocalItemPtr invPtr = dest->getInventory();
-	
+	cout<<"Robot "<<ID<<" delivers the following items to store ( "<<dest->getRow()<<" ,"<<dest->getCol()<<" ) at time "<<startTime<<endl;
+	dest->printInventory();
 	for (counter = 0; counter<numItems; counter++)
 	{
 		

@@ -9,10 +9,7 @@
 
 #define DEBUGSTATE 0
 
-//extern EventList *MallEvents;
 int travel (robotPtr robot, int size);
-
-//EventList *MallEvents = new EventList();
 
 using std::cout;
 
@@ -76,6 +73,7 @@ void EventNode::checkState(){
 		int newTime = (getTime()+ travelTime);
 		//add arrival case
 		mallEvents->addNewEvent( newTime, getRobotID(), 1); //Not sure what time goes in here, depends on travel 
+		cout << "Robot " << getRobotID()->getID() << " enters mall at time: " << getTime() <<endl;
 		break;
 		}
     case 1:
@@ -83,14 +81,15 @@ void EventNode::checkState(){
 		//deliver all items
 		//add event case 2
 		if (DEBUGSTATE)
-			{
+		{
 			cout<<"Robot's delivery inventory: "<<endl;
 			getRobotID()->getDests()->printInventory();
-			}
+		}
 		int newTime = getRobotID()->deliverItems(getTime());
 		if (DEBUGSTATE)
 			cout<<"adding new event of type 2"<<endl;
 		mallEvents->addNewEvent(newTime, getRobotID(), 2);
+		cout<<"Robot "<< getRobotID()->getID() << " arrives at store ( "<<getRobotID()->getDests()->getRow()<<", "<<getRobotID()->getDests()->getCol()<<" ) on Floor "<<((getRobotID()->getDests()->getFloor())+1)<<" at time "<<getTime()<<endl;
 		getRobotID()->removeDest();
 		
 		break;
@@ -100,6 +99,11 @@ void EventNode::checkState(){
 		tilePtr entrance = new Tile();
 		*entrance = Mall[8][16][0];
 		//Check eventlist
+		cout<<"Robot "<<getRobotID()->getID()<<" leaves store ( "
+		<<getRobotID()->getR()<<", "
+		<<getRobotID()->getC()<<" ) on Floor "
+		<<((getRobotID()->getF())+1)<<" at time"
+		<<getTime();
 		if(getRobotID()->checkDestsEmpty())//Evaluates to true if dests is empty
 		{ 
 			//Move towards entrance
@@ -122,7 +126,7 @@ void EventNode::checkState(){
 		}
     case 3:
 		{
-		cout << "Robot " << getRobotID()->getID() << " has left the simulateion" << endl;
+		cout << "Robot " << getRobotID()->getID() << " has left the simulation at time: " <<getTime()<< endl;
 		break;
 		}
     default:
@@ -164,7 +168,7 @@ void EventNode::checkState(){
 ///////////////////////////////////////////////////////////////////////////////////
 // default constructor  
  EventList::EventList() 
-   : firstPtr( 0 ), lastPtr( 0 ) 
+   : firstPtr( 0 ), lastPtr( 0 ), startPtr( 0 )
 { 
   // empty body 
 } // end List constructor 
@@ -201,6 +205,7 @@ void EventList::addNode(EventNode *newNode){
     {
       //newNode->setNext(getFirstPtr());
       setFirstPtr(newNode);
+	  setStartPtr(newNode);
       return;
     }
   
@@ -245,14 +250,8 @@ void EventList::addNewEvent(int time, Shopper *newShop, int type){
 }
 
 void EventList::print(){
-  getFirstPtr();
-  if(DEBUGSTATE) cout<< "in print eventlist"<<endl;
-  
   EventNode *cur = getFirstPtr();
-
-  if (cur == NULL) return;
-  while(cur != NULL){
-    if(DEBUGSTATE) cout<<"in while"<<endl;
+  while(cur != getLastPtr()){
     cur->print();
 	//(cur->getRobotID())->printRobot();
     cur = cur->getNext();
@@ -260,6 +259,18 @@ void EventList::print(){
   //getLastPtr()->print();
 
 }
+
+void EventList::printFull(){
+  EventNode *cur = getStartPtr();
+  while(cur != getLastPtr()){
+    cur->print();
+	//(cur->getRobotID())->printRobot();
+    cur = cur->getNext();
+  }
+  //getLastPtr()->print();
+
+}
+
 bool EventList::isEmpty() const{
   return firstPtr == 0;
 }
