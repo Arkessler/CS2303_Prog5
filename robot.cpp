@@ -110,7 +110,7 @@ void Robot::setNumStore(int store){
 }
 
 //Tile getters and setter
-Tile *Robot::getTile(int spot) //Alexi
+Tile *Robot::getTile(int spot) 
 {
 	//return (*Dests).traverse(spot);
 	if ((Dests)==NULL)
@@ -122,7 +122,7 @@ Tile *Robot::getTile(int spot) //Alexi
 		return Dests;
 	}
 }
-Tile *Robot::getDests() //Alexi
+Tile *Robot::getDests() 
 {
 	//return (*Dests).traverse(spot);
 	if ((Dests)==NULL)
@@ -134,7 +134,7 @@ Tile *Robot::getDests() //Alexi
 		return Dests;
 	}
 }
-void Robot::addDest(tilePtr newTile) //Alexi
+void Robot::addDest(tilePtr newTile)
 {
 	if (Dests==NULL)
 	{
@@ -153,7 +153,7 @@ void Robot::addDest(tilePtr newTile) //Alexi
 		prev->setNextTile(newTile);
 	}
 }
-void Robot::removeDest() //Alexi
+void Robot::removeDest() 
 {
 	if (Dests==NULL) //Shouldn't ever happen
 	{
@@ -169,15 +169,15 @@ void Robot::removeDest() //Alexi
 		delete(temp);
 	}
 }
-
+//Check to see if there are any destinations left
 bool Robot::checkDestsEmpty()
 {
 	return (Dests==NULL);
 }
 
-int Robot::deliverItem() //Alexi 
+int Robot::deliverItem()
 {
-	//add to global
+	//Space for add to global
 	int r, c, f, time;
 	r = Dests->getRow();
 	c = Dests->getCol();
@@ -199,7 +199,7 @@ int Robot::deliverItem() //Alexi
 	}
 	return time;
 }
-int Robot::deliverItems(int startTime) //Alexi
+int Robot::deliverItems(int startTime) 
 {
 	int totalTime = 0;
 	int singleTime = 0;
@@ -232,14 +232,14 @@ int Robot::deliverItems(int startTime) //Alexi
 }
 
 //Print Functions
-void Robot::printRobot() //Alexi
+void Robot::printRobot() 
 {
 	cout<<"Printing data for Robot"<<ID<<endl;
 	cout<<"Position: Row: "<<r<<" Col: "<<c<<" Floor: "<<f<<endl;
 	cout<<"Number of Destinations: "<<numStore<<endl;
 	printDests();
 }
-void Robot::printDests(){ //Alexi
+void Robot::printDests(){ 
   if(Dests==NULL){
     cout<< "NULL" << endl;
   }

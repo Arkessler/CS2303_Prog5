@@ -43,6 +43,9 @@ tile.o: tile.h tile.cpp
 	$(CC) $(CFLAGS) tile.cpp	
 
 localitem.o: localItem.h localItem.cpp
-	$(CC) $(CFLAGS) loaclItem.cpp
+	$(CC) $(CFLAGS) loacalItem.cpp
+	
+store_functions.o: store_functions.cpp
+	$(CC) $(CFLAGS) store_functions.cpp
 clean:
 	rm *.o Prog5

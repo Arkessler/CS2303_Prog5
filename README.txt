@@ -10,5 +10,11 @@ There is a minor issue in the output of Stage 1 in that arrivals are printed out
 the same time.
 
 Stage 2 has yet to be implemented. We've laid the groundwork for the code, shoppers are very similar to robots, they just have 
-item lists. Their destinations are generated through the use of the shopper app. When they arrive at a store they will be put in 
+item lists. Items in this case are globalItems, which form the basis of the tree and hold Store locations. The shoppers' 
+destinations are generated through the use of the shopper app. When they arrive at a store they will be put in 
 the store queue. The queues are coded, but not implemented in the simulation. 
+
+The division of work was pretty much as close to 50/50 as possible. Alexi wrote most of the robot, tile, item, mall and movement
+code, and Max wrote most of the shopper, shopperApp, tree, queue, and eventList code, with both adding in helper functions and 
+small tweaks in various places. We both collaborated on the overall logic and structure of the program as we went, bouncing logic
+and bugs off of one another. 

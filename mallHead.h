@@ -1,4 +1,6 @@
 #ifndef MALLHEAD_H
+/* Main header for prog5.cpp, initializes externs and declares some function prototypes
+Author: Alexi Kessler */
 #define MALLHEAD_H
 #include "externals.h"
 
