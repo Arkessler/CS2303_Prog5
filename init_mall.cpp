@@ -87,6 +87,10 @@ int dir[8];
    {
        (Mall[i][j][k]).setType(INVALID);
        (Mall[i][j][k]).setStep(INVALID);
+	   (Mall[i][j][k]).setRow(i);
+	   (Mall[i][j][k]).setCol(j);
+	   (Mall[i][j][k]).setFloor(k);
+	   
    }
 
  for (k = First; k <= Second; k++)

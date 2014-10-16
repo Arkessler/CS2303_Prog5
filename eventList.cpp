@@ -18,18 +18,17 @@ using std::cout;
 
 #define DBG 0
 
-tilePtr entrance = &(Mall[MID][MAX][0]);
 
 EventNode::EventNode()
-  :time(0), robotID(NULL), shopperID(NULL), eType(0)
+  :time(0), robotID(NULL), shopperID(NULL), eType(0), nextPtr(NULL)
 {}
 
 EventNode::EventNode(int newTime, Robot *robIn, int type)
-  :time(newTime), robotID(robIn),shopperID(NULL), eType(type)
+  :time(newTime), robotID(robIn),shopperID(NULL), eType(type), nextPtr(NULL)
 {}
 
 EventNode::EventNode(int newTime, Shopper *shopIn, int type)
-  :time(newTime), robotID(NULL), shopperID(shopIn), eType(type)
+  :time(newTime), robotID(NULL), shopperID(shopIn), eType(type), nextPtr(NULL)
 {}
 
 void EventNode::print(){
@@ -67,7 +66,7 @@ int EventNode::get_eType(){
 }
 
 void EventNode::checkState(){
-	tilePtr entrance = &(Mall[MID][MAX][0]);
+	//tilePtr entrance = &(Mall[8][16][0]);
   if(getRobotID() != NULL){
     switch(eType){
     case 0:
@@ -99,11 +98,20 @@ void EventNode::checkState(){
 		}
     case 2:
 		{
+		tilePtr entrance = new Tile();
+		Tile ent = (Mall[8][16][0]);
+		*entrance = ent;
+		Mall[8][16][0].printTile();
 		//Check eventlist
-		if(getRobotID()->checkDestsEmpty())
-		{ //Evaluates to true if dests is empty
+		if(getRobotID()->checkDestsEmpty())//Evaluates to true if dests is empty
+		{ 
 			//Move towards entrance
+			entrance->printTile();
 			getRobotID()->addDest(entrance);
+			if (DEBUGSTATE){
+				cout<<"Robot's destination list now: "<<endl;
+				getRobotID()->printDests();
+			}
 			int exitTime = (getTime() + travel(getRobotID(), SIZE));
 			// add new event 3
 			mallEvents->addNewEvent(exitTime, getRobotID(), 3);
@@ -208,7 +216,7 @@ void EventList::addNode(EventNode *newNode){
 
   if(DBG) cout<<"out of traversal"<<endl;
 
-  if(cur == NULL){
+  if(cur == NULL){ //at end of 
     prev->setNext(newNode);
     //newNode->setNext(getFirstPtr());
     //setFirstPtr(newNode);
@@ -244,7 +252,7 @@ void EventList::print(){
   EventNode *cur = getFirstPtr();
   while(cur != getLastPtr()){
     cur->print();
-	(cur->getRobotID())->printRobot();
+	//(cur->getRobotID())->printRobot();
     cur = cur->getNext();
   }
   //getLastPtr()->print();
