@@ -7,7 +7,7 @@
 #include "externals.h"
 #include <iostream>
 
-#define DEBUGSTATE 1
+#define DEBUGSTATE 0
 
 //extern EventList *MallEvents;
 int travel (robotPtr robot, int size);
@@ -91,7 +91,6 @@ void EventNode::checkState(){
 		if (DEBUGSTATE)
 			cout<<"adding new event of type 2"<<endl;
 		mallEvents->addNewEvent(newTime, getRobotID(), 2);
-		cout<<"deliverItems went fine, time taken: "<<newTime<<endl;
 		getRobotID()->removeDest();
 		
 		break;
@@ -100,16 +99,14 @@ void EventNode::checkState(){
 		{
 		tilePtr entrance = new Tile();
 		*entrance = Mall[8][16][0];
-		entrance->printTile();
 		//Check eventlist
 		if(getRobotID()->checkDestsEmpty())//Evaluates to true if dests is empty
 		{ 
 			//Move towards entrance
-			entrance->printTile();
 			getRobotID()->addDest(entrance);
 			if (DEBUGSTATE){
-				cout<<"Robot's destination list now: "<<endl;
-				getRobotID()->printDests();
+				//cout<<"Robot's destination list now: "<<endl;
+				//getRobotID()->printDests();
 			}
 			int exitTime = (getTime() + travel(getRobotID(), SIZE));
 			// add new event 3
