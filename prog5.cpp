@@ -403,10 +403,12 @@ int runRobSim(){
 		curr = curr->getNext();
 		if (DEBUG){
 			cout<<"Operated on event. New event list is as follows"<<endl;
-			mallEvents->print();
+			if(mallEvents != NULL)
+			  mallEvents->print();
 		}
     }
-    return prev->getTime();
+    //return prev->getTime();
+    return 1;
   }
 
 }
