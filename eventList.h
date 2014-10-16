@@ -57,7 +57,11 @@ class EventNode
   void addNewEvent(int, Shopper *, int);
 
   void addNode(EventNode *newNode);
-  EventNode *getFirstPtr(){return firstPtr;}
+  EventNode *getFirstPtr()
+    {
+      if(firstPtr != NULL)return firstPtr;
+      else return NULL;
+    }
   EventNode *getLastPtr(){return lastPtr;}
   void setFirstPtr(EventNode *first){firstPtr = first;}
   void setLastPtr(EventNode *last){lastPtr = last;}

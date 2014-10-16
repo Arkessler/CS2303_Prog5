@@ -245,8 +245,13 @@ void EventList::addNewEvent(int time, Shopper *newShop, int type){
 }
 
 void EventList::print(){
+  getFirstPtr();
+  if(DEBUGSTATE) cout<< "in print eventlist"<<endl;
+  
   EventNode *cur = getFirstPtr();
-  while(cur != getLastPtr()){
+  if (cur == NULL) return;
+  while(cur != NULL){
+    if(DEBUGSTATE) cout<<"in while"<<endl;
     cur->print();
 	//(cur->getRobotID())->printRobot();
     cur = cur->getNext();
