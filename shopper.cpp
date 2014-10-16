@@ -179,4 +179,24 @@ int numItems;
   */
 }
 
+void Shopper::printDests(){ 
+  if(Dests==NULL){
+    cout<< "NULL" << endl;
+  }
+  else{
+    tilePtr curr = NULL;
+    tilePtr prev = NULL;
+    curr = Dests;
+    while (curr!=NULL)
+      {
+	curr->printTile();
+	cout<<"Inventory of Dest:"<<endl;
+	curr->printInventory();
+	prev = curr;
+	curr = curr->getNextTile();
+      }
+    cout<< "\nEnd of Destination List" <<endl<<endl<<endl;
+
+  }
+}
 #endif

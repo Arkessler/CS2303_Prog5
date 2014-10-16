@@ -36,13 +36,13 @@ void instructions()
 	cout<<"Choice 2 tests: Travel function taking robotPtr"<<endl;
 	cout<<"Choice 3 tests: deliverItem()"<<endl;
 	cout<<"Choice 4 tests: deliverItems()"<<endl;
-	cout<<"Choice 5 tests: ?"<<endl;
-        cout<<"Choice 6 tests: ?"<<endl;
-        cout<<"Choice 7 tests: ?"<<endl;
-        cout<<"Choice 8 tests: ?"<<endl;
-        cout<<"Choice 9 tests: ?"<<endl;
-        cout<<"Choice 10 tests: N/A"<<endl;
-        cout<<"Choice 11 tests: N/A"<<endl;
+	cout<<"Choice 5 tests: EventList and EventNode"<<endl;
+    cout<<"Choice 6 tests: scanRobots()"<<endl;
+    cout<<"Choice 7 tests: checkState()"<<endl;
+	cout<<"Choice 8 tests: runRobSim()"<<endl;
+	cout<<"Choice 9 tests: tree"<<endl;
+	cout<<"Choice 10 tests: shopperApp"<<endl;
+	cout<<"Choice 11 tests: N/A"<<endl;
 
 	cout<<"Please enter test choice\n";
 }

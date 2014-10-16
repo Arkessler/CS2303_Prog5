@@ -286,7 +286,30 @@ int main () //Author: Alexi
 				cout<< "After 9!"<<endl;
 				break;
 			} */
-			default:
+			
+		case 10: //Test ShopperApp Author:Alexi
+			{
+			LocalItemPtr testItem1 = new LocalItem("A5", 5);
+			LocalItemPtr testItem2 = new LocalItem("L7", 1);
+			LocalItemPtr testItem3 = new LocalItem("D8", 10);
+			LocalItemPtr testItem4 = new LocalItem("Z2", 7);
+			
+			Shopper *testShopper = new Shopper(34);
+			tilePtr dummyTile = new Tile(-1, -1, -1, -1, -1);
+			dummyTile->addToInventory(testItem1);
+			dummyTile->addToInventory(testItem2);
+			dummyTile->addToInventory(testItem3);
+			dummyTile->addToInventory(testItem4);
+			
+			dummyTile->printInventory();
+			testShopper->addDest(dummyTile);
+			testShopper->printDests();
+			testShopper->shopperApp();
+			testShopper->printDests();
+			
+			break;
+			}
+		default:
 				cout<<"Improper or no test input";
 				break;
 	}

@@ -25,6 +25,7 @@ class Shopper
 
 		//Takes simple list of items that were scanned in, adds store to dest.
 		void shopperApp();
+		void printDests();
 	private:
 		int ID;
 		int r, c, f;
