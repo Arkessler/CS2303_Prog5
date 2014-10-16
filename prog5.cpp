@@ -11,7 +11,8 @@
 #include "eventList.h"
 #include "externals.h"
 
-#define DEBUG 1
+#define DEBUG 0
+#define DEBUGROBSIM 0
 
 //#include "binTree.h"
 //#include "item.h"
@@ -38,7 +39,6 @@ int main () //Author: Alexi
 	cout<<"The test row is : "<<Mall[8][16][1].getRow()<<endl;
 	tilePtr testTile = new Tile();
 	*testTile = Mall[8][16][0];
-	testTile->printTile();
 	
 	instructions();
 	cin>>choice;
@@ -284,12 +284,18 @@ int main () //Author: Alexi
 			{
 				scanRobots();
 				runRobSim();
+				//mallEvents->getStartPtr()->print();
+				//mallEvents->getStartPtr()->getNext()->print();
+				//mallEvents->getStartPtr()->getNext()->getNext()->print();
+				//mallEvents->getStartPtr()->getNext()->getNext()->getNext()->print();
+				//mallEvents->printFull();
 				break;
 			}
+			/*
 	case 9:
 	  {
 	    Tree testTree = new Tree();
-	  }
+	  } */
 		default:
 			cout<<"Improper or no test input";
 			break;
@@ -353,6 +359,7 @@ void scanRobots(){
     //Robot *curRobot = new Robot();
     //*curRobot = RobotsNotInSim[i];
     mallEvents->addNewEvent(25*i, &RobotsNotInSim[i], 0);
+	//cout << "Robot " << i << " enters mall at time: " <<(25*i)<<endl;
   }
   if(DEBUG) {
    // mallEvents->print();
@@ -406,7 +413,7 @@ int runRobSim(){
     while(curr != NULL){
 		curr->checkState();
 		curr = curr->getNext();
-		if (DEBUG){
+		if (DEBUGROBSIM){
 			cout<<"Operated on event. New event list is as follows"<<endl;
 			if(mallEvents != NULL)
 			  mallEvents->print();

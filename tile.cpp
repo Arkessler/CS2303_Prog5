@@ -170,8 +170,6 @@ void Tile::addToInventory(LocalItemPtr toAdd){ //Max
       inventory->setNext(toAdd);
     }
     else{
-      //cout<<(toAdd->getName())<<" vs ";
-      //cout<<(curr == NULL)<<endl;
       //Currently adding to end of list, unsorted.  Can sort using id_compare(newItem)=> returns 0 if same, 1 if new is lower in 
       while (curr != NULL && curr->id_compare(toAdd) != 0 && curr->getNext() != NULL){
 	prev = curr;
@@ -237,7 +235,7 @@ void Tile::printInventory() //Alexi
 		      curr = curr->getNext();
 		    }
 		}
-		cout<<"End of inventory list\n"<<endl;
+		cout<<"End of inventory list"<<endl;
 	}
 }
 #endif
