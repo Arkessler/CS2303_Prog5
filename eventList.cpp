@@ -143,7 +143,7 @@ void EventNode::checkState(){
     case 0:
       //run shopperApp
       while(getShopperID()->getDest()->getInventory() != NULL){
-	getShopperID()->shopperApp(getShopperID()->getDest()->getInventory()); //FIGURE OUT SHOPPER APP
+	getShopperID()->shopperApp(); //FIGURE OUT SHOPPER APP
       }
       //Travel here
       break;
