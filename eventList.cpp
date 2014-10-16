@@ -89,7 +89,7 @@ void EventNode::checkState(){
 		if (DEBUGSTATE)
 			cout<<"adding new event of type 2"<<endl;
 		mallEvents->addNewEvent(newTime, getRobotID(), 2);
-		cout<<"Robot "<< getRobotID()->getID() << " arrives at store ( "<<getRobotID()->getDests()->getRow()<<", "<<getRobotID()->getDests()->getCol()<<" ) on Floor "<<((getRobotID()->getDests()->getFloor())+1)<<" at time "<<getTime()<<endl;
+		cout<<"\nRobot "<< getRobotID()->getID() << " arrives at store ( "<<getRobotID()->getDests()->getRow()<<", "<<getRobotID()->getDests()->getCol()<<" ) on Floor "<<((getRobotID()->getDests()->getFloor())+1)<<" at time "<<getTime()<<endl;
 		getRobotID()->removeDest();
 		
 		break;
@@ -99,11 +99,7 @@ void EventNode::checkState(){
 		tilePtr entrance = new Tile();
 		*entrance = Mall[8][16][0];
 		//Check eventlist
-		cout<<"\nRobot "<<getRobotID()->getID()<<" leaves store ( "
-		<<getRobotID()->getR()<<", "
-		<<getRobotID()->getC()<<" ) on Floor "
-		<<((getRobotID()->getF())+1)<<" at time"
-		<<getTime();
+		cout<<"\nRobot "<<getRobotID()->getID()<<" leaves store ( "<<getRobotID()->getR()<<", "<<getRobotID()->getC()<<" ) on Floor "<<((getRobotID()->getF())+1)<<" at time: "<<getTime()<<endl;
 		if(getRobotID()->checkDestsEmpty())//Evaluates to true if dests is empty
 		{ 
 			//Move towards entrance
@@ -126,7 +122,7 @@ void EventNode::checkState(){
 		}
     case 3:
 		{
-		cout << "Robot " << getRobotID()->getID() << " has left the simulation at time: " <<getTime()<< endl;
+		cout << "\nRobot " << getRobotID()->getID() << " has left the simulation at time: " <<getTime()<< endl;
 		break;
 		}
     default:
