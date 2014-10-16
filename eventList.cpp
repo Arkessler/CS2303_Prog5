@@ -99,9 +99,8 @@ void EventNode::checkState(){
     case 2:
 		{
 		tilePtr entrance = new Tile();
-		Tile ent = (Mall[8][16][0]);
-		*entrance = ent;
-		Mall[8][16][0].printTile();
+		*entrance = Mall[8][16][0];
+		entrance->printTile();
 		//Check eventlist
 		if(getRobotID()->checkDestsEmpty())//Evaluates to true if dests is empty
 		{ 
