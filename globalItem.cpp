@@ -30,18 +30,22 @@ GlobalItem::GlobalItem(string newName){
 // and 1 if new item is later than current item.
 int GlobalItem::id_compare(GlobalItemPtr newGlobalItem){
   string current = getName();
-  string new_id = newGlobalItem->getName();
-
-  if ( current.compare(new_id) < 0){  //if new is lower than current
-    return 1;
+  if(newGlobalItem != NULL){
+    string new_id = newGlobalItem->getName();
+    
+    if ( current.compare(new_id) < 0){  //if new is lower than current
+      return 1;
+    }
+    else if(current.compare(new_id) == 0){ // if new is the same as current
+      return 0;
+    }
+    else {  //if new is higher than current
+      return -1;
+    }
   }
-  else if(current.compare(new_id) == 0){ // if new is the same as current
-    return 0;
+  else{
+    return -5;
   }
-  else {  //if new is higher than current
-    return -1;
-  }
-
 }
 
 //Setters and getters
