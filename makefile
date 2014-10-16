@@ -1,6 +1,6 @@
 #Makefile for Program 5
 
-OBJS = prog5.o init_mall.o decide.o small.o eventList.o tile.o shopper.o robot.o localItem.o movement.o 
+OBJS = prog5.o init_mall.o decide.o small.o eventList.o binTree.o tile.o shopper.o robot.o globalItem.o localItem.o movement.o 
 
 CC = g++
 CFLAGS = -Wall -c
@@ -26,6 +26,12 @@ robot.o :robot.cpp robot.h tile.h
 
 movement.o: movement.cpp 
 	$(CC) $(CFLAGS) movement.cpp
+
+globalItem.o: globalItem.cpp globalItem.h
+	$(CC) $(CFLAGS) globalItem.cpp
+
+binTree.o: binTree.cpp binTree.h
+	$(CC) $(CFLAGS) binTree.cpp
 
 eventList.o: eventList.cpp eventList.h externals.h globals.h
 	$(CC) $(CFLAGS) eventList.cpp	

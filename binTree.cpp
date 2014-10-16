@@ -1,13 +1,14 @@
 #ifndef BINTREE_CPP
 #define BINTREE_CPP
 
-#include "global.h"
+#include "globals.h"
 #include "binTree.h"
-#include "item.h"
-#include "item.cpp"
+#include "globalItem.h"
+//#include "item.cpp"
 #include <iostream>
 #include <string.h>
-#include "store_functions.cpp"
+//#include "store_functions.cpp"
+
 void addStore(GlobalItemPtr itPtr, StorePtr newStore);
 
 bool debugAdd = false;
@@ -115,16 +116,16 @@ void Tree::PrintAll(GlobalItemPtr item) //Author: Alexi
 	if (item != NULL)
 	{
 		if (item->getLeft() ==NULL && item->getRight() == NULL){
-			(*item).printItem();
+		  //(*item).printItem();
 		} else if (item->getLeft() == NULL) {
-			(*item).printItem();
+		  //(*item).printItem();
 			PrintAll (item->getRight());
 		} else if (item->getRight()==NULL) {
 			PrintAll(item->getLeft());
-			(*item).printItem();
+			//(*item).printItem();
 		} else {
 			PrintAll(item->getLeft());
-			(*item).printItem();
+			//(*item).printItem();
 			PrintAll (item->getRight());
 		}
 	} else {

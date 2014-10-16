@@ -1,9 +1,10 @@
 #ifndef STOREFUNCTION_CPP
 #define STOREFUNCTION_CPP
-#include "global.h"
-#include "item.h"
-#include "item.cpp"
+#include "globals.h"
+#include "globalItem.h"
+//#include "item.cpp"
 #define DEBUGSTORE 0
+class GlobalItem;
 bool debugAddStore = false;
 
 // If stores are the same, return 0, if the new store has more items than the current store, return 
@@ -28,13 +29,15 @@ int store_compare(StorePtr currentStore, StorePtr newStore){ //Author: Max
 //decreasing item count order.
 //void addStore(StorePtr *sPtr, StorePtr newStore) //Author: Max
 
-void addStore(ItemPtr itPtr, StorePtr newStore)
+void addStore(GlobalItem *itPtr, StorePtr newStore)
 {
   int store_comp, storeExists = 0;
-  StorePtr previousPtr = new Store();
-  StorePtr currentPtr = new Store();
+  StorePtr previousPtr = new store();
+  StorePtr currentPtr = new store();
   StorePtr *sPtr;
   sPtr = itPtr->getStores();
+  
+  //iPtr->setStores(itPtr->getStores());
 
   previousPtr = NULL;
 	if (debugAddStore){ //Test to see if sPtr is null
@@ -42,15 +45,15 @@ void addStore(ItemPtr itPtr, StorePtr newStore)
 		if (sPtr == NULL){
 			cout << "sPtr is Null\n";
 		} else {
-			printStore(*sPtr);
+		  //printStore(*sPtr);
 		}
 		cout<<"Printing newStore:\n";
 		printStore(newStore);
 	}
 
 
-	if ((*sPtr) == NULL){ //if Null then Store ** is NULL so trying to use *sPtr, meaning a Store *, makes a seg fault
-		*sPtr = new Store();
+	if (sPtr == NULL){ //if Null then Store ** is NULL so trying to use *sPtr, meaning a Store *, makes a seg fault
+		*sPtr = new store();
 		(*sPtr) = newStore;
 		//cout<<"set beginning of list"<<endl;
 	} 

@@ -38,13 +38,12 @@ enum Direction  {North, NorthEast, East, SouthEast,
 		 South, SouthWest, West, NorthWest};
 enum Floors     {First, Second};
 
-/*
 typedef struct store{
   int x, y, z, itemCount;
   struct store *nextStore;
-} Store;
+} store;
 
-typedef Store *StorePtr;
+typedef store *StorePtr;
 
 int store_compare(StorePtr currentStore, StorePtr newStore);
 
@@ -52,6 +51,6 @@ void removeStore(StorePtr *sPtr,StorePtr toRemove);
 
 void printStore(StorePtr store);
 
-void printStoreList(StorePtr *store); */
+void printStoreList(StorePtr *store); 
 
 #endif
