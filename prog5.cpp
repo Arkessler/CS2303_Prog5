@@ -22,7 +22,6 @@
 
 //#include "small.cpp"
 EventList *mallEvents = new EventList();
-Tree *globalTree = new Tree();
 
 int main () //Author: Alexi
 {
@@ -37,20 +36,13 @@ int main () //Author: Alexi
 	//stores[MAX_STORES];
 	
 	init_mall();
-	cout<<"The test Step is : "<<Mall[8][16][1].getStep()<<endl;
-	cout<<"The test row is : "<<Mall[8][16][1].getRow()<<endl;
-	tilePtr testTile = new Tile();
-	*testTile = Mall[8][16][0];
-	
 	instructions();
 	cin>>choice;
 	tilePtr tile0 = new Tile(2, 5, 12, 4, 3);
 	
 	switch (choice)
 	{
-		case -1: //Test mall initialization
-			break;
-		case 0: //Test robot class
+		case 0: //Test robot class Author: Alexi
 			{
 				Robot R = *(new Robot(45));
 				cout<<"New robot's ID: "<<R.getID()<<endl;
@@ -91,7 +83,7 @@ int main () //Author: Alexi
 				cout<<"Check Robots in RobotsNotInSim: "<<RobNotInSim<<endl;
 				break;
 			}
-		case 2: //Test robot movement
+		case 2: //Test robot movement Author: Alexi
 			{
 				tilePtr testDest1 = new Tile(7, 7, 4, 4, 1);
 				tilePtr testDest2 = new Tile(7, 4, 6, 4, 0);
@@ -102,7 +94,7 @@ int main () //Author: Alexi
 				int t2 = travel(testRob, SIZE);
 				break;
 			}
-		case 3: //Test deliverItem Alexi
+		case 3: //Test deliverItem Author: Alexi
 			{
 				tilePtr testDest1 = new Tile(7, 7, 4, 4, 1);
 				tilePtr testDest2 = new Tile(7, 4, 6, 4, 0);
@@ -112,27 +104,6 @@ int main () //Author: Alexi
 				LocalItemPtr testItem3 = new LocalItem("D8", 10);
 				LocalItemPtr testItem4 = new LocalItem("Z2", 7);
 				
-				
-				/*
-				if(DEBUG) {
-				  cout<< "for test 1"<<endl;
-				  robotPtr newTest = new Robot(32, 1, 8, 16, 0, testDest1);
-				  newTest->getDests()->printInventory();
-				}
-				
-				if(DEBUG) {
-				  cout<<"for test 2"<<endl;
-							  robotPtr newTest = new Robot(32, 1, 8, 16, 0, testDest1);
-							  newTest->getDests()->printInventory();
-							}
-				
-				 
-				
-				if(DEBUG) {
-				  cout<<"for test 3"<< endl;
-							  robotPtr newTest = new Robot(32, 1, 8, 16, 0, testDest1);
-							  newTest->getDests()->printInventory();
-							}*/
 				testDest1->addToInventory(testItem1);
 				testDest1->addToInventory(testItem2);
 				testDest1->addToInventory(testItem3);
@@ -215,7 +186,7 @@ int main () //Author: Alexi
 				Mall[(testDest2->getRow())][(testDest2->getCol())][(testDest2->getFloor())].printInventory();
 				break;
 			}
-		case 4: //Test of deliverItems() Alexi
+		case 4: //Test of deliverItems() Author: Alexi
 			{
 				int deliveryTime;
 				tilePtr testDest1 = new Tile(7, 4, 6, 4, 1);
@@ -245,7 +216,7 @@ int main () //Author: Alexi
 				
 				break;
 			}
-		case 5: //Test of EventList and EventNode Max
+		case 5: //Test of EventList and EventNode Author: Max
 			{
 				EventList *testList = new EventList();
 				Robot *testRobot = new Robot(5);
@@ -265,13 +236,13 @@ int main () //Author: Alexi
 				testList->print();
 				break;
 			}
-		case 6://test scanRobots
+		case 6://test scanRobots Author: Alexi
 			{
 				scanRobots();
 				mallEvents->print();
 				break;
 			}
-		case 7: //Test checkState
+		case 7: //Test checkState Author: Alexi
 			{
 				scanRobots();
 				//need to checkState
@@ -282,7 +253,7 @@ int main () //Author: Alexi
 				//runRobSim();
 			break;
 			}
-		case 8: //Test robSim
+		case 8: //Test robSim Author: Alexi
 			{
 				scanRobots();
 				runRobSim();
@@ -294,46 +265,34 @@ int main () //Author: Alexi
 				break;
 			}
 			/*
-	case 9:
-	  {
+			case 9: //Test tree functionality Author: Max
+			
+			{
+				Tree *testTree = new Tree();
+				GlobalItem *base = new GlobalItem("L1");
+				GlobalItem *node1 = new GlobalItem("F2");
+				GlobalItem *node2 = new GlobalItem ("X1");
 
-	    Tree testTree = new Tree();
-	 
+				StorePtr store1 = newStore(1, 2, 0, 3, NULL);
+				StorePtr store2 = newStore(2, 4, 1, 10, NULL);
+				StorePtr store3 = newStore(3, 1, 4, 100, NULL);
+				StorePtr store4 = newStore(1, 9, 13, 50, NULL);
 
-	    Tree *testTree = new Tree();
-	    GlobalItem *base = new GlobalItem("L1");
-	    GlobalItem *node1 = new GlobalItem("F2");
-	    GlobalItem *node2 = new GlobalItem ("X1");
-
-	    StorePtr store1 = newStore(1, 2, 0, 3, NULL);
-	    StorePtr store2 = newStore(2, 4, 1, 10, NULL);
-	    StorePtr store3 = newStore(3, 1, 4, 100, NULL);
-	    StorePtr store4 = newStore(1, 9, 13, 50, NULL);
-
-	    testTree->addItem(base, store1);
-	    testTree->addItem(node1, store1);
-	    testTree->addItem(node1, store2);
-	    testTree->addItem(node2, store3);
-	    testTree->addItem(node2, store4);
-
-	    base->getLeft();
-	    base->getRight();
-	    base->getStores();
-	    node1->getStores();
-	    node2->getStores();
-	    base->getLeft()->getStores();
-
-	    cout<< "After 9!"<<endl;
-	    break;
-	  } */
-
-		default:
-			cout<<"Improper or no test input";
-			break;
+				testTree->addItem(base, store1);
+				testTree->addItem(node1, store1);
+				testTree->addItem(node1, store2);
+				testTree->addItem(node2, store3);
+				testTree->addItem(node2, store4);
+				cout<< "After 9!"<<endl;
+				break;
+			} */
+			default:
+				cout<<"Improper or no test input";
+				break;
 	}
 }
 
-void scanRobots(){
+void scanRobots(){ //scan in Robots Author: Max
   int numBots = 0, i = 0, j = 0, newItemCount;
   tilePtr toAdd;
 
@@ -398,7 +357,7 @@ void scanRobots(){
 }
 
 
-void readShoppers(){
+void readShoppers(){ //Reads in Shoppers Author: Max
   int numShoppers, arrival, numItems, itemCnt;
   std::string itemName;
 
