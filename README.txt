@@ -10,6 +10,7 @@ deliver all of their items.
 
 There is a minor issue in the output of Stage 1 in that arrivals are printed out after item deliveries when both occurs at 
 the same time.
+The output of Stage 1 is shown in testOut.txt
 
 Stage 2 has yet to be implemented. We've laid the groundwork for the code, shoppers are very similar to robots, they just have 
 item lists. Items in this case are globalItems, which form the basis of the tree and hold Store locations. The shoppers' 
